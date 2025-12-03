@@ -8,6 +8,7 @@ import AdSlot from '../../../components/AdSlot';
 
 // Veri
 import salaryData from '../../../data/data.json';
+export const dynamicParams = false;
 
 // 1. STATİK SAYFA ÜRETİMİ (SSG)
 export async function generateStaticParams() {
