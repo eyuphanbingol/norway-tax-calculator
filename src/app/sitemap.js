@@ -1,35 +1,30 @@
-import { promises as fs } from 'fs';
-import path from 'path';
+import salaryData from '../data/data.json';
 
-// Bu fonksiyon Google'a sitemizdeki tüm linkleri listeleyecek
-export default async function sitemap() {
-  // 1. Projenin ana URL'si (Vercel'den aldığın linki buraya yazmalısın)
-  // Şimdilik örnek olarak vercel linkini koyuyoruz, domain alınca değiştirirsin.
-  // ÖRN: https://norway-tax-calculator-xyz.vercel.app
-  // DİKKAT: Aşağıdaki 'baseUrl' kısmını kendi Vercel linkinle değiştir!
+export default function sitemap() {
+  // DİKKAT: Buraya kendi Vercel linkini veya aldıysan Domainini yaz
+  // Sonunda '/' olmasın.
   const baseUrl = 'https://norway-tax-calculator.vercel.app'; 
 
-  // 2. JSON verisini oku
-  const filePath = path.join(process.cwd(), 'public', 'tax_data.json');
-  const file = await fs.readFile(filePath, 'utf8');
-  const data = JSON.parse(file);
-
-  // 3. Her bir maaş verisi için URL oluştur
-  const taxUrls = data.map((item) => ({
-    url: `${baseUrl}/?salary=${item.data.gross_yearly}`, // Query parametresi ile yönlendirme
+  // Dinamik sayfaların haritasını çıkarıyoruz
+  const salaryUrls = salaryData.map((item) => ({
+    url: `${baseUrl}/lonn/${item.slug}`, // YENİ YAPI: /lonn/lonn-etter-skatt-...
     lastModified: new Date(),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly', // Maaş verisi her ay değişmez, monthly iyidir
     priority: 0.8,
   }));
 
-  // 4. Ana sayfa ve diğerlerini birleştirip döndür
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    ...taxUrls,
-  ];
+  // Ana sayfa ve statik sayfalar
+  const routes = [
+    '',
+    '/om-oss',
+    '/kontakt',
+    '/personvern',
+  ].map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly',
+    priority: route === '' ? 1 : 0.5,
+  }));
+
+  return [...routes, ...salaryUrls];
 }
