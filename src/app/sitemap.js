@@ -19,6 +19,7 @@ export default function sitemap() {
     '/om-oss',
     '/kontakt',
     '/personvern',
+    '/cookies',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
