@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight, CheckCircle, HelpCircle } from 'lucide-react';
 
 // Bileşenler
-import SalarySlider from '../../../components/SalarySlider';
 import ResultCard from '../../../components/ResultCard';
 import AdSlot from '../../../components/AdSlot';
 
@@ -17,9 +16,9 @@ export async function generateStaticParams() {
   }));
 }
 
-// 2. DİNAMİK META ETİKETLERİ (SEO) - GÜNCELLENDİ (AWAIT EKLENDİ)
+// 2. DİNAMİK META ETİKETLERİ (GELİŞMİŞ SEO + NEXT.JS 15 FIX)
 export async function generateMetadata({ params }) {
-  // Next.js 15'te params bir Promise'dir, await ile çözmeliyiz:
+  // Next.js 15: params bir Promise'dir, await ile çözülür.
   const resolvedParams = await params;
   const { slug } = resolvedParams;
   
@@ -27,18 +26,37 @@ export async function generateMetadata({ params }) {
 
   if (!data) return { title: 'Side ikke funnet' };
 
+  // DİKKAT: Domain aldığında burayı güncelle! (örn: https://skattkalkulator.com)
+  const siteUrl = 'https://norway-tax-calculator.vercel.app'; 
+  const canonicalUrl = `${siteUrl}/lonn/${slug}`;
+  
+  // Eğer JSON'da meta_description varsa onu kullan, yoksa oluştur
+  const description = data.meta_description || `Se hvor mye du får utbetalt av ${data.gross_yearly.toLocaleString()} kr i lønn etter skatt i 2025.`;
+
   return {
     title: `${data.gross_yearly.toLocaleString()} kr Lønn etter skatt 2025 - Hvor mye utbetalt?`,
-    description: data.meta_description,
+    description: description,
+    
+    // CANONICAL URL (Kopya içerik riskini önler)
     alternates: {
-      canonical: `https://skattkalkulator.com/lonn/${slug}`,
+      canonical: canonicalUrl,
+    },
+
+    // OPEN GRAPH (Sosyal Medya Paylaşım Kartı)
+    openGraph: {
+      title: `${data.gross_yearly.toLocaleString()} kr Lønn etter skatt`,
+      description: description,
+      url: canonicalUrl,
+      siteName: 'Skattekalkulator Norge',
+      locale: 'nb_NO',
+      type: 'article',
     },
   };
 }
 
-// 3. SAYFA İÇERİĞİ - GÜNCELLENDİ (ASYNC VE AWAIT EKLENDİ)
+// 3. SAYFA İÇERİĞİ (NEXT.JS 15 FIX)
 export default async function SalaryPage({ params }) {
-  // Next.js 15 Düzeltmesi: params'ı await ile bekliyoruz
+  // Next.js 15: params'ı await ile bekliyoruz
   const resolvedParams = await params;
   const { slug } = resolvedParams;
 
@@ -46,7 +64,7 @@ export default async function SalaryPage({ params }) {
 
   if (!data) return notFound();
 
-  // JSON-LD Schema
+  // JSON-LD Schema (Google Snippet için)
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -63,6 +81,7 @@ export default async function SalaryPage({ params }) {
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
       
+      {/* Schema verisini sayfaya gömüyoruz */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -77,7 +96,7 @@ export default async function SalaryPage({ params }) {
 
       <div className="container mx-auto px-4 py-8">
         
-        {/* BREADCRUMB */}
+        {/* BREADCRUMB (Navigasyon Yolu) */}
         <nav className="text-sm text-slate-500 mb-6">
           <Link href="/" className="hover:text-emerald-600">Hjem</Link> 
           <span className="mx-2">/</span> 
@@ -97,11 +116,13 @@ export default async function SalaryPage({ params }) {
               Her ser du nøyaktig hvor mye du får utbetalt i 2025 etter skatt og fradrag.
             </p>
 
-            {/* ResultCard bileşenine data'yı result prop'u olarak gönderiyoruz */}
+            {/* SONUÇ KARTI */}
             <ResultCard result={data} />
 
+            {/* İÇERİK ve REKLAMLAR */}
             <div className="mt-12 space-y-8">
               
+              {/* Bölüm 1: Genel Bilgi */}
               <div className="bg-white p-6 md:p-8 rounded-xl border border-slate-200 prose prose-slate max-w-none">
                 <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2">
                   <CheckCircle className="text-emerald-500" size={20} />
@@ -117,8 +138,10 @@ export default async function SalaryPage({ params }) {
                 </p>
               </div>
 
+              {/* NATIVE REKLAM */}
               <AdSlot type="native" />
 
+              {/* Bölüm 2: FAQ (Sık Sorulan Sorular) */}
               <div className="bg-white p-6 md:p-8 rounded-xl border border-slate-200">
                 <h2 className="text-xl font-bold text-slate-800 flex items-center gap-2 mb-6">
                   <HelpCircle className="text-blue-500" size={20} />
@@ -137,6 +160,7 @@ export default async function SalaryPage({ params }) {
 
             </div>
 
+            {/* CROSS-LINKS (Önceki - Sonraki Maaş) */}
             <div className="mt-12 grid grid-cols-2 gap-4">
               {data.links.prev && (
                 <Link 
@@ -177,6 +201,7 @@ export default async function SalaryPage({ params }) {
 
           </div>
 
+          {/* --- SAĞ KOLON (SIDEBAR) --- */}
           <div className="w-full lg:w-1/3">
             <AdSlot type="sidebar" />
             <div className="mt-6 sticky top-[640px]">
