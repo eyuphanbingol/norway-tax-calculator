@@ -1,13 +1,14 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Calculator, TrendingUp, Info } from 'lucide-react';
+import { TrendingUp, Info } from 'lucide-react';
 
 // Bileşenleri çağırıyoruz
 import SalarySlider from '../components/SalarySlider';
 import ResultCard from '../components/ResultCard';
 import AdSlot from '../components/AdSlot';
-import SearchBox from '../components/SearchBox'; // Arama kutusu
+import SearchBox from '../components/SearchBox';
+import Logo from '../components/Logo'; // Logo bileşenini ekledik
 
 // Veriyi direkt import ediyoruz
 import salaryData from '../data/data.json';
@@ -36,13 +37,15 @@ export default function Home() {
         </div>
       </div>
 
-      {/* 2. HERO BÖLÜMÜ (Başlık ve Arama) */}
+      {/* 2. HERO BÖLÜMÜ (Başlık, Logo ve Arama) */}
       <div className="bg-[#005c45] text-white pt-12 pb-24">
         <div className="container mx-auto px-4 text-center">
           
-          <div className="flex items-center justify-center gap-2 mb-4 opacity-80">
-            <Calculator size={24} />
-            <span className="font-semibold tracking-wide uppercase text-sm">Offisiell Skattekalkulator 2025</span>
+          {/* LOGO */}
+          <div className="flex justify-center mb-6">
+             <div className="scale-125">
+                <Logo color="text-white" />
+             </div>
           </div>
           
           <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">
@@ -53,7 +56,7 @@ export default function Home() {
             Beregn din nøyaktige utbetaling, skattetrekk og feriepenger med Norges mest oppdaterte verktøy for 2025.
           </p>
 
-          {/* YENİ EKLENEN AKILLI ARAMA KUTUSU */}
+          {/* AKILLI ARAMA KUTUSU */}
           <div className="max-w-lg mx-auto text-left relative z-20">
              <SearchBox />
           </div>
@@ -98,7 +101,7 @@ export default function Home() {
               {salaryData.filter(d => d.gross_yearly >= 350000 && d.gross_yearly <= 900000 && d.gross_yearly % 50000 === 0).map((item) => (
                 <Link 
                   key={item.slug}
-                  href={`/lonn/${item.slug}`} // DİKKAT: Dinamik sayfa linki
+                  href={`/lonn/${item.slug}`} // Dinamik link
                   className="group flex flex-col p-3 bg-white border border-slate-200 rounded hover:border-emerald-500 hover:shadow-md transition text-center"
                 >
                   <span className="text-sm text-slate-500 group-hover:text-emerald-600">Årslønn</span>

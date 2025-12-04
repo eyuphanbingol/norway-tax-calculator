@@ -1,7 +1,6 @@
 'use client';
 
-export default function SalarySlider({ salary, setSalary }) {
-  // Input değişince (Maksimum 3M NOK sınırı koyalım)
+export default function SalarySlider({ salary, setSalary, label = "Din Årslønn (Yıllık Brüt Maaş)" }) {
   const handleInputChange = (e) => {
     let val = Number(e.target.value);
     if (val > 3000000) val = 3000000;
@@ -11,7 +10,7 @@ export default function SalarySlider({ salary, setSalary }) {
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-6">
       <label className="block text-slate-600 font-bold mb-3 text-sm uppercase tracking-wide">
-        Din Årslønn (Yıllık Brüt Maaş)
+        {label}
       </label>
       
       <div className="flex items-center gap-3 mb-5">
@@ -26,18 +25,11 @@ export default function SalarySlider({ salary, setSalary }) {
 
       <input 
         type="range" 
-        min="300000" 
-        max="2000000" 
-        step="5000"
+        min="300000" max="2000000" step="5000"
         value={salary}
         onChange={(e) => setSalary(Number(e.target.value))}
         className="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600 hover:accent-emerald-500 transition-all"
       />
-      <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium">
-        <span>300k</span>
-        <span>1M</span>
-        <span>2M+</span>
-      </div>
     </div>
   );
 }

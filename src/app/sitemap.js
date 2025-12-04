@@ -1,11 +1,12 @@
 import salaryData from '../data/data.json';
 import professionData from '../data/professions.json';
-import cityData from '../data/cities.json'; // YENİ
+import cityData from '../data/cities.json';
 
 export default function sitemap() {
+  // DİKKAT: Pazar günü Domain aldığında burayı güncellemelisin (Örn: https://skattekalkulator.com)
   const baseUrl = 'https://norway-tax-calculator.vercel.app'; 
 
-  // 1. Maaşlar
+  // 1. Maaş Sayfaları (/lonn/...)
   const salaryUrls = salaryData.map((item) => ({
     url: `${baseUrl}/lonn/${item.slug}`,
     lastModified: new Date(),
@@ -13,15 +14,15 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  // 2. Meslekler
+  // 2. Meslek Sayfaları (/yrke/...)
   const professionUrls = professionData.map((item) => ({
     url: `${baseUrl}/yrke/${item.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: 0.9,
+    priority: 0.9, // Meslek sayfaları değerlidir
   }));
 
-  // 3. YENİ: Şehirler
+  // 3. Şehir Sayfaları (/sted/...)
   const cityUrls = cityData.map((item) => ({
     url: `${baseUrl}/sted/${item.slug}`,
     lastModified: new Date(),
@@ -29,13 +30,14 @@ export default function sitemap() {
     priority: 0.85, 
   }));
 
-  // 4. Statik
+  // 4. Statik Sayfalar ve İngilizce Sayfa (/en)
   const routes = [
     '',
     '/om-oss',
     '/kontakt',
     '/personvern',
     '/cookies',
+    '/en',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -43,5 +45,6 @@ export default function sitemap() {
     priority: route === '' ? 1 : 0.5,
   }));
 
+  // Hepsini birleştirip Google'a sunuyoruz
   return [...routes, ...salaryUrls, ...professionUrls, ...cityUrls];
 }
