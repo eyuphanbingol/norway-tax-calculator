@@ -1,12 +1,11 @@
 import salaryData from '../data/data.json';
-import professionData from '../data/professions.json'; // YENİ: Meslek verilerini çekiyoruz
+import professionData from '../data/professions.json';
+import cityData from '../data/cities.json'; // YENİ
 
 export default function sitemap() {
-  // DİKKAT: Buraya kendi Vercel linkini veya aldıysan Domainini yaz
-  // Sonunda '/' olmasın.
   const baseUrl = 'https://norway-tax-calculator.vercel.app'; 
 
-  // 1. Maaş Sayfaları Haritası (/lonn/...)
+  // 1. Maaşlar
   const salaryUrls = salaryData.map((item) => ({
     url: `${baseUrl}/lonn/${item.slug}`,
     lastModified: new Date(),
@@ -14,16 +13,23 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  // 2. YENİ: Meslek Sayfaları Haritası (/yrke/...)
-  // Bu sayfalar "Hemşire maaşı", "Öğretmen maaşı" gibi aramalar içindir.
+  // 2. Meslekler
   const professionUrls = professionData.map((item) => ({
     url: `${baseUrl}/yrke/${item.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: 0.9, // Meslek sayfaları yüksek dönüşüm getirir, önceliği yüksek tutalım
+    priority: 0.9,
   }));
 
-  // 3. Ana sayfa ve Statik Sayfalar
+  // 3. YENİ: Şehirler
+  const cityUrls = cityData.map((item) => ({
+    url: `${baseUrl}/sted/${item.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.85, 
+  }));
+
+  // 4. Statik
   const routes = [
     '',
     '/om-oss',
@@ -37,6 +43,5 @@ export default function sitemap() {
     priority: route === '' ? 1 : 0.5,
   }));
 
-  // Hepsini tek bir dev listede birleştirip Google'a sunuyoruz
-  return [...routes, ...salaryUrls, ...professionUrls];
+  return [...routes, ...salaryUrls, ...professionUrls, ...cityUrls];
 }

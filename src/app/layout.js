@@ -1,9 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// Footer bileşenini içe aktarıyoruz
+
+// Bileşenlerimizi çağırıyoruz
 import Footer from "../components/Footer";
-import CookieBanner from '../components/CookieBanner';
-import GoogleAnalytics from '../components/GoogleAnalytics';
+import CookieBanner from "../components/CookieBanner";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,50 +16,31 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-// SEO için Başlık ve Açıklama (Norveççe)
+// Site geneli SEO ayarları
 export const metadata = {
   title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
   description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025. Se hva du får utbetalt etter skatt.",
+  verification: {
+    // Google Search Console kodunu buraya yapıştırabilirsin
+    // google: 'senin-kodun',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    // Dili 'no' (Norveççe) yapıyoruz ki Google yerel site olduğunu anlasın
     <html lang="no">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Ana İçerik */}
+        {/* Analytics Kodunu buraya GA-ID olarak girebilirsin, yoksa boş kalsın */}
+        <GoogleAnalytics ga_id="" />
+        
+        {/* Sayfa İçeriği */}
         {children}
         
-        {/* Her sayfanın altında görünecek Footer */}
+        {/* Sabit Alt Bileşenler */}
         <Footer />
-      </body>
-    </html>
-  );
-}
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="no">
-      {/* ... */}
-      <body>
-        {children}
-        <Footer />
-        <CookieBanner /> {/* EKLE */}
-      </body>
-    </html>
-  );
-}
-
-export default function RootLayout({ children }) {
-  return (
-    <html lang="no">
-      <body>
-        {/* GA ID'ni buraya yaz */}
-        <GoogleAnalytics ga_id="G-SENIN-KODUN-BURAYA" /> 
-        {children}
-        {/* ... */}
+        <CookieBanner />
       </body>
     </html>
   );
