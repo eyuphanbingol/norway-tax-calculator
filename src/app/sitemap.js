@@ -1,19 +1,29 @@
 import salaryData from '../data/data.json';
+import professionData from '../data/professions.json'; // YENİ: Meslek verilerini çekiyoruz
 
 export default function sitemap() {
   // DİKKAT: Buraya kendi Vercel linkini veya aldıysan Domainini yaz
   // Sonunda '/' olmasın.
   const baseUrl = 'https://norway-tax-calculator.vercel.app'; 
 
-  // Dinamik sayfaların haritasını çıkarıyoruz
+  // 1. Maaş Sayfaları Haritası (/lonn/...)
   const salaryUrls = salaryData.map((item) => ({
-    url: `${baseUrl}/lonn/${item.slug}`, // YENİ YAPI: /lonn/lonn-etter-skatt-...
+    url: `${baseUrl}/lonn/${item.slug}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly', // Maaş verisi her ay değişmez, monthly iyidir
+    changeFrequency: 'monthly',
     priority: 0.8,
   }));
 
-  // Ana sayfa ve statik sayfalar
+  // 2. YENİ: Meslek Sayfaları Haritası (/yrke/...)
+  // Bu sayfalar "Hemşire maaşı", "Öğretmen maaşı" gibi aramalar içindir.
+  const professionUrls = professionData.map((item) => ({
+    url: `${baseUrl}/yrke/${item.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.9, // Meslek sayfaları yüksek dönüşüm getirir, önceliği yüksek tutalım
+  }));
+
+  // 3. Ana sayfa ve Statik Sayfalar
   const routes = [
     '',
     '/om-oss',
@@ -27,5 +37,6 @@ export default function sitemap() {
     priority: route === '' ? 1 : 0.5,
   }));
 
-  return [...routes, ...salaryUrls];
+  // Hepsini tek bir dev listede birleştirip Google'a sunuyoruz
+  return [...routes, ...salaryUrls, ...professionUrls];
 }
