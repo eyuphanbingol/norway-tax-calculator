@@ -196,7 +196,7 @@ export default async function SalaryPage({ params }) {
 
             <div className="mt-8 text-center">
               <Link href="/" className="inline-block px-6 py-3 bg-slate-800 text-white font-semibold rounded-lg hover:bg-slate-700 transition">
-                Gå tilbake til kalkulatoren (Hesaplayıcıya Dön)
+                Gå tilbake til kalkulatoren 
               </Link>
             </div>
 

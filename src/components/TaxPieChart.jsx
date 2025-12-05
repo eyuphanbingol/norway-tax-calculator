@@ -3,8 +3,8 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recha
 
 export default function TaxPieChart({ tax, net }) {
   const data = [
-    { name: 'Utbetalt (Net)', value: net, color: '#10b981' }, // Emerald-500
-    { name: 'Skatt (Vergi)', value: tax, color: '#ef4444' },  // Red-500
+    { name: 'Utbetalt ', value: net, color: '#10b981' }, // Emerald-500
+    { name: 'Skatt', value: tax, color: '#ef4444' },  // Red-500
   ];
 
   return (
