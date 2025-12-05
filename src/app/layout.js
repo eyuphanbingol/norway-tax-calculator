@@ -1,7 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-// Bileşenlerimizi çağırıyoruz
+// Bileşenleri çağırıyoruz
+import Header from "../components/Header"; // <-- BU EKSİKTİ, EKLENDİ
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import GoogleAnalytics from "../components/GoogleAnalytics";
@@ -22,7 +23,6 @@ export const metadata = {
   description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025. Se hva du får utbetalt etter skatt.",
   verification: {
     // Google Search Console kodunu buraya yapıştırabilirsin
-    // google: 'senin-kodun',
   },
 };
 
@@ -32,8 +32,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Analytics Kodunu buraya GA-ID olarak girebilirsin, yoksa boş kalsın */}
+        {/* Analytics Kodu */}
         <GoogleAnalytics ga_id="" />
+        
+        {/* ÜST MENÜ (NAVBAR) BURAYA GELDİ */}
+        <Header />
         
         {/* Sayfa İçeriği */}
         {children}
