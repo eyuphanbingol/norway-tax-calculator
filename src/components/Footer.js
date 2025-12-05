@@ -16,25 +16,24 @@ export default function Footer() {
           <p className="text-sm text-slate-400">
             Enkelt verktøy for å beregne lønn etter skatt i Norge. 
             Oppdatert for {currentYear}.
-            <br/>(Norveç için basit vergi hesaplama aracı.)
           </p>
         </div>
 
         {/* Orta: Hızlı Linkler */}
         <div>
-          <h4 className="text-white font-semibold mb-4">Snarveier (Hızlı Linkler)</h4>
+          <h4 className="text-white font-semibold mb-4">Snarveier</h4>
           <ul className="space-y-2 text-sm">
             <li>
-              <Link href="/" className="hover:text-emerald-400 transition">Hjem (Ana Sayfa)</Link>
+              <Link href="/" className="hover:text-emerald-400 transition">Hjem </Link>
             </li>
             <li>
-              <Link href="/blog" className="text-emerald-400 font-bold hover:text-emerald-300 transition">Blogg & Tips (YENİ)</Link>
+              <Link href="/blog" className="text-emerald-400 font-bold hover:text-emerald-300 transition">Blogg & Tips </Link>
             </li>
             <li>
-              <Link href="/om-oss" className="hover:text-emerald-400 transition">Om Oss (Hakkımızda)</Link>
+              <Link href="/om-oss" className="hover:text-emerald-400 transition">Om Oss </Link>
             </li>
             <li>
-              <Link href="/kontakt" className="hover:text-emerald-400 transition">Kontakt Oss (İletişim)</Link>
+              <Link href="/kontakt" className="hover:text-emerald-400 transition">Kontakt Oss </Link>
             </li>
           </ul>
         </div>

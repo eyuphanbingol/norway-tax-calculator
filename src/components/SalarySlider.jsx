@@ -1,6 +1,6 @@
 'use client';
 
-export default function SalarySlider({ salary, setSalary, label = "Din Årslønn (Yıllık Brüt Maaş)" }) {
+export default function SalarySlider({ salary, setSalary, label = "Din Årslønn " }) {
   const handleInputChange = (e) => {
     let val = Number(e.target.value);
     if (val > 3000000) val = 3000000;

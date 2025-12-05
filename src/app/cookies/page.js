@@ -13,7 +13,6 @@ export default function CookiesPage() {
           <p>
             En informasjonskapsel (cookie) er en liten tekstfil som lagres på din datamaskin eller mobil når du besøker et nettsted. 
             Den hjelper nettstedet å huske dine handlinger og preferanser over tid.
-            (Çerez nedir? Bilgisayarınıza kaydedilen küçük metin dosyasıdır.)
           </p>
         </section>
 
@@ -21,32 +20,34 @@ export default function CookiesPage() {
           <h2 className="text-xl font-bold text-slate-800 mb-2">2. Hvorfor bruker vi cookies?</h2>
           <ul className="list-disc pl-5 space-y-2">
             <li>
-              <strong>Nødvendige cookies:</strong> For at nettsiden skal fungere teknisk (f.eks. huske dine valg i kalkulatoren).
+              <strong>Nødvendige cookies:</strong> For at nettsiden skal fungere teknisk (f.eks. huske dine valg i kalkulatoren mens du navigerer).
             </li>
             <li>
-              <strong>Analyse (Google Analytics):</strong> Vi bruker dette for å se hvor mange som besøker siden og hvilke sider som er populære. Dataene er anonymisert.
+              <strong>Analyse (Google Analytics):</strong> Vi bruker dette for å se hvor mange som besøker siden, hvilke byer de kommer fra og hvilke sider som er populære. Dataene er anonymisert.
             </li>
             <li>
-              <strong>Annonsering (Google AdSense):</strong> Vi bruker tredjepartscookies fra Google for å vise relevante annonser basert på dine interesser.
+              <strong>Annonsering (Google AdSense):</strong> Vi bruker tredjepartscookies fra Google for å vise relevante annonser basert på dine interesser. Dette hjelper oss å holde tjenesten gratis for deg.
             </li>
           </ul>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-slate-800 mb-2">3. Google AdSense og DoubleClick</h2>
+          <h2 className="text-xl font-bold text-slate-800 mb-2">3. Google AdSense og Personvern</h2>
           <p>
             Som en tredjeparts leverandør bruker Google informasjonskapsler for å vise annonser på nettstedet vårt. 
             Googles bruk av informasjonskapsler (f.eks. DART-informasjonskapselen) gjør at de kan vise annonser til brukerne basert på deres besøk på nettstedet vårt og andre nettsteder på Internett.
           </p>
           <p>
-            Du kan velge bort bruken av DART-informasjonskapselen ved å gå til personvernreglene for Google-annonse- og innholdsnettverk.
+            Du kan velge bort bruken av DART-informasjonskapselen ved å gå til <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-emerald-600 underline">Googles personvernregler for annonsering</a>.
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-slate-800 mb-2">4. Hvordan administrere cookies?</h2>
+          <h2 className="text-xl font-bold text-slate-800 mb-2">4. Kontakt</h2>
           <p>
-            Du kan kontrollere og/eller slette informasjonskapsler som du ønsker. Du kan slette alle informasjonskapsler som allerede er på datamaskinen din, og du kan stille inn de fleste nettlesere for å forhindre at de lagres.
+            Har du spørsmål om vår bruk av cookies? Send oss gjerne en e-post på:
+            <br/>
+            <a href="mailto:kontakt@skattekalkulator.com" className="font-bold text-emerald-600 hover:underline">kontakt@skattekalkulator.com</a>
           </p>
         </section>
       </div>

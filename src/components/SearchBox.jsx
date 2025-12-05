@@ -121,7 +121,7 @@ export default function SearchBox() {
                   <div>
                     <span className="block font-semibold text-slate-700">{item.title}</span>
                     <span className="text-xs text-slate-400 uppercase tracking-wider font-medium">
-                      {item.type === 'yrke' ? 'Yrke (Meslek)' : item.type === 'sted' ? 'Sted (Şehir)' : 'Beregning'}
+                      {item.type === 'yrke' ? 'Yrke ' : item.type === 'sted' ? 'Sted' : 'Beregning'}
                     </span>
                   </div>
                 </button>

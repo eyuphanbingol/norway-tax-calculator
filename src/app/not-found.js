@@ -9,10 +9,9 @@ export default function NotFound() {
           <AlertCircle size={32} />
         </div>
         <h2 className="text-3xl font-black text-slate-900 mb-2">404</h2>
-        <h3 className="text-xl font-bold text-slate-800 mb-4">Side ikke funnet (Sayfa Bulunamadı)</h3>
+        <h3 className="text-xl font-bold text-slate-800 mb-4">Side ikke funnet</h3>
         <p className="text-slate-600 mb-8">
           Beklager, siden du leter etter finnes ikke eller har blitt flyttet.
-          (Üzgünüz, aradığınız sayfa yok veya taşındı.)
         </p>
         
         <Link 
@@ -20,7 +19,7 @@ export default function NotFound() {
           className="flex items-center justify-center gap-2 w-full py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg transition"
         >
           <Home size={20} />
-          Gå til forsiden (Ana Sayfa)
+          Gå til forsiden
         </Link>
       </div>
     </div>

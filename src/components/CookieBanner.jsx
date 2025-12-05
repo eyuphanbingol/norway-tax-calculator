@@ -28,7 +28,7 @@ export default function CookieBanner() {
             Vi bruker informasjonskapsler (cookies) for å gi deg en bedre opplevelse og for å vise annonser. 
             Ved å fortsette godtar du vår bruk av cookies. 
             <Link href="/personvern" className="text-emerald-400 hover:underline ml-1">
-              Les mer (Gizlilik Politikası)
+              Les mer 
             </Link>
           </p>
         </div>
