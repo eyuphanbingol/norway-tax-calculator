@@ -3,11 +3,17 @@ import professionData from '../data/professions.json';
 import cityData from '../data/cities.json';
 import blogData from '../data/blog.json';
 
-export default function sitemap() {
-  // DİKKAT: Pazar günü Domain aldığında burayı güncellemelisin (Örn: https://skattekalkulator.com)
-  const baseUrl = 'https://norway-tax-calculator.vercel.app';
+// Pazar günü domaini 'src/lib/constants.js' dosyasından değiştirdiğinde 
+// burası da otomatik düzelecek. Eğer constants.js yoksa elle de yazabilirsin.
+import { DOMAIN } from '../lib/constants'; 
 
-  // 1. Maaş Sayfaları (/lonn/...)
+export default function sitemap() {
+  // Eğer constants.js oluşturmadıysan üstteki importu sil ve şu satırı aç:
+  // const baseUrl = 'https://norway-tax-calculator.vercel.app';
+  
+  const baseUrl = DOMAIN;
+
+  // 1. Maaş Sayfaları
   const salaryUrls = salaryData.map((item) => ({
     url: `${baseUrl}/lonn/${item.slug}`,
     lastModified: new Date(),
@@ -15,15 +21,15 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  // 2. Meslek Sayfaları (/yrke/...)
+  // 2. Meslek Sayfaları
   const professionUrls = professionData.map((item) => ({
     url: `${baseUrl}/yrke/${item.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly',
-    priority: 0.9, // Meslek sayfaları değerlidir
+    priority: 0.9,
   }));
 
-  // 3. Şehir Sayfaları (/sted/...)
+  // 3. Şehir Sayfaları
   const cityUrls = cityData.map((item) => ({
     url: `${baseUrl}/sted/${item.slug}`,
     lastModified: new Date(),
@@ -31,9 +37,10 @@ export default function sitemap() {
     priority: 0.85,
   }));
 
-  // 4. Statik Sayfalar ve İngilizce Sayfa (/en)
+  // 4. Statik Sayfalar (EKSİK OLAN '/blog' EKLENDİ)
   const routes = [
     '',
+    '/blog', // <-- BU ÇOK ÖNEMLİYDİ, EKLENDİ!
     '/om-oss',
     '/kontakt',
     '/personvern',
@@ -43,16 +50,16 @@ export default function sitemap() {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
-    priority: route === '' ? 1 : 0.5,
+    priority: route === '' ? 1 : (route === '/blog' ? 0.9 : 0.5), // Blog sayfası da değerlidir
   }));
 
-  // 5. Blog Yazıları
+  // 5. Blog Detay Sayfaları
   const blogUrls = blogData.map((item) => ({
     url: `${baseUrl}/blog/${item.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
-  // Hepsini birleştirip Google'a sunuyoruz
-  return [...routes, ...salaryUrls, ...professionUrls, ...cityUrls,...blogUrls];
+
+  return [...routes, ...salaryUrls, ...professionUrls, ...cityUrls, ...blogUrls];
 }
