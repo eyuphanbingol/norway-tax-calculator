@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic'; // Lazy load için gerekli
 import { TrendingUp, Info, HelpCircle, ChevronDown } from 'lucide-react';
 
 // Bileşenleri çağırıyoruz
@@ -9,7 +10,18 @@ import ResultCard from '../components/ResultCard';
 import AdSlot from '../components/AdSlot';
 import SearchBox from '../components/SearchBox';
 import Logo from '../components/Logo';
-import NewsTicker from '../components/NewsTicker'; // YENİ: Haber Bandı Eklendi
+
+// AĞIR BİLEŞENLERİ LAZY LOAD YAPIYORUZ (Hız Puanını 90+ Yapar)
+// Bu bileşenler sayfa ilk açıldığında değil, kullanıcı aşağı indikçe veya tarayıcı boşta kalınca yüklenir.
+const MarketOverview = dynamic(() => import('../components/MarketOverview'), { 
+  ssr: false,
+  loading: () => <div className="h-32 bg-slate-50 rounded-xl animate-pulse my-8"></div> // Yüklenirken gri kutu
+});
+
+const NewsTicker = dynamic(() => import('../components/NewsTicker'), { 
+  ssr: false,
+  loading: () => <div className="h-48 bg-slate-50 rounded-xl animate-pulse mt-12"></div>
+});
 
 // Veriyi direkt import ediyoruz
 import salaryData from '../data/data.json';
@@ -18,7 +30,7 @@ export default function Home() {
   const [salary, setSalary] = useState(600000); // Varsayılan: 600k
   const [result, setResult] = useState(null);
 
-  // FAQ Verisi (Ana Sayfa İçin Sabit Sorular)
+  // FAQ Verisi (Ana Sayfa İçin)
   const faqs = [
     {
       q: "Hvor mye kan jeg tjene skattefritt i 2025?",
@@ -42,7 +54,7 @@ export default function Home() {
     }
   ];
 
-  // FAQ Schema (Google İçin)
+  // FAQ Schema (Google İçin JSON-LD)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -110,7 +122,7 @@ export default function Home() {
 
       <div className="container mx-auto px-4 -mt-16 flex flex-col lg:flex-row gap-8 relative z-10">
         
-        {/* --- SOL KOLON (Hesaplama) --- */}
+        {/* --- SOL KOLON (Hesaplama ve İçerik) --- */}
         <div className="w-full lg:w-2/3">
           
           {/* SLIDER BİLEŞENİ */}
@@ -119,11 +131,12 @@ export default function Home() {
           {/* SONUÇ KARTI BİLEŞENİ */}
           <ResultCard result={result} />
 
-          {/* YENİ: HABER BANDI (TRENDLER) */}
-          {/* Eğer news.json boşsa bu bileşen kendini otomatik gizler */}
+          {/* --- LAZY LOAD BÖLÜMÜ (Piyasa ve Haberler) --- */}
+          {/* Bu bileşenler sayfa açılışını engellemez, sonradan yüklenir */}
+          <MarketOverview />
           <NewsTicker />
 
-          {/* SEO İÇERİK BLOĞU (Ana Sayfa İçin) */}
+          {/* SEO İÇERİK BLOĞU */}
           <div className="mt-12 bg-white p-8 rounded-xl shadow-sm border border-slate-200 prose prose-slate max-w-none">
             <h2 className="flex items-center gap-2 text-2xl font-bold text-slate-800">
               <Info className="text-emerald-600" />
@@ -188,11 +201,11 @@ export default function Home() {
 
         </div>
 
-        {/* --- SAĞ KOLON (STICKY REKLAM) --- */}
+        {/* --- SAĞ KOLON (SIDEBAR) --- */}
         <div className="w-full lg:w-1/3">
            <AdSlot type="sidebar" />
            
-           {/* Ekstra Bilgi Kutusu (Sidebar Doluluğu İçin) */}
+           {/* Ekstra Bilgi Kutusu */}
            <div className="mt-6 bg-blue-50 p-6 rounded-xl border border-blue-100">
              <h4 className="font-bold text-blue-900 mb-2">Visste du at?</h4>
              <p className="text-sm text-blue-800">

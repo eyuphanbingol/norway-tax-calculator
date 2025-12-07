@@ -1,17 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // 1. ESLint Hatalarını Yoksay (Build bozulmasın diye)
+  // 1. Modern Tarayıcılar İçin Derleme (Polyfill azaltır)
+  // Next.js 14+ zaten modern çıktı verir ama swcMinify ile garantiye alalım.
+  swcMinify: true,
+
+  // 2. Paket Optimizasyonu (Kullanılmayan JS'i atar - Tree Shaking)
+  // Recharts ve Lucide gibi büyük paketleri parçalar.
+  experimental: {
+    optimizePackageImports: [
+      'lucide-react', 
+      'recharts', 
+      'react-markdown', 
+      'framer-motion', 
+      'date-fns'
+    ],
+  },
+
+  // 3. ESLint Hatalarını Yoksay (Build bozulmasın diye)
   eslint: {
     ignoreDuringBuilds: true,
   },
-  
-  // 2. PAKET OPTİMİZASYONU (HIZ İÇİN YENİ EKLENDİ)
-  // Bu ayar, ikonların ve grafiklerin sadece kullanılan kısmını yükler.
-  experimental: {
-    optimizePackageImports: ['lucide-react', 'recharts', 'react-markdown'],
-  },
 
-  // 3. Bot Koruması ve Cache Ayarları
+  // 4. Bot Koruması ve Cache Ayarları
   async headers() {
     return [
       {
@@ -32,6 +42,7 @@ const nextConfig = {
         ],
       },
       {
+        // Statik dosyaları uzun süre önbellekte tut (LCP iyileşir)
         source: '/data/:path*',
         headers: [
           {
@@ -44,4 +55,4 @@ const nextConfig = {
   },
 };
 
-export default nextConfig;
+export default nextConfig

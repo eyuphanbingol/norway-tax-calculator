@@ -1,23 +1,22 @@
 [
   {
+    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
+    "link": "https://www.norges-bank.no/",
+    "traffic": "Valuta",
+    "source": "Norges Bank"
+  },
+  {
+    "title": "💡 Guide: Pensjon: Hvor mye får du å leve av?",
+    "link": "/blog/pensjon-norge-kalkulator-regler",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
+  },
+  {
     "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
     "link": "https://www.forbrukerradet.no/strompris/",
     "traffic": "Populært tema",
     "source": "Sparing Tips"
-  },
-  {
-    "title": "💡 Guide: Gjennomsnittslønn i Norge: Hvor ligger du?",
-    "link": "/blog/gjennomsnittslonn-norge-statistikk",
-    "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
-    "category": "Blogg"
-  },
-  {
-    "title": "💡 Guide: Tabellkort eller Prosentkort? Hva lønner seg?",
-    "link": "/blog/tabellkort-vs-prosentkort-hva-er-best",
-    "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
-    "category": "Blogg"
   },
   {
     "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
@@ -26,14 +25,15 @@
     "source": "Forbruker"
   },
   {
-    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
-    "link": "https://www.norges-bank.no/",
-    "traffic": "Valuta",
-    "source": "Norges Bank"
+    "title": "💡 Guide: Enkeltpersonforetak (ENK) og skatt",
+    "link": "/blog/enkeltpersonforetak-skatt-forskuddsskatt",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
   },
   {
-    "title": "💡 Guide: Utleie av bolig: Når er det skattefritt?",
-    "link": "/blog/skatt-pa-utleie-egen-bolig",
+    "title": "💡 Guide: Tabellkort eller Prosentkort? Hva lønner seg?",
+    "link": "/blog/tabellkort-vs-prosentkort-hva-er-best",
     "traffic": "Anbefalt",
     "source": "Skattekalkulator.com",
     "category": "Blogg"
