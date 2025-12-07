@@ -4,7 +4,14 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // 2. Bot Koruması ve Hız Ayarları (Daha önce eklemiştik, koruyoruz)
+  
+  // 2. PAKET OPTİMİZASYONU (HIZ İÇİN YENİ EKLENDİ)
+  // Bu ayar, ikonların ve grafiklerin sadece kullanılan kısmını yükler.
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'recharts', 'react-markdown'],
+  },
+
+  // 3. Bot Koruması ve Cache Ayarları
   async headers() {
     return [
       {

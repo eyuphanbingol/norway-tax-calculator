@@ -2,8 +2,8 @@ import { Calculator } from 'lucide-react';
 
 export default function Logo({ color = "text-white" }) {
   return (
-    <div className="flex items-center gap-2 font-bold tracking-tight">
-      <div className="bg-emerald-500 p-1.5 rounded-lg text-white">
+    <div className="flex items-center gap-2 font-bold tracking-tight" aria-label="Skattekalkulator Norge Logo">
+      <div className="bg-emerald-500 p-1.5 rounded-lg text-white" aria-hidden="true">
         <Calculator size={20} strokeWidth={3} />
       </div>
       <div className={`text-xl flex flex-col leading-none ${color}`}>
