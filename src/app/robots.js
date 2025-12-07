@@ -1,6 +1,6 @@
 export default function robots() {
   // Pazar günü domain alınca burayı güncelle: https://seninsiten.com
-  const baseUrl = 'https://norway-tax-calculator.vercel.app'; 
+  const baseUrl = 'https://skattekalkulator.com/'; 
 
   return {
     rules: {
