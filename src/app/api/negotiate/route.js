@@ -1,14 +1,23 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// API Key'ini ortam değişkeninden alıyoruz (Güvenli Yöntem)
-// Artık kodun içinde şifre görünmüyor.
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, 
-});
+// Not: OpenAI tanımlamasını fonksiyonun içine aldık.
+// Bu sayede Build sırasında hata vermez, sadece çalıştırıldığında şifreye bakar.
 
 export async function POST(req) {
   try {
+    // API Anahtarı kontrolü
+    const apiKey = process.env.OPENAI_API_KEY;
+    
+    if (!apiKey) {
+      console.error("API Key bulunamadı!");
+      return NextResponse.json({ error: "Sunucu hatası: API anahtarı eksik." }, { status: 500 });
+    }
+
+    const openai = new OpenAI({
+      apiKey: apiKey, 
+    });
+
     const { job, experience, currentSalary } = await req.json();
 
     const prompt = `
@@ -37,6 +46,6 @@ export async function POST(req) {
 
   } catch (error) {
     console.error("OpenAI Hatası:", error);
-    return NextResponse.json({ error: "Noe gikk galt med AI-en." }, { status: 500 });
+    return NextResponse.json({ error: "AI servisinde bir hata oluştu." }, { status: 500 });
   }
 }
