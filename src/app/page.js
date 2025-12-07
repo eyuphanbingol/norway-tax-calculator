@@ -10,7 +10,7 @@ import ResultCard from '../components/ResultCard';
 import AdSlot from '../components/AdSlot';
 import SearchBox from '../components/SearchBox';
 import Logo from '../components/Logo';
-import NegotiationCoach from '../components/NegotiationCoach'; // AxI-verktøy
+import NegotiationCoach from '../components/NegotiationCoach'; 
 
 // LAZY LOAD (For raskere sideinnlasting - LCP/FCP)
 const MarketOverview = dynamic(() => import('../components/MarketOverview'), { 
@@ -29,6 +29,7 @@ import salaryData from '../data/data.json';
 export default function Home() {
   const [salary, setSalary] = useState(600000); // Standard: 600k
   const [result, setResult] = useState(null);
+  const [isMounted, setIsMounted] = useState(false); // Hydration hatası çözümü
 
   // FAQ Data (Ofte stilte spørsmål)
   const faqs = [
@@ -68,8 +69,9 @@ export default function Home() {
     }))
   };
 
-  // Beregningslogikk
+  // Beregningslogikk ve Mount kontrolü
   useEffect(() => {
+    setIsMounted(true); // Sayfa tarayıcıda yüklendi
     const closest = salaryData.reduce((prev, curr) => {
       return (Math.abs(curr.gross_yearly - salary) < Math.abs(prev.gross_yearly - salary) ? curr : prev);
     }, salaryData[0]);
@@ -123,15 +125,19 @@ export default function Home() {
         {/* --- VENSTRE KOLONNE (Hovedinnhold) --- */}
         <div className="w-full lg:w-2/3">
           
-          {/* Kalkulator */}
+          {/* Kalkulator - Sadece tarayıcıda göster (Recharts hatasını önler) */}
           <SalarySlider salary={salary} setSalary={setSalary} />
-          <ResultCard result={result} />
+          {isMounted && result ? (
+            <ResultCard result={result} />
+          ) : (
+            <div className="h-96 bg-white rounded-xl shadow-lg border border-slate-100 animate-pulse"></div>
+          )}
 
           {/* Dynamiske Seksjoner */}
           <MarketOverview />
           <NewsTicker />
           
-          {/* AI Lønnsforhandler (Denne manglet i din forrige kode!) */}
+          {/* AI Lønnsforhandler */}
           <NegotiationCoach />
 
           {/* SEO Innhold */}
