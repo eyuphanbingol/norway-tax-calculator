@@ -1,21 +1,21 @@
 'use client';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import dynamic from 'next/dynamic'; // Lazy load için gerekli
+import dynamic from 'next/dynamic'; // Lazy load for ytelse
 import { TrendingUp, Info, HelpCircle, ChevronDown } from 'lucide-react';
 
-// Bileşenleri çağırıyoruz
+// Komponenter
 import SalarySlider from '../components/SalarySlider';
 import ResultCard from '../components/ResultCard';
 import AdSlot from '../components/AdSlot';
 import SearchBox from '../components/SearchBox';
 import Logo from '../components/Logo';
+import NegotiationCoach from '../components/NegotiationCoach'; // AxI-verktøy
 
-// AĞIR BİLEŞENLERİ LAZY LOAD YAPIYORUZ (Hız Puanını 90+ Yapar)
-// Bu bileşenler sayfa ilk açıldığında değil, kullanıcı aşağı indikçe veya tarayıcı boşta kalınca yüklenir.
+// LAZY LOAD (For raskere sideinnlasting - LCP/FCP)
 const MarketOverview = dynamic(() => import('../components/MarketOverview'), { 
   ssr: false,
-  loading: () => <div className="h-32 bg-slate-50 rounded-xl animate-pulse my-8"></div> // Yüklenirken gri kutu
+  loading: () => <div className="h-32 bg-slate-50 rounded-xl animate-pulse my-8"></div>
 });
 
 const NewsTicker = dynamic(() => import('../components/NewsTicker'), { 
@@ -23,14 +23,14 @@ const NewsTicker = dynamic(() => import('../components/NewsTicker'), {
   loading: () => <div className="h-48 bg-slate-50 rounded-xl animate-pulse mt-12"></div>
 });
 
-// Veriyi direkt import ediyoruz
+// Data
 import salaryData from '../data/data.json';
 
 export default function Home() {
-  const [salary, setSalary] = useState(600000); // Varsayılan: 600k
+  const [salary, setSalary] = useState(600000); // Standard: 600k
   const [result, setResult] = useState(null);
 
-  // FAQ Verisi (Ana Sayfa İçin)
+  // FAQ Data (Ofte stilte spørsmål)
   const faqs = [
     {
       q: "Hvor mye kan jeg tjene skattefritt i 2025?",
@@ -54,7 +54,7 @@ export default function Home() {
     }
   ];
 
-  // FAQ Schema (Google İçin JSON-LD)
+  // FAQ Schema (JSON-LD for Google)
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -68,7 +68,7 @@ export default function Home() {
     }))
   };
 
-  // Maaş değiştikçe en yakın veriyi bul
+  // Beregningslogikk
   useEffect(() => {
     const closest = salaryData.reduce((prev, curr) => {
       return (Math.abs(curr.gross_yearly - salary) < Math.abs(prev.gross_yearly - salary) ? curr : prev);
@@ -80,24 +80,23 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
       
-      {/* Schema Verisini Sayfaya Göm */}
+      {/* Schema Markup */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      {/* 1. HEADER REKLAMI (En Tepe) */}
+      {/* 1. HEADER REKLAME */}
       <div className="bg-white border-b border-slate-200">
         <div className="container mx-auto px-4">
           <AdSlot type="header" />
         </div>
       </div>
 
-      {/* 2. HERO BÖLÜMÜ (Başlık, Logo ve Arama) */}
+      {/* 2. HERO SEKSJON */}
       <div className="bg-[#005c45] text-white pt-12 pb-24">
         <div className="container mx-auto px-4 text-center">
           
-          {/* LOGO */}
           <div className="flex justify-center mb-6">
              <div className="scale-125">
                 <Logo color="text-white" />
@@ -112,7 +111,6 @@ export default function Home() {
             Beregn din nøyaktige utbetaling, skattetrekk og feriepenger med Norges mest oppdaterte verktøy for 2025.
           </p>
 
-          {/* AKILLI ARAMA KUTUSU */}
           <div className="max-w-lg mx-auto text-left relative z-20">
              <SearchBox />
           </div>
@@ -122,21 +120,21 @@ export default function Home() {
 
       <div className="container mx-auto px-4 -mt-16 flex flex-col lg:flex-row gap-8 relative z-10">
         
-        {/* --- SOL KOLON (Hesaplama ve İçerik) --- */}
+        {/* --- VENSTRE KOLONNE (Hovedinnhold) --- */}
         <div className="w-full lg:w-2/3">
           
-          {/* SLIDER BİLEŞENİ */}
+          {/* Kalkulator */}
           <SalarySlider salary={salary} setSalary={setSalary} />
-
-          {/* SONUÇ KARTI BİLEŞENİ */}
           <ResultCard result={result} />
 
-          {/* --- LAZY LOAD BÖLÜMÜ (Piyasa ve Haberler) --- */}
-          {/* Bu bileşenler sayfa açılışını engellemez, sonradan yüklenir */}
+          {/* Dynamiske Seksjoner */}
           <MarketOverview />
           <NewsTicker />
+          
+          {/* AI Lønnsforhandler (Denne manglet i din forrige kode!) */}
+          <NegotiationCoach />
 
-          {/* SEO İÇERİK BLOĞU */}
+          {/* SEO Innhold */}
           <div className="mt-12 bg-white p-8 rounded-xl shadow-sm border border-slate-200 prose prose-slate max-w-none">
             <h2 className="flex items-center gap-2 text-2xl font-bold text-slate-800">
               <Info className="text-emerald-600" />
@@ -151,7 +149,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* FAQ BÖLÜMÜ */}
+          {/* FAQ Seksjon */}
           <div className="mt-12">
             <h3 className="flex items-center gap-2 text-2xl font-bold text-slate-800 mb-6">
                 <HelpCircle className="text-emerald-600" /> 
@@ -172,7 +170,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* PROGRAMMATIC SEO LİNKLERİ */}
+          {/* Programmatic SEO Lenker */}
           <div className="mt-16 pt-8 border-t border-slate-200">
             <h3 className="flex items-center gap-2 text-xl font-bold mb-6 text-slate-800">
               <TrendingUp className="text-emerald-600" />
@@ -182,7 +180,7 @@ export default function Home() {
               {salaryData.filter(d => d.gross_yearly >= 350000 && d.gross_yearly <= 900000 && d.gross_yearly % 50000 === 0).map((item) => (
                 <Link 
                   key={item.slug}
-                  href={`/lonn/${item.slug}`} // Dinamik link
+                  href={`/lonn/${item.slug}`}
                   className="group flex flex-col p-3 bg-white border border-slate-200 rounded hover:border-emerald-500 hover:shadow-md transition text-center"
                 >
                   <span className="text-sm text-slate-500 group-hover:text-emerald-600">Årslønn</span>
@@ -201,11 +199,10 @@ export default function Home() {
 
         </div>
 
-        {/* --- SAĞ KOLON (SIDEBAR) --- */}
+        {/* --- HØYRE KOLONNE (Sidebar) --- */}
         <div className="w-full lg:w-1/3">
            <AdSlot type="sidebar" />
            
-           {/* Ekstra Bilgi Kutusu */}
            <div className="mt-6 bg-blue-50 p-6 rounded-xl border border-blue-100">
              <h4 className="font-bold text-blue-900 mb-2">Visste du at?</h4>
              <p className="text-sm text-blue-800">
