@@ -1,9 +1,23 @@
 [
   {
-    "title": "🏡 Boliglånsrenten: Bør du bytte bank nå?",
-    "link": "/blog/skattefradrag-du-ikke-ma-glemme",
-    "traffic": "Finans",
-    "source": "Skattekalkulator.com"
+    "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
+    "link": "https://www.forbrukerradet.no/strompris/",
+    "traffic": "Populært tema",
+    "source": "Sparing Tips"
+  },
+  {
+    "title": "💡 Guide: Gjennomsnittslønn i Norge: Hvor ligger du?",
+    "link": "/blog/gjennomsnittslonn-norge-statistikk",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
+  },
+  {
+    "title": "💡 Guide: Tabellkort eller Prosentkort? Hva lønner seg?",
+    "link": "/blog/tabellkort-vs-prosentkort-hva-er-best",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
   },
   {
     "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
@@ -12,21 +26,16 @@
     "source": "Forbruker"
   },
   {
-    "title": "💰 BSU-fristen nærmer seg: Fyll opp kvoten!",
-    "link": "/blog/bsu-sparing-skattefradrag-regler",
-    "traffic": "Skattefradrag",
-    "source": "Skattekalkulator.com"
+    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
+    "link": "https://www.norges-bank.no/",
+    "traffic": "Valuta",
+    "source": "Norges Bank"
   },
   {
-    "title": "🚗 Elbil-fordeler 2025: Hva er nytt?",
-    "link": "/blog/elbil-avgifter-bom-skatt-2025",
-    "traffic": "Bil & Skatt",
-    "source": "Skattekalkulator.com"
-  },
-  {
-    "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
-    "link": "https://www.forbrukerradet.no/strompris/",
-    "traffic": "Populært tema",
-    "source": "Sparing Tips"
+    "title": "💡 Guide: Utleie av bolig: Når er det skattefritt?",
+    "link": "/blog/skatt-pa-utleie-egen-bolig",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
   }
 ]
