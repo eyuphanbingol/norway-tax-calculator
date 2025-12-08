@@ -1,22 +1,29 @@
 [
   {
+    "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
+    "link": "https://www.forbrukerradet.no/strompris/",
+    "traffic": "Populært tema",
+    "source": "Sparing Tips"
+  },
+  {
     "title": "📉 Kronen er svak: Dette betyr det for ferien din",
     "link": "https://www.norges-bank.no/",
     "traffic": "Valuta",
     "source": "Norges Bank"
   },
   {
-    "title": "💡 Guide: Pensjon: Hvor mye får du å leve av?",
-    "link": "/blog/pensjon-norge-kalkulator-regler",
+    "title": "💡 Guide: Trump kan bli tildelt Nobels fredspris – en overraskende mulighet?",
+    "link": "/blog/-trump-kan-fa-min-nobels-fredspris---nettavisen-1444",
     "traffic": "Anbefalt",
     "source": "Skattekalkulator.com",
     "category": "Blogg"
   },
   {
-    "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
-    "link": "https://www.forbrukerradet.no/strompris/",
-    "traffic": "Populært tema",
-    "source": "Sparing Tips"
+    "title": "💡 Guide: Slik påvirker økte matvarepriser husholdningsbudsjettet ditt i Norge",
+    "link": "/blog/okte-matvarepriser-i-norge-1191",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
   },
   {
     "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
@@ -25,15 +32,8 @@
     "source": "Forbruker"
   },
   {
-    "title": "💡 Guide: Enkeltpersonforetak (ENK) og skatt",
-    "link": "/blog/enkeltpersonforetak-skatt-forskuddsskatt",
-    "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
-    "category": "Blogg"
-  },
-  {
-    "title": "💡 Guide: Tabellkort eller Prosentkort? Hva lønner seg?",
-    "link": "/blog/tabellkort-vs-prosentkort-hva-er-best",
+    "title": "💡 Guide: Pensjon: Hvor mye får du å leve av?",
+    "link": "/blog/pensjon-norge-kalkulator-regler",
     "traffic": "Anbefalt",
     "source": "Skattekalkulator.com",
     "category": "Blogg"
