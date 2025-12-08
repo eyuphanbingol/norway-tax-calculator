@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Send, Loader2, Sparkles } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 
@@ -7,11 +7,17 @@ export default function AITool({ mode, title, placeholder, buttonText }) {
   const [input, setInput] = useState('');
   const [response, setResponse] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  
+  // Hydration hatasını önlemek için (Sadece tarayıcıda göster)
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => setIsMounted(true), []);
 
   const handleSubmit = async () => {
     if (!input.trim()) return;
     setLoading(true);
     setResponse('');
+    setError('');
 
     try {
       const res = await fetch('/api/ai-advisor', {
@@ -19,14 +25,22 @@ export default function AITool({ mode, title, placeholder, buttonText }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ mode, inputData: input }),
       });
+      
       const data = await res.json();
+      
+      if (!res.ok) {
+        throw new Error(data.error || "Bir hata oluştu.");
+      }
+
       setResponse(data.result);
-    } catch (error) {
-      setResponse("Beklager, noe gikk galt. Prøv igjen senere.");
+    } catch (err) {
+      setError(err.message || "Beklenmedik bir hata oluştu.");
     } finally {
       setLoading(false);
     }
   };
+
+  if (!isMounted) return null; // Sunucuda render etme
 
   return (
     <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
@@ -45,6 +59,12 @@ export default function AITool({ mode, title, placeholder, buttonText }) {
             onChange={(e) => setInput(e.target.value)}
           />
         </div>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-lg text-sm font-medium">
+            ❌ {error}
+          </div>
+        )}
 
         <button
           onClick={handleSubmit}

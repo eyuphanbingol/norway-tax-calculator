@@ -3,44 +3,33 @@ import OpenAI from 'openai';
 
 export async function POST(req) {
   try {
-    // API Anahtarı Kontrolü (Vercel'den çeker)
     const apiKey = process.env.OPENAI_API_KEY;
+    
     if (!apiKey) {
-      return NextResponse.json({ error: "API anahtarı eksik." }, { status: 500 });
+      console.error("API Anahtarı Vercel'de bulunamadı!");
+      return NextResponse.json({ error: "Sunucu yapılandırma hatası: API Key eksik." }, { status: 500 });
     }
 
+    // OpenAI'yı sadece istek geldiğinde başlatıyoruz (Daha güvenli)
     const openai = new OpenAI({ apiKey: apiKey });
-    const { mode, inputData } = await req.json();
+    
+    const body = await req.json();
+    const { mode, inputData } = body;
 
-    // Modlara göre Yapay Zeka Kişilikleri
-    let systemPrompt = "";
+    if (!inputData) {
+       return NextResponse.json({ error: "Lütfen bir durum yazın." }, { status: 400 });
+    }
+
+    let systemPrompt = "Du er en hjelpsom assistent.";
 
     if (mode === 'budget') {
-      systemPrompt = `Du er en streng, men hjelpsom økonomisk rådgiver i Norge. 
-      Brukeren gir deg sine inntekter og utgifter. 
-      Din jobb:
-      1. Analyser budsjettet.
-      2. Sammenlign med SIFO-budsjettet (norske standardtall).
-      3. Gi 3 konkrete sparetips for Norge (f.eks. bytte strømleverandør, matbutikker, skattefradrag).
-      Svar kort, strukturert og på norsk.`;
+      systemPrompt = `Du er en streng økonomisk rådgiver i Norge. Analyser brukerens budsjett, sammenlign med SIFO-tall, og gi 3 konkrete sparetips. Svar på norsk.`;
     } 
     else if (mode === 'rental') {
-      systemPrompt = `Du er en ekspert eiendomsmegler og leie-assistent i Norge, spesielt Oslo og storbyene.
-      Brukeren forteller om sitt budsjett og behov.
-      Din jobb:
-      1. Anbefal områder/bydeler som passer budsjettet.
-      2. Advar om vanlige feller (fuktskader, depositumskonto, strøm inkludert?).
-      3. Gi et estimat på hva de kan forvente å få for pengene.
-      Svar på norsk.`;
+      systemPrompt = `Du er en eiendomsmegler i Norge. Gi råd om områder og leiepriser basert på brukerens budsjett. Svar på norsk.`;
     }
     else if (mode === 'nav') {
-      systemPrompt = `Du er en ekspert på det norske velferdssystemet (NAV).
-      Brukeren beskriver sin livssituasjon (f.eks. mistet jobb, fått barn, syk).
-      Din jobb:
-      1. List opp hvilke støtteordninger de sannsynligvis har krav på (Dagpenger, Foreldrepenger, AAP osv.).
-      2. Forklar kort hva kravene er.
-      3. Be dem alltid sjekke nav.no for endelig bekreftelse.
-      Svar empatisk og tydelig på norsk.`;
+      systemPrompt = `Du er en NAV-ekspert. List opp hvilke støtteordninger brukeren kan ha krav på basert på situasjonen. Svar på norsk.`;
     }
 
     const completion = await openai.chat.completions.create({
@@ -55,6 +44,6 @@ export async function POST(req) {
 
   } catch (error) {
     console.error("AI Hatası:", error);
-    return NextResponse.json({ error: "Tjenesten er midlertidig utilgjengelig." }, { status: 500 });
+    return NextResponse.json({ error: "AI servisinde hata oluştu. Lütfen tekrar deneyin." }, { status: 500 });
   }
 }
