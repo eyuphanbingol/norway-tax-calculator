@@ -3,14 +3,9 @@ import professionData from '../data/professions.json';
 import cityData from '../data/cities.json';
 import blogData from '../data/blog.json';
 
-// Pazar günü domaini 'src/lib/constants.js' dosyasından değiştirdiğinde 
-// burası da otomatik düzelecek. Eğer constants.js yoksa elle de yazabilirsin.
 import { DOMAIN } from '../lib/constants'; 
 
 export default function sitemap() {
-  // Eğer constants.js oluşturmadıysan üstteki importu sil ve şu satırı aç:
-  // const baseUrl = 'https://norway-tax-calculator.vercel.app';
-  
   const baseUrl = DOMAIN;
 
   // 1. Maaş Sayfaları
@@ -37,20 +32,24 @@ export default function sitemap() {
     priority: 0.85,
   }));
 
-  // 4. Statik Sayfalar (EKSİK OLAN '/blog' EKLENDİ)
+  // 4. Statik Sayfalar (YENİ LİNKLER EKLENDİ)
   const routes = [
     '',
-    '/blog', // <-- BU ÇOK ÖNEMLİYDİ, EKLENDİ!
+    '/blog',
+    '/verktoy',        // Araçlar Ana Sayfası
+    '/verktoy/fritid', // Yeni Outdoor Aracı
     '/om-oss',
     '/kontakt',
     '/personvern',
     '/cookies',
     '/en',
+    '/no',
+    '/sv',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: 'weekly',
-    priority: route === '' ? 1 : (route === '/blog' ? 0.9 : 0.5), // Blog sayfası da değerlidir
+    priority: route === '' ? 1 : (route === '/blog' || route === '/verktoy' ? 0.9 : 0.5),
   }));
 
   // 5. Blog Detay Sayfaları

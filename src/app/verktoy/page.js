@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Wallet, Home, HeartHandshake, ArrowRight } from 'lucide-react';
+import { Wallet, Home, HeartHandshake, ArrowRight, Cloud } from 'lucide-react'; // Cloud eklendi
 import AdSlot from '../../components/AdSlot';
 
 export const metadata = {
@@ -32,7 +32,15 @@ export default function ToolsPage() {
       icon: <HeartHandshake size={40} className="text-red-500" />,
       link: '/verktoy/nav-hjelp',
       color: 'hover:border-red-500'
-    }
+    },
+    {
+      id: 'outdoor', // YENİ EKLENEN ARAÇ
+      title: 'Vær, Ski & Nordlys',
+      desc: 'Live oppdateringer for helgen. Sjekk nordlysvarselet i Tromsø eller skiføret i Trysil.',
+      icon: <Cloud size={40} className="text-purple-500" />,
+      link: '/verktoy/fritid',
+      color: 'hover:border-purple-500'
+    },
   ];
 
   return (
@@ -41,7 +49,7 @@ export default function ToolsPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-black mb-4">Smarte Verktøy</h1>
           <p className="text-emerald-100 text-lg max-w-2xl mx-auto">
-            Bruk kunstig intelligens til å ta bedre økonomiske valg i hverdagen.
+            Bruk kunstig intelligens og live data til å ta bedre valg i hverdagen.
           </p>
         </div>
       </div>
