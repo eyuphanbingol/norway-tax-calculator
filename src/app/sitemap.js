@@ -45,6 +45,8 @@ export default function sitemap() {
     '/en',
     '/no',
     '/sv',
+    '/embed',
+    '/sporsmal',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
