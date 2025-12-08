@@ -17,7 +17,7 @@ export default function Header() {
           <Link href="/om-oss" className="hover:text-white transition">Om oss</Link>
           <Link href="/kontakt" className="hover:text-white transition">Kontakt</Link>
           <Link href="/verktoy" className="hover:text-white transition font-bold text-emerald-200">Verktøy 🤖</Link>
-          
+          <Link href="/sparing" className="hover:text-white transition font-medium">Sparing 🐷</Link>
           {/* İngilizce Geçiş */}
           <Link href="/en" className="bg-emerald-900/50 hover:bg-emerald-900 text-white px-3 py-1.5 rounded-full text-xs transition border border-emerald-700/50">
             English 🇬🇧

@@ -47,6 +47,7 @@ export default function sitemap() {
     '/sv',
     '/embed',
     '/sporsmal',
+    '/sparing',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
