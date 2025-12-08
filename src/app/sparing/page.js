@@ -1,3 +1,13 @@
+import { PiggyBank, TrendingDown } from 'lucide-react'; // <-- PiggyBank buraya eklendi
+import AdSlot from '../../components/AdSlot';
+import DealCard from '../../components/DealCard';
+import dealsData from '../../data/deals.json';
+
+export const metadata = {
+  title: 'Sparing og Tilbud - Få mer ut av lønnen din',
+  description: 'De beste sparetipsene og tilbudene i Norge. Strøm, boliglån, forsikring og dagligvarer.',
+};
+
 export default function SparingPage() {
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
@@ -7,6 +17,7 @@ export default function SparingPage() {
         <div className="container mx-auto px-4 text-center">
           <div className="flex justify-center mb-4">
              <div className="bg-emerald-400/20 p-4 rounded-full">
+                {/* Hata veren bileşen burasıydı, şimdi çalışacak */}
                 <PiggyBank size={48} className="text-emerald-300" />
              </div>
           </div>
