@@ -2,7 +2,7 @@ import salaryData from '../data/data.json';
 import professionData from '../data/professions.json';
 import cityData from '../data/cities.json';
 import blogData from '../data/blog.json';
-
+import comboData from '../data/combinations.json';
 import { DOMAIN } from '../lib/constants'; 
 
 export default function sitemap() {
@@ -59,6 +59,13 @@ export default function sitemap() {
     changeFrequency: 'weekly',
     priority: 0.7,
   }));
+  // 6. Kombinasyon Sayfaları
+  const comboUrls = comboData.map((item) => ({
+    url: `${baseUrl}/l/${item.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
 
-  return [...routes, ...salaryUrls, ...professionUrls, ...cityUrls, ...blogUrls];
+  return [...routes, ...salaryUrls, ...professionUrls, ...cityUrls, ...blogUrls,...routes, ...comboUrls];
 }
