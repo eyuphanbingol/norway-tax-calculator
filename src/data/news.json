@@ -1,16 +1,9 @@
 [
   {
-    "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
-    "link": "https://www.ssb.no/priser-og-prisindekser/konsumprisindeksen",
-    "traffic": "Økonomi",
-    "source": "Forbruker"
-  },
-  {
-    "title": "💡 Guide: Ukens Fokus: Kronekursen mot Euro (08.12.2025)",
-    "link": "/blog/ukens-trend-kronekursen-mot-euro-50",
-    "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
-    "category": "Blogg"
+    "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
+    "link": "https://www.forbrukerradet.no/strompris/",
+    "traffic": "Populært tema",
+    "source": "Sparing Tips"
   },
   {
     "title": "💡 Guide: Elbil-fordeler i 2025: Skatt og avgifter",
@@ -20,11 +13,10 @@
     "category": "Blogg"
   },
   {
-    "title": "💡 Guide: Arveavgift: Finnes den i Norge?",
-    "link": "/blog/arveavgift-norge-regler-gave",
-    "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
-    "category": "Blogg"
+    "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
+    "link": "https://www.ssb.no/priser-og-prisindekser/konsumprisindeksen",
+    "traffic": "Økonomi",
+    "source": "Forbruker"
   },
   {
     "title": "📉 Kronen er svak: Dette betyr det for ferien din",
@@ -33,9 +25,17 @@
     "source": "Norges Bank"
   },
   {
-    "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
-    "link": "https://www.forbrukerradet.no/strompris/",
-    "traffic": "Populært tema",
-    "source": "Sparing Tips"
+    "title": "💡 Guide: Ukens Fokus: Strømpriser i Sør-Norge (07.12.2025)",
+    "link": "/blog/ukens-trend-strompriser-i-sor-norge-49",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
+  },
+  {
+    "title": "💡 Guide: Pensjon: Hvor mye får du å leve av?",
+    "link": "/blog/pensjon-norge-kalkulator-regler",
+    "traffic": "Anbefalt",
+    "source": "Skattekalkulator.com",
+    "category": "Blogg"
   }
 ]
