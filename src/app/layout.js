@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import GoogleAnalytics from "../components/GoogleAnalytics";
 
-// Domain sabitini çekiyoruz (Eğer constants.js yoksa buraya elle https://... yazabilirsin)
+// Domain sabitini çekiyoruz
 import { DOMAIN } from '../lib/constants'; 
 
 const geistSans = Geist({
@@ -22,15 +22,21 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Site geneli SEO ayarları (DISCOVER İÇİN KRİTİK AYARLAR BURADA)
+// Site geneli SEO ayarları
 export const metadata = {
-  // Sosyal medya resimleri için kök adresi belirtiyoruz
   metadataBase: new URL(DOMAIN || 'https://skattekalkulator.com'), 
-
   title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
   description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025. Se hva du får utbetalt etter skatt.",
   
-  // İŞTE DISCOVER'A GİRMEK İÇİN GEREKEN SİHİRLİ KOD:
+  // DOĞRULAMA KODLARI BURAYA EKLENİR
+  verification: {
+    // Pinterest Doğrulaması (Senin Kodun)
+    other: {
+      "p:domain_verify": "eac11eb209626dedeaf51af4773f4f43",
+    },
+  },
+
+  // Google Discover Ayarları
   robots: {
     index: true,
     follow: true,
@@ -38,7 +44,7 @@ export const metadata = {
       index: true,
       follow: true,
       'max-video-preview': -1,
-      'max-image-preview': 'large', // <-- BU SATIR SENİ DISCOVER'A SOKAR
+      'max-image-preview': 'large',
       'max-snippet': -1,
     },
   },
@@ -65,9 +71,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Analytics ID'ni buraya gir */}
         <GoogleAnalytics ga_id="G-T4H9Z5KD0T" />
-        
         <Header />
         {children}
         <Footer />
