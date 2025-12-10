@@ -1,16 +1,28 @@
 [
   {
-    "title": "💡 Guide: Skattefri inntekt: Hva er Frikort?",
-    "link": "/blog/frikort-grense-2025-ungdom",
+    "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
+    "link": "/verktoy/budsjett",
+    "traffic": "Økonomi",
+    "source": "Skattekalkulator.com"
+  },
+  {
+    "title": "💡 Guide: Kryptovaluta og skatt i Norge",
+    "link": "/blog/krypto-skatt-bitcoin-norge-regler",
     "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
+    "source": "Blogg",
     "category": "Blogg"
   },
   {
-    "title": "💡 Guide: Elbil-avgifter i 2025: Hva betyr det for lommeboka di?",
-    "link": "/blog/elbil-avgifter-i-2025-blir-det-dyrere-a-kjore-7583",
+    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
+    "link": "https://www.norges-bank.no/",
+    "traffic": "Valuta",
+    "source": "Norges Bank"
+  },
+  {
+    "title": "💡 Guide: Jonas unndrar seg retten: Politiet forsøker pågriping etter tiltale",
+    "link": "/blog/jonas-tiltalt-motte-ikke-i-retten--politiet-forsokte-a-pagripe-ham---nrk-8458",
     "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
+    "source": "Blogg",
     "category": "Blogg"
   },
   {
@@ -20,22 +32,16 @@
     "source": "Sparing Tips"
   },
   {
-    "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
-    "link": "https://www.ssb.no/priser-og-prisindekser/konsumprisindeksen",
-    "traffic": "Økonomi",
-    "source": "Forbruker"
+    "title": "🏡 Boliglånsrenten: Bør du bytte bank nå?",
+    "link": "https://www.finansportalen.no/",
+    "traffic": "Finans",
+    "source": "Finansportalen"
   },
   {
-    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
-    "link": "https://www.norges-bank.no/",
-    "traffic": "Valuta",
-    "source": "Norges Bank"
-  },
-  {
-    "title": "💡 Guide: Ukens Fokus: Kronekursen mot Euro (08.12.2025)",
-    "link": "/blog/ukens-trend-kronekursen-mot-euro-50",
+    "title": "💡 Guide: Elbil-fordeler i 2025: Skatt og avgifter",
+    "link": "/blog/elbil-avgifter-bom-skatt-2025",
     "traffic": "Anbefalt",
-    "source": "Skattekalkulator.com",
+    "source": "Blogg",
     "category": "Blogg"
   }
 ]

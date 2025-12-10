@@ -3,6 +3,7 @@ import OpenAI from 'openai';
 
 export async function POST(req) {
   try {
+    // 1. Güvenli Anahtar Kontrolü
     const apiKey = process.env.OPENAI_API_KEY;
     
     if (!apiKey) {
@@ -10,7 +11,6 @@ export async function POST(req) {
       return NextResponse.json({ error: "Sunucu yapılandırma hatası: API Key eksik." }, { status: 500 });
     }
 
-    // OpenAI'yı sadece istek geldiğinde başlatıyoruz (Daha güvenli)
     const openai = new OpenAI({ apiKey: apiKey });
     
     const body = await req.json();

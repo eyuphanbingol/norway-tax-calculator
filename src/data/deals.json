@@ -1,34 +1,34 @@
 [
   {
     "category": "Student",
-    "title": "Studentrabatter du glemmer å bruke",
-    "desc": "Fra tannlege til kollektivtrafikk. Husk beviset og spar tusenlapper.",
-    "link": "/",
+    "title": "Studentrabatter",
+    "desc": "Husk studentbeviset! Det er mange penger å spare på kollektivtrafikk og kultur.",
+    "link": "/verktoy/budsjett",
     "tag": "Student",
     "color": "bg-purple-100 text-purple-800"
   },
   {
+    "category": "Bolig",
+    "title": "Varmepumpe-støtte",
+    "desc": "Skal du oppgradere boligen? Sjekk om du kan få støtte til energitiltak.",
+    "link": "https://www.enova.no",
+    "tag": "Støtte",
+    "color": "bg-orange-100 text-orange-800"
+  },
+  {
     "category": "Matvarer",
-    "title": "Slik kutter du matbudsjettet med Æ, Trumf og Kiwi",
-    "desc": "Bruker du bonus-appene riktig? Du kan få 1-3% tilbake på alt du handler.",
-    "link": "/blog/okte-matvarepriser-i-norge",
-    "tag": "Bonus",
+    "title": "Kutt matbudsjettet ditt",
+    "desc": "Bruk vår AI-budsjetthjelper for å se hvor du kan spare på matinnkjøp.",
+    "link": "/verktoy/budsjett",
+    "tag": "Budsjett",
     "color": "bg-green-100 text-green-800"
   },
   {
     "category": "Forsikring",
     "title": "Samlerabatt på forsikring",
-    "desc": "Har du bil, innbo og reise i samme selskap? Sjekk om du kan spare 15% på å flytte alt.",
+    "desc": "Sjekk om du kan spare penger ved å samle forsikringene dine.",
     "link": "https://www.finansportalen.no/forsikring/",
-    "tag": "-15% Rabatt",
+    "tag": "Rabatt",
     "color": "bg-red-100 text-red-800"
-  },
-  {
-    "category": "Kredittkort",
-    "title": "Beste kredittkort for bensinrabatt",
-    "desc": "Fyller du tanken ofte? Noen kort gir deg 80 øre rabatt per liter. Sjekk listen.",
-    "link": "/verktoy/budsjett",
-    "tag": "Drivstoff",
-    "color": "bg-gray-100 text-gray-800"
   }
 ]

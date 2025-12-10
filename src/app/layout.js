@@ -7,7 +7,9 @@ import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import GoogleAnalytics from "../components/GoogleAnalytics";
 
-// Fontları "swap" modunda yükle (Yazılar anında görünür, LCP artar)
+// Domain sabitini çekiyoruz (Eğer constants.js yoksa buraya elle https://... yazabilirsin)
+import { DOMAIN } from '../lib/constants'; 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -20,17 +22,41 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+// Site geneli SEO ayarları (DISCOVER İÇİN KRİTİK AYARLAR BURADA)
 export const metadata = {
+  // Sosyal medya resimleri için kök adresi belirtiyoruz
+  metadataBase: new URL(DOMAIN || 'https://skattekalkulator.com'), 
+
   title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
   description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025. Se hva du får utbetalt etter skatt.",
-  verification: {},
+  
+  // İŞTE DISCOVER'A GİRMEK İÇİN GEREKEN SİHİRLİ KOD:
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large', // <-- BU SATIR SENİ DISCOVER'A SOKAR
+      'max-snippet': -1,
+    },
+  },
+
+  openGraph: {
+    title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
+    description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025.",
+    url: DOMAIN,
+    siteName: 'Skattekalkulator Norge',
+    locale: 'nb_NO',
+    type: 'website',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="no">
       <head>
-        {/* API Bağlantılarını Hızlandır (Preconnect) */}
         <link rel="preconnect" href="https://api.exchangerate-api.com" />
         <link rel="preconnect" href="https://api.coingecko.com" />
         <link rel="dns-prefetch" href="https://api.exchangerate-api.com" />
@@ -39,13 +65,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* Analytics Kodu */}
+        {/* Analytics ID'ni buraya gir */}
         <GoogleAnalytics ga_id="G-T4H9Z5KD0T" />
         
         <Header />
-        
         {children}
-        
         <Footer />
         <CookieBanner />
       </body>

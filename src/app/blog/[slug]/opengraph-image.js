@@ -8,6 +8,7 @@ export const size = {
 export const contentType = 'image/png';
 
 export default async function Image({ params }) {
+  // Next.js 15: params bir Promise'dir, await ile çözülür.
   const resolvedParams = await params;
   const post = blogData.find((p) => p.slug === resolvedParams.slug);
   

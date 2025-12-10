@@ -1,19 +1,17 @@
 import { NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-// Not: OpenAI tanımlamasını fonksiyonun içine aldık.
-// Bu sayede Build sırasında hata vermez, sadece çalıştırıldığında şifreye bakar.
-
 export async function POST(req) {
   try {
-    // API Anahtarı kontrolü
+    // 1. Şifreyi koddan değil, güvenli kasadan (Vercel Env) çekiyoruz
     const apiKey = process.env.OPENAI_API_KEY;
-    
+
     if (!apiKey) {
       console.error("API Key bulunamadı!");
       return NextResponse.json({ error: "Sunucu hatası: API anahtarı eksik." }, { status: 500 });
     }
 
+    // 2. OpenAI'yı başlatıyoruz
     const openai = new OpenAI({
       apiKey: apiKey, 
     });
@@ -46,6 +44,6 @@ export async function POST(req) {
 
   } catch (error) {
     console.error("OpenAI Hatası:", error);
-    return NextResponse.json({ error: "AI servisinde bir hata oluştu." }, { status: 500 });
+    return NextResponse.json({ error: "Noe gikk galt med AI-en." }, { status: 500 });
   }
 }
