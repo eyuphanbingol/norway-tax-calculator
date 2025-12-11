@@ -1,27 +1,27 @@
 [
   {
+    "category": "Strøm",
+    "title": "Bytt strømavtale og spar penger",
+    "desc": "Spotpris uten påslag er vinneren i vinter. Sjekk om du betaler for mye.",
+    "link": "https://www.strompris.no",
+    "tag": "Spar 20%",
+    "color": "bg-yellow-100 text-yellow-800"
+  },
+  {
+    "category": "Bank & Lån",
+    "title": "Sjekk om du kan få lavere rente",
+    "desc": "Har du rente over 5.5%? Da bør du vurdere å bytte bank.",
+    "link": "https://www.finansportalen.no",
+    "tag": "Rentekutt",
+    "color": "bg-blue-100 text-blue-800"
+  },
+  {
     "category": "Student",
     "title": "Studentrabatter",
     "desc": "Husk studentbeviset! Det er mange penger å spare på kollektivtrafikk og kultur.",
     "link": "/verktoy/budsjett",
     "tag": "Student",
     "color": "bg-purple-100 text-purple-800"
-  },
-  {
-    "category": "Bolig",
-    "title": "Varmepumpe-støtte",
-    "desc": "Skal du oppgradere boligen? Sjekk om du kan få støtte til energitiltak.",
-    "link": "https://www.enova.no",
-    "tag": "Støtte",
-    "color": "bg-orange-100 text-orange-800"
-  },
-  {
-    "category": "Matvarer",
-    "title": "Kutt matbudsjettet ditt",
-    "desc": "Bruk vår AI-budsjetthjelper for å se hvor du kan spare på matinnkjøp.",
-    "link": "/verktoy/budsjett",
-    "tag": "Budsjett",
-    "color": "bg-green-100 text-green-800"
   },
   {
     "category": "Forsikring",
