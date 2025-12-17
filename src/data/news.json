@@ -1,29 +1,22 @@
 [
   {
+    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
+    "link": "https://www.norges-bank.no/",
+    "traffic": "Valuta",
+    "source": "Norges Bank"
+  },
+  {
+    "title": "💡 Guide: Elbil-avgifter i 2025: Hva betyr det for lommeboka di?",
+    "link": "/blog/elbil-avgifter-i-2025-blir-det-dyrere-a-kjore-7583",
+    "traffic": "Anbefalt",
+    "source": "Blogg",
+    "category": "Blogg"
+  },
+  {
     "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
     "link": "https://www.forbrukerradet.no/strompris/",
     "traffic": "Populært tema",
     "source": "Sparing Tips"
-  },
-  {
-    "title": "💡 Guide: Jonas unndrar seg retten: Politiet forsøker pågriping etter tiltale",
-    "link": "/blog/jonas-tiltalt-motte-ikke-i-retten--politiet-forsokte-a-pagripe-ham---nrk-8458",
-    "traffic": "Anbefalt",
-    "source": "Blogg",
-    "category": "Blogg"
-  },
-  {
-    "title": "💡 Guide: Rødt: Regjeringen sårer asylsøkerne i ukjent bunnløp",
-    "link": "/blog/rødt-anklager-regjeringen-for-kappløp-mot-bunnen-med-nytt-asylforslag---aftenposten-1112",
-    "traffic": "Anbefalt",
-    "source": "Blogg",
-    "category": "Blogg"
-  },
-  {
-    "title": "🏡 Boliglånsrenten: Bør du bytte bank nå?",
-    "link": "https://www.finansportalen.no/",
-    "traffic": "Finans",
-    "source": "Finansportalen"
   },
   {
     "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
@@ -32,16 +25,23 @@
     "source": "Skattekalkulator.com"
   },
   {
-    "title": "💡 Guide: Regjeringen kutter pantelotteri før jul – sjokkerende avgjørelse!",
-    "link": "/blog/har-gitt-nok-regjeringen-stopper-pantelotteriet-for-jul---nettavisen-1012",
+    "title": "🏡 Boliglånsrenten: Bør du bytte bank nå?",
+    "link": "https://www.finansportalen.no/",
+    "traffic": "Finans",
+    "source": "Finansportalen"
+  },
+  {
+    "title": "💡 Guide: Tabellkort eller Prosentkort? Hva lønner seg?",
+    "link": "/blog/tabellkort-vs-prosentkort-hva-er-best",
     "traffic": "Anbefalt",
     "source": "Blogg",
     "category": "Blogg"
   },
   {
-    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
-    "link": "https://www.norges-bank.no/",
-    "traffic": "Valuta",
-    "source": "Norges Bank"
+    "title": "💡 Guide: Regjeringen kutter pantelotteri før jul – sjokkerende avgjørelse!",
+    "link": "/blog/har-gitt-nok-regjeringen-stopper-pantelotteriet-for-jul---nettavisen-1012",
+    "traffic": "Anbefalt",
+    "source": "Blogg",
+    "category": "Blogg"
   }
 ]
