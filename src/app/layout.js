@@ -1,13 +1,12 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
-// Bileşenleri çağırıyoruz
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import CookieBanner from "../components/CookieBanner";
 import GoogleAnalytics from "../components/GoogleAnalytics";
 
-// Domain sabitini çekiyoruz
 import { DOMAIN } from '../lib/constants'; 
 
 const geistSans = Geist({
@@ -22,21 +21,22 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
-// Site geneli SEO ayarları
 export const metadata = {
   metadataBase: new URL(DOMAIN || 'https://skattekalkulator.com'), 
   title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
   description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025. Se hva du får utbetalt etter skatt.",
   
-  // DOĞRULAMA KODLARI BURAYA EKLENİR
+  // YENİ ADSENSE KİMLİĞİN (Meta Etiketi Olarak)
+  other: {
+    "google-adsense-account": "ca-pub-2645631543067545",
+  },
+
   verification: {
-    // Pinterest Doğrulaması (Senin Kodun)
     other: {
       "p:domain_verify": "eac11eb209626dedeaf51af4773f4f43",
     },
   },
 
-  // Google Discover Ayarları
   robots: {
     index: true,
     follow: true,
@@ -67,6 +67,14 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://api.coingecko.com" />
         <link rel="dns-prefetch" href="https://api.exchangerate-api.com" />
         <link rel="dns-prefetch" href="https://api.coingecko.com" />
+        
+        {/* YENİ ADSENSE KODU (Script Olarak) */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2645631543067545"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
