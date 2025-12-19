@@ -23,10 +23,10 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
   metadataBase: new URL(DOMAIN || 'https://skattekalkulator.com'), 
-  title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
-  description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025. Se hva du får utbetalt etter skatt.",
+  // SEO GÜNCELLEMESİ: 2026 Odaklı Title
+  title: "Skattekalkulator 2026 - Beregn lønn etter skatt i Norge",
+  description: "Bruk Norges mest oppdaterte skattekalkulator for 2026. Beregn din nettolønn, trinnskatt og utbetaling med de nyeste satsene fra Statsbudsjettet.",
   
-  // YENİ ADSENSE KİMLİĞİN (Meta Etiketi Olarak)
   other: {
     "google-adsense-account": "ca-pub-2645631543067545",
   },
@@ -50,8 +50,8 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Lønn etter skatt 2025 - Skattekalkulator Norge",
-    description: "Beregn din nettolønn enkelt med vår skattekalkulator for 2025.",
+    title: "Skattekalkulator 2026 - Finn din utbetaling",
+    description: "Beregn din nettolønn enkelt med vår skattekalkulator oppdatert for 2026.",
     url: DOMAIN,
     siteName: 'Skattekalkulator Norge',
     locale: 'nb_NO',
@@ -68,7 +68,6 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://api.exchangerate-api.com" />
         <link rel="dns-prefetch" href="https://api.coingecko.com" />
         
-        {/* YENİ ADSENSE KODU (Script Olarak) */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2645631543067545"
