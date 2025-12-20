@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import { TrendingUp, Info, HelpCircle, ChevronDown, Calendar, CheckCircle2, Star } from 'lucide-react';
 
@@ -11,7 +12,7 @@ import SearchBox from '../components/SearchBox';
 import Logo from '../components/Logo';
 import NegotiationCoach from '../components/NegotiationCoach'; 
 
-// LAZY LOAD - Performans için önemli
+// LAZY LOAD
 const MarketOverview = dynamic(() => import('../components/MarketOverview'), { 
   ssr: false,
   loading: () => <div className="h-32 bg-slate-50 rounded-xl animate-pulse my-8"></div>
@@ -31,10 +32,10 @@ export default function Home() {
   const [result, setResult] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  // 🇳🇴 GERÇEK 2026 VERGİ HESAPLAMA MOTORU (Resmi Parametreler)
+  // 🇳🇴 GERÇEK 2026 VERGİ HESAPLAMA MOTORU
   const calculate2026Tax = (gross) => {
     const stats = {
-      personFradrag: 108550, // 2026 Artışı
+      personFradrag: 108550, 
       trygdeAvgiftRate: 0.077, 
       skattPaAlminneligInntekt: 0.22, 
       minsteFradragRate: 0.46,
@@ -86,7 +87,7 @@ export default function Home() {
     }
   }, [salary, activeYear]);
 
-  // SEO: 2026 JSON-LD Structured Data (Google için yazılım aracı şeması)
+  // SEO: 2026 JSON-LD Structured Data
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -105,9 +106,23 @@ export default function Home() {
     }
   };
 
+  const faqs = [
+    {
+      q: "Hva er de viktigste endringene i skatten for 2026?",
+      a: "For 2026 er personfradraget økt for å kompensere for prisvekst. Trinnskatten har fått justerte grenser, noe som betyr at du kan tjene litt mer før du hopper opp i neste skattetrekk-nivå."
+    },
+    {
+      q: "Hvor mye er frikortgrensen i 2026?",
+      a: "Frikortgrensen for 2026 er satt til 75 000 kroner (estimert basert på statsbudsjettet), opp fra 70 000 i 2025."
+    },
+    {
+      q: "Er denne kalkulatoren oppdatert for 2026-reglene?",
+      a: "Ja, vi har implementert de offisielle satsene fra Statsbudsjettet for 2026 for å gi deg de mest nøyaktige beregningene."
+    }
+  ];
+
   return (
     <main className="min-h-screen bg-slate-50 pb-20">
-      {/* JSON-LD Script */}
       {isMounted && (
         <script
           type="application/ld+json"
@@ -117,7 +132,7 @@ export default function Home() {
 
       <div className="bg-[#005c45] text-white pt-12 pb-24">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-6 scale-125"><Logo /></div>
+          <div className="flex justify-center mb-6 scale-125"><Logo color="text-white" /></div>
           <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">Skattekalkulator 2026</h1>
           <p className="text-xl text-emerald-100 max-w-2xl mx-auto mb-10 font-light">
             Oppdatert med <strong>offisielle 2026-satser</strong>. Se nøyaktig hva du får utbetalt etter skatt i det nye året.
@@ -156,7 +171,6 @@ export default function Home() {
 
           <MarketOverview />
           
-          {/* DETAYLI 2026 BİLGİ KARTLARI */}
           <div className="mt-12 grid md:grid-cols-2 gap-6">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
                <h2 className="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
@@ -179,19 +193,41 @@ export default function Home() {
                <p className="text-emerald-50 text-sm leading-relaxed mb-6">
                  Bruk tallene fra kalkulatoren til å sette opp ditt nye månedsbudsjett. Ved å vite nøyaktig utbetaling kan du planlegge sparing og faste utgifter bedre.
                </p>
-               <button className="bg-white text-[#005c45] px-4 py-2 rounded-lg text-xs font-bold hover:bg-emerald-50 transition">
+               
+               {/* DÜZELTİLEN KISIM: LINK KULLANIMI */}
+               <Link href="/sparing" className="inline-block bg-white text-[#005c45] px-4 py-2 rounded-lg text-xs font-bold hover:bg-emerald-50 transition text-center w-auto">
                  Les tips om sparing 2026
-               </button>
+               </Link>
             </div>
           </div>
 
           <NewsTicker />
           <NegotiationCoach />
+
+          <div className="mt-12">
+            <h3 className="flex items-center gap-2 text-2xl font-bold text-slate-800 mb-6">
+                <HelpCircle className="text-emerald-600" /> 
+                Ofte stilte spørsmål om 2026
+            </h3>
+            <div className="space-y-4">
+                {faqs.map((faq, i) => (
+                    <div key={i} className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:border-emerald-300 transition">
+                        <h4 className="font-bold text-slate-900 mb-2 flex justify-between items-center">
+                            {faq.q}
+                            <ChevronDown size={16} className="text-slate-400" />
+                        </h4>
+                        <p className="text-slate-600 text-sm leading-relaxed">
+                            {faq.a}
+                        </p>
+                    </div>
+                ))}
+            </div>
+          </div>
+
         </div>
 
         <div className="w-full lg:w-1/3">
            <AdSlot type="sidebar" />
-           
            <div className="mt-6 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm sticky top-24">
              <h4 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
                <Calendar size={18} className="text-emerald-600" /> Viktige datoer 2026

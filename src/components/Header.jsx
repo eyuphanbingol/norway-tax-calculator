@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react'; // İkonları import ediyoruz
+import { Menu, X } from 'lucide-react';
 import Logo from './Logo';
 
 export default function Header() {
@@ -16,7 +16,7 @@ export default function Header() {
           <Logo color="text-white" />
         </Link>
 
-        {/* ORTA: Desktop Menü (Sadece PC'de görünür) */}
+        {/* ORTA: Desktop Menü */}
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-emerald-50">
           <Link href="/" className="hover:text-white transition">Hjem</Link>
           <Link href="/verktoy" className="hover:text-white transition">Verktøy 🤖</Link>
@@ -25,14 +25,14 @@ export default function Header() {
           <Link href="/om-oss" className="hover:text-white transition">Om oss</Link>
         </nav>
 
-        {/* SAĞ: İngilizce Butonu (Desktop) */}
+        {/* SAĞ: İngilizce Butonu */}
         <div className="hidden md:block">
           <Link href="/en" className="bg-emerald-900/50 hover:bg-emerald-900 text-white px-3 py-1.5 rounded-full text-xs transition border border-emerald-700/50">
             English 🇬🇧
           </Link>
         </div>
 
-        {/* MOBİL MENÜ BUTONU (Sadece Mobilde görünür) */}
+        {/* MOBİL MENÜ BUTONU */}
         <button 
           className="md:hidden text-white p-2 z-50"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -41,26 +41,19 @@ export default function Header() {
           {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
 
-        {/* MOBİL AÇILIR MENÜ (Overlay) */}
+        {/* MOBİL AÇILIR MENÜ */}
         {isMenuOpen && (
           <div className="absolute top-0 left-0 w-full h-screen bg-[#004d3a] flex flex-col items-center justify-center gap-8 md:hidden animate-in fade-in slide-in-from-top-10 duration-200">
             <nav className="flex flex-col items-center gap-6 text-lg font-bold text-white">
               <Link href="/" onClick={() => setIsMenuOpen(false)}>Hjem</Link>
-              <Link href="/verktoy" onClick={() => setIsMenuOpen(false)}>Verktøy & Hjelp 🤖</Link>
-              <Link href="/sparing" onClick={() => setIsMenuOpen(false)}>Sparing & Tilbud 🐷</Link>
-              <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Blogg & Tips</Link>
-              <Link href="/om-oss" onClick={() => setIsMenuOpen(false)}>Om oss</Link>
+              <Link href="/verktoy" onClick={() => setIsMenuOpen(false)}>Verktøy & Hjelp</Link>
+              <Link href="/sparing" onClick={() => setIsMenuOpen(false)}>Sparing & Tilbud</Link>
+              <Link href="/blog" onClick={() => setIsMenuOpen(false)}>Blogg</Link>
               <Link href="/kontakt" onClick={() => setIsMenuOpen(false)}>Kontakt</Link>
-              
-              <div className="w-16 h-1 bg-emerald-600/50 rounded-full my-2"></div>
-              
-              <Link href="/en" onClick={() => setIsMenuOpen(false)} className="bg-emerald-800 px-6 py-2 rounded-full flex items-center gap-2">
-                English Version 🇬🇧
-              </Link>
+              <Link href="/en" onClick={() => setIsMenuOpen(false)} className="bg-emerald-800 px-6 py-2 rounded-full">English 🇬🇧</Link>
             </nav>
           </div>
         )}
-
       </div>
     </header>
   );
