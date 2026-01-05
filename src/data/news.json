@@ -1,28 +1,9 @@
 [
   {
-    "title": "💡 Guide: Katastrofen er her!",
-    "link": "/blog/nå-skjer-det---dagbladet-2012",
-    "traffic": "Anbefalt",
-    "source": "Blogg",
-    "category": "Blogg"
-  },
-  {
     "title": "⚡ Strømprisene varierer: Har du riktig avtale?",
     "link": "https://www.forbrukerradet.no/strompris/",
     "traffic": "Populært tema",
     "source": "Sparing Tips"
-  },
-  {
-    "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
-    "link": "/verktoy/budsjett",
-    "traffic": "Økonomi",
-    "source": "Skattekalkulator.com"
-  },
-  {
-    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
-    "link": "https://www.norges-bank.no/",
-    "traffic": "Valuta",
-    "source": "Norges Bank"
   },
   {
     "title": "💡 Guide: Hvordan fungerer skattesystemet i Norge? (Full Guide)",
@@ -32,6 +13,18 @@
     "category": "Blogg"
   },
   {
+    "title": "🛒 Matprisene: Slik kutter du matbudsjettet",
+    "link": "/verktoy/budsjett",
+    "traffic": "Økonomi",
+    "source": "Skattekalkulator.com"
+  },
+  {
+    "title": "🏡 Boliglånsrenten: Bør du bytte bank nå?",
+    "link": "https://www.finansportalen.no/",
+    "traffic": "Finans",
+    "source": "Finansportalen"
+  },
+  {
     "title": "💡 Guide: Skatteendringer 2026: Slik påvirkes din lønn",
     "link": "/blog/skatteendringer-2026-guide",
     "traffic": "Anbefalt",
@@ -39,9 +32,16 @@
     "category": "Blogg"
   },
   {
-    "title": "🏡 Boliglånsrenten: Bør du bytte bank nå?",
-    "link": "https://www.finansportalen.no/",
-    "traffic": "Finans",
-    "source": "Finansportalen"
+    "title": "📉 Kronen er svak: Dette betyr det for ferien din",
+    "link": "https://www.norges-bank.no/",
+    "traffic": "Valuta",
+    "source": "Norges Bank"
+  },
+  {
+    "title": "💡 Guide: Katastrofen er her!",
+    "link": "/blog/nå-skjer-det---dagbladet-2012",
+    "traffic": "Anbefalt",
+    "source": "Blogg",
+    "category": "Blogg"
   }
 ]
