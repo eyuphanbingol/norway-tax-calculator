@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  /* Nordisk palett: dyp fjord, frost, netto-grønn, skatte-leire */
+  --color-fjord: #10394e;
+  --color-fjord-deep: #0a2836;
+  --color-frost: #f4f7f6;
+  --color-mist: #dfe8e6;
+  --color-netto: #1e8a5a;
+  --color-netto-soft: #e2f2ea;
+  --color-skatt: #b4552f;
+  --color-skatt-soft: #f6e7df;
+  --color-krone: #d9a441;
+  --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-frost); color: var(--color-fjord-deep); font-family: var(--font-body); }
+h1, h2, h3, .display { font-family: var(--font-display); letter-spacing: -0.02em; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+.prose-no p { margin: 0 0 1rem; line-height: 1.75; color: #27454f; }
+.prose-no h2 { font-size: 1.35rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--color-fjord-deep); }
+.prose-no h3 { font-size: 1.1rem; font-weight: 600; margin: 1.5rem 0 0.5rem; }
+.prose-no table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.95rem; }
+.prose-no th { text-align: left; padding: 0.5rem 0.75rem; background: var(--color-mist); font-weight: 600; }
+.prose-no td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--color-mist); font-variant-numeric: tabular-nums; }
+.prose-no ul { margin: 0 0 1rem 1.25rem; list-style: disc; line-height: 1.7; color: #27454f; }
+.prose-no li { margin-bottom: 0.35rem; }
+.prose-no a { color: var(--color-netto); text-decoration: underline; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
