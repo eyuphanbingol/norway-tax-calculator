@@ -160,3 +160,54 @@ export const enSlugToSalary = (slug) => {
   const m = slug.match(/^(\d+)-nok$/);
   return m ? parseInt(m[1], 10) : null;
 };
+
+// ===================================================================
+// PENSJON 2026 (alderspensjon/AFP, hele året, 100 % pensjonsgrad)
+// Kilder: Skatteetaten «Skattefradrag for pensjonsinntekt» 2026,
+// regjeringen.no «Skattesatser 2026».
+// ===================================================================
+export const PENSJON_2026 = {
+  minstefradragSats: 0.4,
+  minstefradragMaks: 75400,
+  trygdeavgift: 0.051,
+  skattefradragMaks: 39100,
+  nedtrapping: [
+    { over: 284950, sats: 0.167 },
+    { over: 436050, sats: 0.06 },
+  ],
+};
+
+export function beregnPensjonsskatt(pensjon, r = RATES_2026, p = PENSJON_2026) {
+  const minstefradrag = Math.min(pensjon * p.minstefradragSats, p.minstefradragMaks);
+  const grunnlag = Math.max(0, pensjon - minstefradrag - r.personfradrag);
+  const inntektsskatt = grunnlag * r.alminnelig;
+  const trygdeavgift = pensjon <= r.trygdeNedreGrense
+    ? 0
+    : Math.min(pensjon * p.trygdeavgift, (pensjon - r.trygdeNedreGrense) * 0.25);
+  const trinnskatt = beregnTrinnskatt(pensjon, r);
+  const brutto = inntektsskatt + trygdeavgift + trinnskatt;
+
+  // Skattefradraget trappes ned trinnvis og kan ikke gjøre skatten negativ
+  let avkorting = 0;
+  const t = p.nedtrapping;
+  for (let i = 0; i < t.length; i++) {
+    const to = i + 1 < t.length ? t[i + 1].over : Infinity;
+    if (pensjon > t[i].over) avkorting += (Math.min(pensjon, to) - t[i].over) * t[i].sats;
+  }
+  const skattefradrag = Math.min(brutto, Math.max(0, p.skattefradragMaks - avkorting));
+
+  const totalSkatt = Math.round(brutto - skattefradrag);
+  const netto = pensjon - totalSkatt;
+  return {
+    pensjon,
+    minstefradrag: Math.round(minstefradrag),
+    inntektsskatt: Math.round(inntektsskatt),
+    trygdeavgift: Math.round(trygdeavgift),
+    trinnskatt: Math.round(trinnskatt),
+    skattefradrag: Math.round(skattefradrag),
+    totalSkatt,
+    netto,
+    nettoMnd: Math.round(netto / 12),
+    skattProsent: pensjon > 0 ? Math.round((totalSkatt / pensjon) * 1000) / 10 : 0,
+  };
+}

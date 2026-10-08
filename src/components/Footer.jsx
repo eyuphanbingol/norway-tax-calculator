@@ -15,6 +15,7 @@ export default function Footer() {
             <li><Link href="/skattekalkulator-2027" className="hover:text-white">Skattekalkulator 2027</Link></li>
             <li><Link href="/lonn" className="hover:text-white">Lønn etter skatt-tabell</Link></li>
             <li><Link href="/manedslonn" className="hover:text-white">Månedslønn etter skatt</Link></li>
+            <li><Link href="/pensjon-etter-skatt" className="hover:text-white">Pensjon etter skatt</Link></li>
             <li><Link href="/verktoy" className="hover:text-white">Alle kalkulatorer</Link></li>
             <li><Link href="/del-kalkulatoren" className="hover:text-white">Kalkulator til din nettside</Link></li>
             <li><Link href="/en" className="hover:text-white" hrefLang="en">Norway tax calculator (English)</Link></li>
