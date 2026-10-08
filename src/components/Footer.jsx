@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="max-w-5xl mx-auto px-4 py-10 grid gap-8 sm:grid-cols-3 text-sm">
         <div>
           <p className="display text-white font-bold mb-2">Skattekalkulator Norge</p>
-          <p>Uavhengig kalkulator for lønn etter skatt, oppdatert med satsene for 2026 vedtatt av Stortinget.</p>
+          <p>Uavhengig kalkulator for lønn etter skatt, oppdatert med satsene for 2026 vedtatt av Stortinget. Drives av Eyüp Bingöl.</p>
         </div>
         <div>
           <p className="text-white font-semibold mb-2">Innhold</p>

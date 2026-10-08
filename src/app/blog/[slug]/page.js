@@ -3,7 +3,7 @@ import Link from 'next/link';
 import AdSlot from '../../../components/AdSlot';
 import Block from '../../../components/ArticleBlock';
 import { articles, getArticle } from '../../../data/articles';
-import { DOMAIN } from '../../../lib/constants';
+import { DOMAIN, AUTHOR } from '../../../lib/constants';
 
 export const dynamicParams = false;
 
@@ -35,7 +35,8 @@ export default async function ArticlePage({ params }) {
     description: a.description,
     datePublished: a.date,
     dateModified: a.updated || a.date,
-    author: { '@type': 'Organization', name: 'Skattekalkulator Norge' },
+    author: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
+    publisher: { '@type': 'Organization', name: 'Skattekalkulator Norge', url: DOMAIN },
     mainEntityOfPage: `${DOMAIN}/blog/${a.slug}`,
   };
 
@@ -49,7 +50,7 @@ export default async function ArticlePage({ params }) {
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{a.title}</h1>
       <p className="text-sm text-fjord/50 mb-8">
-        Oppdatert {new Date(a.updated || a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · 2026-satser
+        Skrevet av <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Oppdatert {new Date(a.updated || a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · 2026-satser
       </p>
       <article className="prose-no">
         {a.body.slice(0, mid).map((b, i) => <Block key={i} b={b} />)}

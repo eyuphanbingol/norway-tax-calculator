@@ -4,7 +4,7 @@ import Calculator from '../../../components/Calculator';
 import AdSlot from '../../../components/AdSlot';
 import {
   beregnSkatt, marginalskatt, hvilketTrinn, fmt,
-  SALARY_PAGES, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, RATES_2026, pct, EN_SALARY_PAGES } from '../../../lib/tax';
+  SALARY_PAGES, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, RATES_2026, pct, RATES_2027_FORSLAG } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
 import { articles } from '../../../data/articles';
 
@@ -22,12 +22,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${fmt(gross)} kr lønn etter skatt 2026 – ${fmt(r.netto)} kr utbetalt`,
     description: `Tjener du ${fmt(gross)} kr i 2026? Da får du utbetalt ca. ${fmt(r.netto)} kr etter skatt (${fmt(r.nettoMnd)} kr/mnd). Se full beregning av trinnskatt, trygdeavgift og fradrag.`,
-    alternates: {
-      canonical: `${DOMAIN}/lonn/${slug}`,
-      ...(EN_SALARY_PAGES.includes(gross) && {
-        languages: { 'nb-NO': `${DOMAIN}/lonn/${slug}`, en: `${DOMAIN}/en/salary-after-tax/${gross}-nok` },
-      }),
-    },
+    alternates: { canonical: `${DOMAIN}/lonn/${slug}` },
   };
 }
 
@@ -41,6 +36,22 @@ export default async function SalaryPage({ params }) {
   const trinn = hvilketTrinn(gross);
   const raise = beregnSkatt(gross + 50000);
   const raiseNet = raise.netto - r.netto;
+
+  // Unikt innhold per lønnsnivå: trinnskatt trinn for trinn, lønnsøkning og 2027
+  const t = RATES_2026.trinnskatt;
+  const trinnRows = t
+    .map((x, i) => {
+      const to = i + 1 < t.length ? t[i + 1].over : Infinity;
+      if (gross <= x.over) return null;
+      const del = Math.min(gross, to) - x.over;
+      return { i: i + 1, sats: x.sats, del, skatt: del * x.sats };
+    })
+    .filter(Boolean);
+  const raises = [25000, 50000, 100000].map((d) => {
+    const n = beregnSkatt(gross + d).netto - r.netto;
+    return { d, n, keep: Math.round((n / d) * 1000) / 10 };
+  });
+  const r27 = beregnSkatt(gross, RATES_2027_FORSLAG);
 
   const idx = SALARY_PAGES.indexOf(gross);
   const prev = idx > 0 ? SALARY_PAGES[idx - 1] : null;
@@ -140,6 +151,45 @@ export default async function SalaryPage({ params }) {
           Merk at månedsbeløpet er et snitt over året. I praksis er trekket litt høyere i de vanlige
           månedene, mens juni (feriepenger) normalt er trekkfri og desember har halvt trekk.{' '}
           <Link href="/blog/feriepenger-og-skatt">Les hvorfor</Link>.
+        </p>
+
+        <h2>Trinnskatten på {fmt(gross)} kr trinn for trinn</h2>
+        {trinnRows.length === 0 ? (
+          <p>Med {fmt(gross)} kr er inntekten under første innslagspunkt ({fmt(t[0].over)} kr), så du betaler ingen trinnskatt.</p>
+        ) : (
+          <table>
+            <thead><tr><th>Trinn</th><th>Inntekt i trinnet</th><th>Skatt</th></tr></thead>
+            <tbody>
+              {trinnRows.map((x) => (
+                <tr key={x.i}>
+                  <td>Trinn {x.i} ({pct(Math.round(x.sats * 1000) / 10)} %)</td>
+                  <td>{fmt(x.del)} kr</td>
+                  <td>{fmt(x.skatt)} kr</td>
+                </tr>
+              ))}
+              <tr><td><strong>Sum trinnskatt</strong></td><td></td><td><strong>{fmt(r.trinnskatt)} kr</strong></td></tr>
+            </tbody>
+          </table>
+        )}
+
+        <h2>Hva er en lønnsøkning verdt fra {fmt(gross)} kr?</h2>
+        <table>
+          <thead><tr><th>Lønnsøkning</th><th>Mer utbetalt per år</th><th>Per måned</th><th>Du beholder</th></tr></thead>
+          <tbody>
+            {raises.map((x) => (
+              <tr key={x.d}>
+                <td>+{fmt(x.d)} kr</td><td>{fmt(x.n)} kr</td><td>{fmt(x.n / 12)} kr</td><td>{pct(x.keep)} %</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <h2>Skatten på {fmt(gross)} kr i 2027</h2>
+        <p>
+          Med regjeringens forslag til statsbudsjett for 2027 blir skatten på samme lønn ca.{' '}
+          {fmt(r27.totalSkatt)} kr, altså {fmt(r.totalSkatt - r27.totalSkatt)} kr mindre enn i 2026, og
+          du får ca. {fmt(r27.netto)} kr utbetalt. Forslaget er ikke vedtatt ennå. Se{' '}
+          <Link href="/skattekalkulator-2027">skattekalkulatoren for 2027</Link>.
         </p>
 
         <h2>Kan du betale mindre skatt?</h2>

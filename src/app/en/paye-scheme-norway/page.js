@@ -24,7 +24,7 @@ export default function Paye() {
     description: DESC,
     inLanguage: 'en',
     datePublished: '2026-10-08',
-    author: { '@type': 'Organization', name: 'Skattekalkulator Norge' },
+    author: { '@type': 'Person', name: 'Eyüp Bingöl', url: `${DOMAIN}/om-oss` },
     mainEntityOfPage: `${DOMAIN}/en/paye-scheme-norway`,
   };
 
@@ -35,7 +35,7 @@ export default function Paye() {
         <Link href="/en" className="hover:underline">Norway Tax Calculator</Link>{' / '}PAYE scheme
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{TITLE}</h1>
-      <p className="text-sm text-fjord/50 mb-8">Updated 8 October 2026 · 2026 rules</p>
+      <p className="text-sm text-fjord/50 mb-8">By <Link href="/om-oss" className="underline">Eyüp Bingöl</Link> · Updated 8 October 2026 · 2026 rules</p>
 
       <article className="prose-no">
         <p>

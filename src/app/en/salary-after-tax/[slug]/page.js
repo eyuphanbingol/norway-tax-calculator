@@ -22,10 +22,9 @@ export async function generateMetadata({ params }) {
   return {
     title: { absolute: `${nok(g)} Salary After Tax in Norway 2026 – ${nok(r.netto)} Net` },
     description: `Earning ${nok(g)} a year in Norway? In 2026 you take home about ${nok(r.netto)} after tax (${nok(r.nettoMnd)} per month). See the full tax breakdown.`,
-    alternates: {
-      canonical: `${DOMAIN}/en/salary-after-tax/${slug}`,
-      languages: { en: `${DOMAIN}/en/salary-after-tax/${slug}`, 'nb-NO': `${DOMAIN}/lonn/${salarySlug(g)}` },
-    },
+    alternates: { canonical: `${DOMAIN}/en/salary-after-tax/${slug}` },
+    // Ikke indeksert foreløpig (for mange like sider under AdSense-vurdering); tabellen /en/salary-after-tax er indeksert
+    robots: { index: false, follow: true },
   };
 }
 
