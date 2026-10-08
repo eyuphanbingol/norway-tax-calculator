@@ -3,6 +3,43 @@
 
 export const articles = [
   {
+    slug: 'halv-skatt-i-desember-2026',
+    title: 'Halv skatt i desember 2026: hvorfor, hvem får det og hvor mye',
+    description:
+      'Hvorfor trekkes det bare halv skatt i desember? Se hvem som får halvt trekk (lønn og uføretrygd), hvem som ikke gjør det (alderspensjon, prosentkort, PAYE), og omtrent hvor mye mer du får utbetalt.',
+    date: '2026-10-08',
+    body: [
+      { type: 'p', text: 'Hvert år i desember får mange lønnsmottakere mer utbetalt enn vanlig, fordi arbeidsgiveren bare trekker halv skatt. Det er ingen skattelette: skatten for hele året er allerede fordelt slik at du betaler litt mer i de andre månedene.' },
+      { type: 'h2', text: 'Hvorfor halv skatt i desember?' },
+      { type: 'p', text: 'Skattetabellene er laget slik at årets skatt trekkes over ti og en halv måned i stedet for tolv. Normalt trekkes det ikke skatt i måneden feriepengene utbetales (som oftest juni), og bare halvt trekk i desember. Til gjengjeld er trekket i de øvrige månedene noe høyere enn om skatten var jevnt fordelt. Totalt sett blir det samme sum.' },
+      { type: 'h2', text: 'Hvem får halv skatt?' },
+      { type: 'table', head: ['Inntekt', 'Trekk i desember'], rows: [
+        ['Lønn med tabelltrekk', 'Halvt trekk'],
+        ['Uføretrygd', 'Halvt trekk'],
+        ['Alderspensjon, AFP og etterlattepensjon', 'Normalt ikke trekk i desember (men vanlig trekk i juni)'],
+        ['Lønn med prosenttrekk (f.eks. biarbeidsgiver)', 'Vanlig prosenttrekk'],
+        ['PAYE og kildeskatt', 'Vanlig trekk alle måneder'],
+      ]},
+      { type: 'p', text: 'Halvt trekk gjelder altså tabelltrekket fra hovedarbeidsgiveren din. Har du flere arbeidsgivere, trekker de andre vanligvis etter prosentkort, og der blir det ikke halvert. Får du ytelser fra Nav, kan reglene variere mellom ytelsene – sjekk nav.no for din ytelse.' },
+      { type: 'h2', text: 'Kan halv skatt komme i november?' },
+      { type: 'p', text: 'Ja. Arbeidsgiveren kan velge å gjennomføre halvt trekk i november i stedet for desember, for eksempel for at de ansatte skal ha mer penger før julehandelen. Får du halv skatt i november, blir det vanlig trekk i desember. Spør arbeidsgiveren din hvis du er usikker.' },
+      { type: 'h2', text: 'Hvor mye mer får du utbetalt?' },
+      { type: 'p', text: 'Det avhenger av tabellnummeret ditt, men et grovt anslag er at vanlig månedstrekk er årsskatten delt på 10,5, og at du i desember slipper halvparten av det. Tabellen bygger på standard fradrag og 2026-satsene.' },
+      { type: 'table', head: ['Årslønn', 'Vanlig trekk per måned (ca.)', 'Mer utbetalt i desember (ca.)'], rows: [
+        ['400 000 kr', '7 300 kr', '3 700 kr'],
+        ['500 000 kr', '10 500 kr', '5 300 kr'],
+        ['600 000 kr', '13 700 kr', '6 900 kr'],
+        ['750 000 kr', '18 800 kr', '9 400 kr'],
+        ['1 000 000 kr', '29 100 kr', '14 600 kr'],
+      ]},
+      { type: 'p', text: 'Det faktiske trekket ditt står på lønnsslippen og avhenger av skattekortet. Har du fradrag som rentefradrag, er trekket lavere – og dermed også det du sparer i desember.' },
+      { type: 'h2', text: 'Ikke bruk opp januar-lønnen i desember' },
+      { type: 'p', text: 'I januar er det fullt trekk igjen, og januarlønnen kommer ofte sent i måneden etter en dyr jul. Mange opplever derfor januar som en lang måned. Det kan være lurt å sette av en del av det ekstra beløpet i desember.' },
+      { type: 'h2', text: 'Nytt skattekort for 2027' },
+      { type: 'p', text: 'I desember kommer også skattekortet for 2027. Vil du se hva neste års skattesatser betyr for lønnen din, kan du bruke skattekalkulatoren for 2027.' },
+    ],
+  },
+  {
     slug: 'skattetabell-2026-tabelltrekk',
     title: 'Skattetabell 2026: tabelltrekk, prosenttrekk og skattekort forklart',
     description:

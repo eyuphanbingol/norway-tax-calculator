@@ -124,3 +124,31 @@ export const slugToSalary = (slug) => {
 // Årslønn for heltidsansatte i Norge, SSB 2025 (ekskl. overtid) — brukes til sammenligning
 export const MEDIAN_SALARY = 695640;
 export const AVG_SALARY = 775800;
+
+// Folketrygdens grunnbeløp fra 1. mai 2026 (Nav)
+export const G_2026 = 136549;
+
+// Feriepenger: ferieloven 10,2 %, avtalt 5 uker 12 %, +2,3 % fra året man fyller 60 (opptil 6G)
+export function beregnFeriepenger(grunnlag, { femUker = true, over60 = false, G = G_2026 } = {}) {
+  const sats = femUker ? 0.12 : 0.102;
+  const ordinaer = grunnlag * sats;
+  const tillegg = over60 ? Math.min(grunnlag, 6 * G) * 0.023 : 0;
+  return { sats, ordinaer: Math.round(ordinaer), tillegg: Math.round(tillegg), total: Math.round(ordinaer + tillegg) };
+}
+
+// Reisefradrag 2026: 1,90 kr/km, øvre grense 120 000 kr før bunnfradrag på 12 000 kr
+export const REISE_2026 = { kmSats: 1.9, ovreGrense: 120000, bunnfradrag: 12000 };
+
+export function beregnReisefradrag(kmTurRetur, dager, r = REISE_2026) {
+  const kostnad = Math.min(kmTurRetur * dager * r.kmSats, r.ovreGrense);
+  const fradrag = Math.max(0, kostnad - r.bunnfradrag);
+  return { kostnad: Math.round(kostnad), fradrag: Math.round(fradrag), skatteverdi: Math.round(fradrag * RATES_2026.alminnelig) };
+}
+
+// Månedslønnsider: 30 000–100 000 kr i måneden
+export const MONTHLY_PAGES = range(30000, 100000, 5000);
+export const monthlySlug = (m) => `${m}-kr-etter-skatt`;
+export const slugToMonthly = (slug) => {
+  const m = slug.match(/^(\d+)-kr-etter-skatt$/);
+  return m ? parseInt(m[1], 10) : null;
+};

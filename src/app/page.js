@@ -112,6 +112,23 @@ export default function Home() {
         </p>
       </section>
 
+      {/* Flere kalkulatorer */}
+      <section className="max-w-5xl mx-auto px-4 mt-12">
+        <h2 className="display text-2xl font-bold mb-4">Flere kalkulatorer</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm font-semibold">
+          {[
+            ['/manedslonn', 'Månedslønn etter skatt'],
+            ['/timelonn-etter-skatt', 'Timelønn etter skatt'],
+            ['/feriepenger-kalkulator', 'Feriepenger 2026'],
+            ['/reisefradrag-kalkulator', 'Reisefradrag 2026'],
+          ].map(([href, label]) => (
+            <Link key={href} href={href} className="bg-white border border-mist rounded-xl p-4 hover:border-netto transition text-netto">
+              {label} →
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Forklarende innhold */}
       <section className="max-w-3xl mx-auto px-4 mt-14 prose-no">
         <h2>Slik beregnes skatten din i 2026</h2>

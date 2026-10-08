@@ -28,13 +28,11 @@ const nextConfig = {
       { source: '/sted/:path*', destination: '/lonn', permanent: true },
       { source: '/l/:path*', destination: '/lonn', permanent: true },
       { source: '/I/:path*', destination: '/lonn', permanent: true },
-      { source: '/verktoy', destination: '/', permanent: true },
-      { source: '/verktoy/:path*', destination: '/', permanent: true },
+      { source: '/verktoy/:path+', destination: '/verktoy', permanent: true },
       { source: '/cookies', destination: '/personvern', permanent: true },
       { source: '/sparing', destination: '/blog/fradrag-du-ikke-ma-glemme-2026', permanent: true },
       { source: '/no', destination: '/', permanent: true },
       { source: '/sv', destination: '/', permanent: true },
-      { source: '/embed', destination: '/', permanent: true },
     ];
   },
 };
