@@ -3,6 +3,43 @@
 
 export const articles = [
   {
+    slug: 'skattekort-2027',
+    title: 'Skattekort 2027: når kommer det, og hva bør du sjekke?',
+    description:
+      'Skattekortet for 2027 kommer i desember 2026. Slik sjekker du at det er riktig, når du bør endre det, og hva de nye skattesatsene betyr for trekket ditt.',
+    date: '2026-10-08',
+    body: [
+      { type: 'p', text: 'Skattekortet bestemmer hvor mye skatt arbeidsgiveren trekker av lønnen din hver måned. Skatteetaten lager et nytt skattekort for hvert år, og det for 2027 kommer i desember 2026. Det tar bare noen minutter å sjekke det – og det kan spare deg for restskatt.' },
+      { type: 'h2', text: 'Når kommer skattekortet for 2027?' },
+      { type: 'p', text: 'Skattekortet for neste år sendes vanligvis ut i desember, etter at Stortinget har vedtatt skattesatsene. Skattekortet for 2026 ble gjort tilgjengelig i midten av desember 2025, og Skatteetaten sendte da melding til rundt 4,4 millioner personer. Du får beskjed på e-post eller SMS når skattekortet for 2027 er klart. Skattekortet gjelder fra januar 2027.' },
+      { type: 'h2', text: 'Må jeg gjøre noe?' },
+      { type: 'p', text: 'Nei, i utgangspunktet ikke. Arbeidsgiveren henter skattekortet digitalt fra Skatteetaten, og du trenger ikke levere det selv. Men skattekortet bygger på opplysninger Skatteetaten har om deg fra før, justert med forventet lønnsvekst. Har livet ditt endret seg, kan anslaget være feil.' },
+      { type: 'h2', text: 'Dette bør du sjekke' },
+      { type: 'ul', items: [
+        'Forventet lønn for 2027 – stemmer den omtrent med det du faktisk regner med å tjene?',
+        'Renter på boliglån og andre lån – særlig hvis du har tatt opp eller nedbetalt lån',
+        'Reisefradrag – reglene ble mye gunstigere i 2026, og mange har krav på mer enn før',
+        'Andre inntekter, som utleie, bijobb eller næring',
+        'Fradrag som fagforeningskontingent, IPS og foreldrefradrag',
+      ]},
+      { type: 'h2', text: 'Når bør du endre skattekortet?' },
+      { type: 'table', head: ['Situasjon', 'Hva skjer om du ikke endrer'], rows: [
+        ['Ny jobb med høyere lønn', 'For lite trekk – risiko for restskatt'],
+        ['Lønnsøkning utover vanlig lønnsvekst', 'For lite trekk – risiko for restskatt'],
+        ['Kjøpt bolig og tatt opp lån', 'For mye trekk – penger tilbake først året etter'],
+        ['Gått ned i lønn eller stilling', 'For mye trekk'],
+        ['Fått bijobb eller utleieinntekt', 'For lite trekk – risiko for restskatt'],
+      ]},
+      { type: 'p', text: 'Du endrer skattekortet selv på skatteetaten.no ved å logge inn med BankID eller MinID og oppdatere tallene. Arbeidsgiveren får det nye skattekortet automatisk. Vil du bare betale litt ekstra skatt for å være på den sikre siden, kan du øke trekket uten å endre resten av opplysningene.' },
+      { type: 'h2', text: 'Tabelltrekk eller prosenttrekk?' },
+      { type: 'p', text: 'På skattekortet står det enten et tabellnummer (tabelltrekk) eller en fast prosent (prosenttrekk). Hovedarbeidsgiveren bruker som regel tabellen, mens andre arbeidsgivere trekker prosent. Med tabelltrekk trekkes årets skatt over ti og en halv måned, slik at juni (feriepenger) normalt er trekkfri og desember har halvt trekk. Har arbeidsgiveren ikke fått skattekort for deg, kan det bli trukket 50 prosent.' },
+      { type: 'h2', text: 'Hva betyr skatteendringene for 2027?' },
+      { type: 'p', text: 'Regjeringen har foreslått lavere trygdeavgift (7,4 prosent), høyere personfradrag (120 180 kr) og høyere innslagspunkter i trinnskatten for 2027. Blir forslaget vedtatt, vil de fleste få litt lavere trekk fra januar. Med samme lønn som i 2026 utgjør det typisk noen tusen kroner i året. Bruk skattekalkulatoren for 2027 for å se hva det betyr for deg.' },
+      { type: 'h2', text: 'Frikort' },
+      { type: 'p', text: 'Har du lav inntekt, for eksempel som student med deltidsjobb, kan du få frikort i stedet for vanlig skattekort. Da trekkes det ikke skatt før inntekten passerer frikortbeløpet. Hadde du frikort i år, får du som regel automatisk frikort for neste år også.' },
+    ],
+  },
+  {
     slug: 'halv-skatt-i-desember-2026',
     title: 'Halv skatt i desember 2026: hvorfor, hvem får det og hvor mye',
     description:

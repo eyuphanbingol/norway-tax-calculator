@@ -134,7 +134,7 @@ export default function Skatt2027() {
         <ul>
           <li>Oktober–november 2026: budsjettforhandlinger på Stortinget</li>
           <li>Desember 2026: Stortinget vedtar skattesatsene for 2027</li>
-          <li>Desember 2026: Skatteetaten sender ut skattekort for 2027</li>
+          <li>Desember 2026: Skatteetaten sender ut skattekort for 2027 – <Link href="/blog/skattekort-2027">slik sjekker du det</Link></li>
           <li>Januar 2027: nytt skattetrekk på lønnsslippen</li>
         </ul>
         <p>
