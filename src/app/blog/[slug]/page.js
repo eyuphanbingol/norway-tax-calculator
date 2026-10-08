@@ -69,6 +69,16 @@ export default async function ArticlePage({ params }) {
         <AdSlot type="content" />
         {a.body.slice(mid).map((b, i) => <Block key={mid + i} b={b} />)}
       </article>
+      <aside className="mt-10">
+        <h2 className="display text-xl font-bold mb-3">Les også</h2>
+        <ul className="space-y-2">
+          {articles.filter((x) => x.slug !== a.slug).slice(0, 4).map((x) => (
+            <li key={x.slug}>
+              <Link href={`/blog/${x.slug}`} className="text-netto font-semibold hover:underline">{x.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </aside>
       <div className="mt-10 bg-netto-soft rounded-2xl p-6 text-center">
         <p className="font-semibold mb-2">Hva sitter du igjen med av lønnen din?</p>
         <Link href="/" className="inline-block bg-netto text-white font-bold px-6 py-3 rounded-xl hover:opacity-90">
