@@ -38,11 +38,11 @@ const T = {
   },
 };
 
-export default function Calculator({ initial = 600000, lang = 'no', year: initialYear = 2026, showYearToggle = true }) {
+export default function Calculator({ initial = 600000, lang = 'no', year: initialYear = 2026, showYearToggle = true, monthly: initialMonthly = false }) {
   const t = T[lang];
   const [gross, setGross] = useState(initial);
   const [year, setYear] = useState(initialYear);
-  const [monthly, setMonthly] = useState(false);
+  const [monthly, setMonthly] = useState(initialMonthly);
   const r = useMemo(() => beregnSkatt(gross, RATES[year]), [gross, year]);
   const marginal = useMemo(() => marginalskatt(gross, RATES[year]), [gross, year]);
   const trygdePct = pct(Math.round(RATES[year].trygdeavgift * 1000) / 10);
