@@ -7,7 +7,7 @@ export default function Header() {
         <Link href="/" className="display text-lg font-bold tracking-tight">
           skatte<span className="text-krone">kalkulator</span>.com
         </Link>
-        <nav className="flex gap-5 text-sm text-white/85">
+        <nav className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-white/85 whitespace-nowrap">
           <Link href="/" className="hover:text-white">Kalkulator</Link>
           <Link href="/lonn" className="hover:text-white">Lønnstabell</Link>
           <Link href="/blog" className="hover:text-white">Guider</Link>

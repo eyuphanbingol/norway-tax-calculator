@@ -1,10 +1,14 @@
 import Script from 'next/script';
+import { Sora } from 'next/font/google';
 import './globals.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { DOMAIN, SITE_NAME } from '../lib/constants';
 
 const GA_ID = 'G-T4H9Z5KD0T';
+
+// Fonten lastes fra eget domene (ingen blokkerende forespørsel til Google Fonts)
+const sora = Sora({ subsets: ['latin'], weight: ['600', '700', '800'], display: 'swap', variable: '--font-sora' });
 
 // EØS + Storbritannia + Sveits: Google-tagger venter på samtykke fra Googles
 // samtykkevindu (AdSense Personvern og meldinger) før de bruker cookies.
@@ -32,14 +36,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="no">
+    <html lang="no" className={sora.variable}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&display=swap"
-          rel="stylesheet"
-        />
         {/* Google tag (gtag.js) med samtykkemodus */}
         <Script id="gtag-init" strategy="afterInteractive">
           {`window.dataLayer = window.dataLayer || [];

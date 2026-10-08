@@ -26,12 +26,11 @@ export default function Calculator({ initial = 600000 }) {
       <div className="flex items-center gap-3 mb-2">
         <input
           id="gross"
-          type="number"
+          type="text"
           inputMode="numeric"
-          min="0"
-          step="1000"
-          value={gross}
-          onChange={(e) => setGross(Math.max(0, Number(e.target.value) || 0))}
+          autoComplete="off"
+          value={gross ? fmt(gross) : ''}
+          onChange={(e) => setGross(Math.min(100000000, Number(e.target.value.replace(/\D/g, '')) || 0))}
           className="tnum w-full text-2xl font-bold border-2 border-mist rounded-xl px-4 py-3 focus:border-netto outline-none"
         />
         <span className="text-lg font-semibold text-fjord/60">kr</span>
@@ -70,12 +69,12 @@ export default function Calculator({ initial = 600000 }) {
           ) : null
         )}
       </div>
-      <ul className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm mb-6">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm mb-6">
         {parts.map((p) => (
           <li key={p.label} className="flex items-center gap-2">
             <span className={`inline-block w-3 h-3 rounded-sm ${p.cls}`} />
             <span className="text-fjord/80">{p.label}:</span>
-            <span className="tnum font-semibold ml-auto">{fmt(p.value)} kr</span>
+            <span className="tnum font-semibold ml-auto whitespace-nowrap">{fmt(p.value)} kr</span>
           </li>
         ))}
       </ul>

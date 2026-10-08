@@ -6,6 +6,7 @@ import {
   beregnSkatt, marginalskatt, hvilketTrinn, fmt,
   SALARY_PAGES, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, RATES_2026, pct } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
+import { articles } from '../../../data/articles';
 
 export const dynamicParams = false;
 
@@ -144,6 +145,17 @@ export default async function SalaryPage({ params }) {
           for mange utgjør de flere tusen kroner i spart skatt i året.
         </p>
       </div>
+
+      <aside className="mt-10">
+        <h2 className="display text-xl font-bold mb-3">Guider om skatt i 2026</h2>
+        <ul className="space-y-2">
+          {articles.slice(0, 5).map((x) => (
+            <li key={x.slug}>
+              <Link href={`/blog/${x.slug}`} className="text-netto font-semibold hover:underline">{x.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </aside>
 
       <div className="flex justify-between mt-10 text-sm font-semibold">
         {prev ? (
