@@ -16,7 +16,8 @@ export default function Personvern() {
       <p>Alle skatteberegninger skjer lokalt i nettleseren din. Lønnstall du skriver inn i kalkulatoren sendes ikke til oss og lagres ikke på våre servere.</p>
 
       <h2>Analyse</h2>
-      <p>Vi bruker ikke egne analyseverktøy som Google Analytics. Vi ser kun aggregert statistikk fra Google Search Console (hvor mange som finner siden via Google-søk), som ikke inneholder opplysninger om enkeltpersoner.</p>
+      <p>Vi bruker Google Analytics 4 for å forstå hvordan siden brukes, for eksempel antall besøk, hvilke sider som leses og omtrentlig land. Vi bruker tallene kun samlet for å forbedre innholdet, og vi ser ikke hvem du er.</p>
+      <p>Besøker du siden fra EØS (inkludert Norge), Storbritannia eller Sveits, setter Google Analytics ingen analyse-cookies før du har gitt samtykke i samtykkevinduet. Uten samtykke kan Google motta begrensede, cookiefrie signaler (Googles samtykkemodus). Vi bruker også Google Search Console, som bare viser samlet statistikk over søk som leder til siden.</p>
 
       <h2>Annonser og informasjonskapsler</h2>
       <p>Siden finansieres av annonser levert av Google AdSense. Google og deres partnere kan bruke informasjonskapsler (cookies) for å vise annonser basert på tidligere besøk på denne og andre nettsider. Ved første besøk får du et samtykkevalg fra Googles samtykkeløsning (sertifisert etter IAB TCF), der du kan godta eller avslå bruk av cookies til personaliserte annonser. Avslår du, kan det fortsatt vises ikke-personaliserte annonser. Du kan når som helst endre eller trekke tilbake valget ditt via lenken «Personvern- og cookie-innstillinger» nederst på hver side, og du kan administrere Googles annonseinnstillinger på <a href="https://adssettings.google.com" rel="nofollow">adssettings.google.com</a>.</p>
