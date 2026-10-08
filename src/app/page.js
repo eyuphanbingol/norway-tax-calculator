@@ -118,6 +118,7 @@ export default function Home() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm font-semibold">
           {[
             ['/manedslonn', 'Månedslønn etter skatt'],
+            ['/pensjon-etter-skatt', 'Pensjon etter skatt'],
             ['/timelonn-etter-skatt', 'Timelønn etter skatt'],
             ['/feriepenger-kalkulator', 'Feriepenger 2026'],
             ['/reisefradrag-kalkulator', 'Reisefradrag 2026'],

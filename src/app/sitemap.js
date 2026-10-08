@@ -10,7 +10,7 @@ const SITE_UPDATED = new Date('2026-10-08');
 export default function sitemap() {
   const now = SITE_UPDATED;
   const statics = [
-    '', '/skattekalkulator-2027', '/verktoy', '/lonn', '/manedslonn', '/timelonn-etter-skatt',
+    '', '/skattekalkulator-2027', '/verktoy', '/lonn', '/manedslonn', '/timelonn-etter-skatt', '/pensjon-etter-skatt',
     '/feriepenger-kalkulator', '/reisefradrag-kalkulator', '/del-kalkulatoren', '/blog',
     '/en', '/en/paye-scheme-norway', '/en/salary-after-tax', '/om-oss', '/kontakt', '/personvern',
   ].map((r) => ({
