@@ -10,7 +10,7 @@ export const YEAR = 2026;
 export const RATES_2026 = {
   alminnelig: 0.22,            // skatt på alminnelig inntekt
   trygdeavgift: 0.076,         // lønnsinntekt (redusert fra 7,7 % i 2025)
-  trygdeFrikort: 100000,       // frikortgrense
+  trygdeNedreGrense: 99650,    // nedre grense for trygdeavgift (uendret fra 2025)
   minstefradragSats: 0.46,
   minstefradragMaks: 95700,
   personfradrag: 114540,
@@ -35,9 +35,9 @@ export function beregnTrinnskatt(gross, r = RATES_2026) {
 }
 
 export function beregnTrygdeavgift(gross, r = RATES_2026) {
-  if (gross <= r.trygdeFrikort) return 0;
-  // Avgiften skal ikke overstige 25 % av inntekt over frikortgrensen
-  return Math.min(gross * r.trygdeavgift, (gross - r.trygdeFrikort) * 0.25);
+  if (gross <= r.trygdeNedreGrense) return 0;
+  // Avgiften skal ikke overstige 25 % av inntekt over nedre grense (opptrappingsregelen)
+  return Math.min(gross * r.trygdeavgift, (gross - r.trygdeNedreGrense) * 0.25);
 }
 
 export function beregnSkatt(gross, r = RATES_2026) {
@@ -78,6 +78,9 @@ export function hvilketTrinn(gross, r = RATES_2026) {
 export const fmt = (n) =>
   new Intl.NumberFormat('nb-NO', { maximumFractionDigits: 0 }).format(Math.round(n));
 
+// Prosent med norsk desimalkomma: 33.6 -> "33,6"
+export const pct = (n) => String(n).replace('.', ',');
+
 // ===================================================================
 // DIZINLENEN MAAŞ SAYFALARI — az sayıda, gerçekten aranan rakamlar.
 // Slug formatı eski siteyle birebir aynı (dizindeki sayfalar korunur).
@@ -96,5 +99,6 @@ export const slugToSalary = (slug) => {
   return m ? parseInt(m[1], 10) : null;
 };
 
-// Gjennomsnittlig årslønn i Norge (SSB, ca. 2025-nivå) — brukes til sammenligning
-export const AVG_SALARY = 695000;
+// Årslønn for heltidsansatte i Norge, SSB 2025 (ekskl. overtid) — brukes til sammenligning
+export const MEDIAN_SALARY = 695640;
+export const AVG_SALARY = 775800;

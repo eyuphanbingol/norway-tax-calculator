@@ -2,8 +2,12 @@ import { SALARY_PAGES, salarySlug } from '../lib/tax';
 import { articles } from '../data/articles';
 import { DOMAIN } from '../lib/constants';
 
+// Sabit tarih: her deploy'da lastmod değişmesin (Google güvenini korur).
+// İçerik gerçekten güncellendiğinde bu tarihi elle ileri al.
+const SITE_UPDATED = new Date('2026-10-08');
+
 export default function sitemap() {
-  const now = new Date();
+  const now = SITE_UPDATED;
   const statics = ['', '/lonn', '/blog', '/om-oss', '/kontakt', '/personvern'].map((r) => ({
     url: `${DOMAIN}${r}`,
     lastModified: now,
@@ -18,7 +22,7 @@ export default function sitemap() {
   }));
   const blog = articles.map((a) => ({
     url: `${DOMAIN}/blog/${a.slug}`,
-    lastModified: now,
+    lastModified: new Date(a.updated || a.date),
     changeFrequency: 'monthly',
     priority: 0.75,
   }));
