@@ -152,3 +152,11 @@ export const slugToMonthly = (slug) => {
   const m = slug.match(/^(\d+)-kr-etter-skatt$/);
   return m ? parseInt(m[1], 10) : null;
 };
+
+// Engelske lønnssider (salary after tax)
+export const EN_SALARY_PAGES = [...range(300000, 1000000, 50000), 1200000, 1500000];
+export const enSalarySlug = (g) => `${g}-nok`;
+export const enSlugToSalary = (slug) => {
+  const m = slug.match(/^(\d+)-nok$/);
+  return m ? parseInt(m[1], 10) : null;
+};

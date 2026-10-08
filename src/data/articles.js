@@ -3,6 +3,41 @@
 
 export const articles = [
   {
+    slug: 'skatteoppgjor-og-restskatt-2026',
+    title: 'Skatteoppgjøret 2026: datoer, restskatt og penger tilbake',
+    description:
+      'Når kommer skatteoppgjøret for 2025, når må restskatten betales, og når får du penger tilbake? Her er reglene og fristene for skatteoppgjøret i 2026.',
+    date: '2026-10-08',
+    body: [
+      { type: 'p', text: 'Skatteoppgjøret viser om du har betalt riktig skatt for fjoråret. Har det blitt trukket for lite gjennom året, får du restskatt. Har det blitt trukket for mye, får du penger tilbake. I 2026 gjelder oppgjøret inntektsåret 2025.' },
+      { type: 'h2', text: 'Når kommer skatteoppgjøret?' },
+      { type: 'p', text: 'Skatteoppgjøret kommer etter at skattemeldingen er levert og kontrollert. Fristen for å levere skattemeldingen var 30. april 2026 for lønnstakere og pensjonister, og 1. juni for næringsdrivende. Mange lønnstakere fikk oppgjøret allerede før sommeren, mens resten sendes ut i puljer utover høsten. Har du ikke fått oppgjøret ennå, kommer det normalt i løpet av oktober eller november.' },
+      { type: 'p', text: 'Det er ikke mulig å få oppgjøret tidligere ved å be om det, og Skatteetaten oppgir ikke datoen for den enkelte på forhånd. Du får varsel når oppgjøret ditt er klart på skatteetaten.no.' },
+      { type: 'h2', text: 'Restskatt: når må den betales?' },
+      { type: 'ul', items: [
+        'Restskatt forfaller tre uker etter at skatteoppgjøret ble sendt til deg, men tidligst 20. august.',
+        'Er restskatten 1 000 kroner eller mer, deles den i to like store terminer. Andre termin forfaller fem uker etter den første.',
+        'Forfallsdatoene og KID-nummeret står på skatteoppgjøret og fakturaen din på skatteetaten.no.',
+        'Betaler du for sent, påløper det forsinkelsesrenter.',
+      ]},
+      { type: 'p', text: 'Restskatt er ikke en bot – det er skatt du skulle betalt i fjor, men som ikke ble trukket. Det kommer også et rentetillegg på restskatten, fordi du har hatt pengene lenger.' },
+      { type: 'h2', text: 'Penger tilbake på skatten' },
+      { type: 'p', text: 'Får du penger tilbake, utbetales de til kontonummeret Skatteetaten har registrert på deg, vanligvis noen dager etter at oppgjøret er klart. Beløpet får et rentetillegg. Tilgodebeløp under 100 kroner utbetales ikke. Sjekk at kontonummeret ditt er riktig på skatteetaten.no.' },
+      { type: 'h2', text: 'Hvorfor får man restskatt?' },
+      { type: 'table', head: ['Årsak', 'Slik unngår du det neste år'], rows: [
+        ['Lønnsøkning eller ny jobb midt i året', 'Endre skattekortet når inntekten endres'],
+        ['Flere arbeidsgivere eller bijobb', 'Sjekk at det trekkes nok på bijobben'],
+        ['Utleie, aksjer eller annen inntekt uten trekk', 'Legg inntekten inn i skattekortet'],
+        ['Fradrag som falt bort, f.eks. nedbetalt lån', 'Oppdater rentene i skattekortet'],
+        ['Feriepenger og sluttoppgjør ved jobbytte', 'Øk trekket litt resten av året'],
+      ]},
+      { type: 'h2', text: 'Kan du fortsatt endre skattemeldingen?' },
+      { type: 'p', text: 'Ja. Du kan endre skattemeldingen etter at oppgjøret er kommet, også flere år tilbake. Har du glemt et fradrag, for eksempel reisefradrag eller fagforeningskontingent, kan du sende en endring på skatteetaten.no. Da får du et nytt oppgjør.' },
+      { type: 'h2', text: 'Unngå restskatt i 2027' },
+      { type: 'p', text: 'Den beste måten å unngå restskatt på er å sjekke skattekortet når det kommer i desember, og å endre det når inntekten din endrer seg. Bruk skattekalkulatoren for å se omtrent hva årsskatten din blir, og sammenlign med trekket på lønnsslippen.' },
+    ],
+  },
+  {
     slug: 'skattekort-2027',
     title: 'Skattekort 2027: når kommer det, og hva bør du sjekke?',
     description:

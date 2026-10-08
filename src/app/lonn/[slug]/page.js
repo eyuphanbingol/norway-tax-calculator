@@ -4,7 +4,7 @@ import Calculator from '../../../components/Calculator';
 import AdSlot from '../../../components/AdSlot';
 import {
   beregnSkatt, marginalskatt, hvilketTrinn, fmt,
-  SALARY_PAGES, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, RATES_2026, pct } from '../../../lib/tax';
+  SALARY_PAGES, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, RATES_2026, pct, EN_SALARY_PAGES } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
 import { articles } from '../../../data/articles';
 
@@ -22,7 +22,12 @@ export async function generateMetadata({ params }) {
   return {
     title: `${fmt(gross)} kr lønn etter skatt 2026 – ${fmt(r.netto)} kr utbetalt`,
     description: `Tjener du ${fmt(gross)} kr i 2026? Da får du utbetalt ca. ${fmt(r.netto)} kr etter skatt (${fmt(r.nettoMnd)} kr/mnd). Se full beregning av trinnskatt, trygdeavgift og fradrag.`,
-    alternates: { canonical: `${DOMAIN}/lonn/${slug}` },
+    alternates: {
+      canonical: `${DOMAIN}/lonn/${slug}`,
+      ...(EN_SALARY_PAGES.includes(gross) && {
+        languages: { 'nb-NO': `${DOMAIN}/lonn/${slug}`, en: `${DOMAIN}/en/salary-after-tax/${gross}-nok` },
+      }),
+    },
   };
 }
 
