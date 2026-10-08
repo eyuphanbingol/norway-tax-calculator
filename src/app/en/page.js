@@ -135,6 +135,12 @@ export default function English() {
           <Link href="/en/paye-scheme-norway">read our PAYE guide</Link>.
         </p>
         <p>
+          More for foreign workers: <Link href="/en/salary-after-tax">salary after tax table</Link>,{' '}
+          <Link href="/en/guides/tax-deduction-card-norway">tax deduction card</Link>,{' '}
+          <Link href="/en/guides/holiday-pay-norway">holiday pay</Link> and{' '}
+          <Link href="/en/guides/tax-return-norway">tax return</Link>.
+        </p>
+        <p>
           Want to see next year? Switch to <strong>2027 (proposal)</strong> in the calculator to use
           the government’s budget proposal for 2027. Norwegian speakers can find more guides on
           our <Link href="/">Norwegian pages</Link>.

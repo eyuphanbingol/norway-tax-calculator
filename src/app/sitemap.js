@@ -1,4 +1,5 @@
-import { SALARY_PAGES, salarySlug, MONTHLY_PAGES, monthlySlug } from '../lib/tax';
+import { SALARY_PAGES, salarySlug, MONTHLY_PAGES, monthlySlug, EN_SALARY_PAGES, enSalarySlug } from '../lib/tax';
+import { guidesEn } from '../data/guides-en';
 import { articles } from '../data/articles';
 import { DOMAIN } from '../lib/constants';
 
@@ -11,7 +12,7 @@ export default function sitemap() {
   const statics = [
     '', '/skattekalkulator-2027', '/verktoy', '/lonn', '/manedslonn', '/timelonn-etter-skatt',
     '/feriepenger-kalkulator', '/reisefradrag-kalkulator', '/del-kalkulatoren', '/blog',
-    '/en', '/en/paye-scheme-norway', '/om-oss', '/kontakt', '/personvern',
+    '/en', '/en/paye-scheme-norway', '/en/salary-after-tax', '/om-oss', '/kontakt', '/personvern',
   ].map((r) => ({
     url: `${DOMAIN}${r}`,
     lastModified: now,
@@ -36,5 +37,9 @@ export default function sitemap() {
     changeFrequency: 'monthly',
     priority: 0.7,
   }));
-  return [...statics, ...salaries, ...monthly, ...blog];
+  const en = [
+    ...EN_SALARY_PAGES.map((g) => `/en/salary-after-tax/${enSalarySlug(g)}`),
+    ...guidesEn.map((x) => `/en/guides/${x.slug}`),
+  ].map((r) => ({ url: `${DOMAIN}${r}`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 }));
+  return [...statics, ...salaries, ...monthly, ...blog, ...en];
 }
