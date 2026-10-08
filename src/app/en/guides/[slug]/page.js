@@ -3,7 +3,7 @@ import Link from 'next/link';
 import AdSlot from '../../../../components/AdSlot';
 import Block from '../../../../components/ArticleBlock';
 import { guidesEn, getGuideEn } from '../../../../data/guides-en';
-import { DOMAIN } from '../../../../lib/constants';
+import { DOMAIN, AUTHOR } from '../../../../lib/constants';
 
 export const dynamicParams = false;
 
@@ -34,7 +34,7 @@ export default async function GuidePage({ params }) {
     description: g.description,
     inLanguage: 'en',
     datePublished: g.date,
-    author: { '@type': 'Organization', name: 'Skattekalkulator Norge' },
+    author: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
     mainEntityOfPage: `${DOMAIN}/en/guides/${g.slug}`,
   };
   const mid = Math.floor(g.body.length / 2);
@@ -45,7 +45,7 @@ export default async function GuidePage({ params }) {
         <Link href="/en" className="hover:underline">Norway Tax Calculator</Link>{' / '}Guides
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{g.title}</h1>
-      <p className="text-sm text-fjord/50 mb-8">Updated 8 October 2026 · 2026 rules</p>
+      <p className="text-sm text-fjord/50 mb-8">By <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Updated 8 October 2026 · 2026 rules</p>
       <article className="prose-no">
         {g.body.slice(0, mid).map((b, i) => <Block key={i} b={b} />)}
         <AdSlot type="content" />

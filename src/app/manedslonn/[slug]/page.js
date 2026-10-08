@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Calculator from '../../../components/Calculator';
 import AdSlot from '../../../components/AdSlot';
 import {
-  beregnSkatt, marginalskatt, fmt, pct, MONTHLY_PAGES, monthlySlug, slugToMonthly, SALARY_PAGES, salarySlug,
+  beregnSkatt, marginalskatt, fmt, pct, MONTHLY_PAGES, monthlySlug, slugToMonthly, SALARY_PAGES, salarySlug, RATES_2027_FORSLAG,
 } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
 
@@ -34,6 +34,8 @@ export default async function MonthlyPage({ params }) {
   const r = beregnSkatt(aar);
   const marginal = marginalskatt(aar);
   const trekk = r.totalSkatt / 10.5;
+  const raises = [1000, 2500, 5000].map((d) => ({ d, n: (beregnSkatt((m + d) * 12).netto - r.netto) / 12 }));
+  const r27 = beregnSkatt(aar, RATES_2027_FORSLAG);
   const idx = MONTHLY_PAGES.indexOf(m);
   const prev = idx > 0 ? MONTHLY_PAGES[idx - 1] : null;
   const next = idx < MONTHLY_PAGES.length - 1 ? MONTHLY_PAGES[idx + 1] : null;
@@ -94,6 +96,20 @@ export default async function MonthlyPage({ params }) {
             <tr><td><strong>Utbetalt</strong></td><td><strong>{fmt(r.netto)} kr</strong></td><td><strong>{fmt(r.nettoMnd)} kr</strong></td></tr>
           </tbody>
         </table>
+        <h2>Hva er et lønnstillegg verdt?</h2>
+        <table>
+          <thead><tr><th>Tillegg per måned</th><th>Mer utbetalt per måned (snitt)</th></tr></thead>
+          <tbody>
+            {raises.map((x) => (
+              <tr key={x.d}><td>+{fmt(x.d)} kr</td><td>{fmt(x.n)} kr</td></tr>
+            ))}
+          </tbody>
+        </table>
+        <p>
+          I 2027 blir skatten på samme lønn ca. {fmt((r.totalSkatt - r27.totalSkatt) / 12)} kr lavere per
+          måned med regjeringens forslag til statsbudsjett (ikke vedtatt ennå) – se{' '}
+          <Link href="/skattekalkulator-2027">skattekalkulatoren for 2027</Link>.
+        </p>
         <p>
           Marginalskatten din er <strong>{pct(marginal)} prosent</strong>: av en lønnsøkning på 1 000 kr i
           måneden sitter du igjen med ca. {fmt(1000 - marginal * 10)} kr. Se også{' '}
