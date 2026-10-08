@@ -3,6 +3,34 @@
 
 export const articles = [
   {
+    slug: 'skattetabell-2026-tabelltrekk',
+    title: 'Skattetabell 2026: tabelltrekk, prosenttrekk og skattekort forklart',
+    description:
+      'Hva betyr tabellnummeret på skattekortet, hvorfor er juni trekkfri og desember halvt trekk, og når brukes prosenttrekk? Slik fungerer skattetabellene i 2026.',
+    date: '2026-10-08',
+    body: [
+      { type: 'p', text: 'Mange søker etter «skattetabell» når de vil vite hvor mye skatt som trekkes av lønnen. Skattetabellen avgjør det månedlige forskuddstrekket – men den endelige skatten din beregnes først i skatteoppgjøret. Her er hvordan systemet henger sammen.' },
+      { type: 'h2', text: 'Skattekortet: tabelltrekk eller prosenttrekk' },
+      { type: 'p', text: 'Skatteetaten lager et skattekort for alle som har inntekt. Arbeidsgiveren henter det digitalt, og du trenger ikke levere det selv. Skattekortet sier hvordan arbeidsgiveren skal trekke skatt: enten etter en skattetabell (tabelltrekk) eller med en fast prosent (prosenttrekk). Har du tabelltrekk, står det også en prosentsats på skattekortet, som brukes på utbetalinger som ikke passer inn i tabellen.' },
+      { type: 'h2', text: 'Tabelltrekk: hva betyr tabellnummeret?' },
+      { type: 'p', text: 'Tabellnummeret bestemmer hvor mye som trekkes av en gitt lønn. Skatteetaten velger tabell ut fra blant annet forventet inntekt og fradrag, som renter på lån. Ulike tabellnummer gir altså ulikt trekk for samme lønn. Det riktige nummeret for deg står på skattekortet ditt på skatteetaten.no – det kan ikke regnes ut nøyaktig med en vanlig kalkulator.' },
+      { type: 'h2', text: 'Derfor er juni trekkfri og desember halvt trekk' },
+      { type: 'p', text: 'Skattetabellene er laget slik at årets skatt trekkes over ti og en halv måned. Trekket i de vanlige månedene er derfor litt høyere enn om skatten var fordelt på tolv måneder. Til gjengjeld trekkes det normalt ikke skatt i juni, da feriepengene utbetales, og bare halvt trekk i desember.' },
+      { type: 'table', head: ['Måned', 'Vanlig trekk med tabellkort'], rows: [
+        ['Januar–mai, juli–november', 'Fullt tabelltrekk'],
+        ['Juni (feriepenger)', 'Normalt ikke trekk'],
+        ['Desember', 'Halvt trekk'],
+      ]},
+      { type: 'p', text: 'Utbetaler arbeidsgiveren feriepenger i en annen måned, eller har du ikke opptjent fulle feriepenger, kan det slå annerledes ut. Det er derfor nettolønnen i kalkulatoren vår er et snitt per måned over året.' },
+      { type: 'h2', text: 'Prosenttrekk' },
+      { type: 'p', text: 'Med prosenttrekk trekkes en fast prosent av alt du får utbetalt. Det er vanlig for biinntekter og for utbetalinger som bonus og etterbetaling. Prosenten står på skattekortet ditt. Har arbeidsgiveren ikke fått skattekort for deg, skal det trekkes 50 prosent i skatt.' },
+      { type: 'h2', text: 'Stemmer trekket med det du faktisk skal betale?' },
+      { type: 'p', text: 'Skattekortet er et anslag. Endrer inntekten din seg mye, eller får du nye fradrag – for eksempel boliglån eller lengre reisevei – bør du endre skattekortet på skatteetaten.no. For lite trekk gir restskatt, for mye trekk gir penger tilbake etter skatteoppgjøret. Du kan når som helst sammenligne trekket på lønnsslippen med det kalkulatoren vår viser for årslønnen din.' },
+      { type: 'h2', text: 'Skattekort for 2027' },
+      { type: 'p', text: 'Skattekortet for 2027 kommer i desember 2026, etter at Stortinget har vedtatt skattesatsene. Vil du se hva regjeringens forslag betyr for deg allerede nå, kan du bruke skattekalkulatoren for 2027.' },
+    ],
+  },
+  {
     slug: 'skatteendringer-2026-guide',
     title: 'Skatteendringer 2026: alt som er nytt for lønnsmottakere',
     description:
@@ -189,7 +217,7 @@ export const articles = [
   },
   {
     slug: 'marginalskatt-2026',
-    title: 'Marginalskatt 2026: hvor mye sitter du igjen med av en lønnsøkning?',
+    title: 'Marginalskatt 2026: tabell for alle inntekter og hva du beholder av lønnsøkningen',
     description:
       'Får du 20 000 kr i lønnsøkning, ser du kanskje bare halvparten på kontoen. Slik beregner du marginalskatten din i 2026 – tabell for alle inntektsnivåer.',
     date: '2026-03-01',

@@ -3,7 +3,7 @@ import { SALARY_PAGES, salarySlug, beregnSkatt, fmt, pct } from '../../lib/tax';
 import { DOMAIN } from '../../lib/constants';
 
 export const metadata = {
-  title: 'Lønn etter skatt-tabell 2026: alle lønnsnivåer',
+  title: 'Skattekalkulator-tabell 2026: lønn etter skatt per år og måned',
   description: 'Komplett tabell over lønn etter skatt i 2026, fra 300 000 til 2 000 000 kr. Se netto årslønn, månedslønn og skatteprosent for hvert nivå.',
   alternates: { canonical: `${DOMAIN}/lonn` },
 };
@@ -14,7 +14,11 @@ export default function LonnIndex() {
       <h1 className="display text-3xl font-extrabold mb-2">Lønn etter skatt 2026 – tabell</h1>
       <p className="text-fjord/80 mb-8">
         Oversikten viser hva ulike årslønner gir utbetalt med 2026-satsene og standard fradrag.
-        Klikk på et lønnsnivå for full beregning, marginalskatt og fradragstips.
+        Klikk på et lønnsnivå for full beregning, marginalskatt og fradragstips. Leter du etter
+        skattetabellen som styrer trekket på lønnsslippen?{' '}
+        <Link href="/blog/skattetabell-2026-tabelltrekk" className="text-netto underline">
+          Les om tabelltrekk og skattekort
+        </Link>.
       </p>
       <div className="bg-white border border-mist rounded-2xl overflow-hidden">
         <table className="w-full text-sm">

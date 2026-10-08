@@ -23,6 +23,27 @@ export const RATES_2026 = {
   ],
 };
 
+// Regjeringens forslag til statsbudsjett 2027 (lagt fram 7.10.2026).
+// IKKE vedtatt – Stortinget vedtar endelige satser i desember 2026.
+// Kilde: regjeringen.no «Skattesatser 2027», Prop. 1 LS (2026–2027).
+export const RATES_2027_FORSLAG = {
+  alminnelig: 0.22,
+  trygdeavgift: 0.074,
+  trygdeNedreGrense: 99650,
+  minstefradragSats: 0.46,
+  minstefradragMaks: 99550,
+  personfradrag: 120180,
+  trinnskatt: [
+    { over: 235150, sats: 0.017 },
+    { over: 331050, sats: 0.04 },
+    { over: 754050, sats: 0.137 },
+    { over: 1019300, sats: 0.168 },
+    { over: 1525900, sats: 0.178 },
+  ],
+};
+
+export const RATES = { 2026: RATES_2026, 2027: RATES_2027_FORSLAG };
+
 export function beregnTrinnskatt(gross, r = RATES_2026) {
   let sum = 0;
   const t = r.trinnskatt;

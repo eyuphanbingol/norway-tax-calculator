@@ -29,6 +29,10 @@ h1, h2, h3, .display { font-family: var(--font-display); letter-spacing: -0.02em
 .prose-no ul { margin: 0 0 1rem 1.25rem; list-style: disc; line-height: 1.7; color: #27454f; }
 .prose-no li { margin-bottom: 0.35rem; }
 .prose-no a { color: var(--color-netto); text-decoration: underline; }
+@media (max-width: 640px) {
+  .prose-no table { display: block; overflow-x: auto; font-size: 0.875rem; }
+  .prose-no th, .prose-no td { padding: 0.45rem 0.5rem; }
+}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

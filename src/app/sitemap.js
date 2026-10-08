@@ -8,7 +8,7 @@ const SITE_UPDATED = new Date('2026-10-08');
 
 export default function sitemap() {
   const now = SITE_UPDATED;
-  const statics = ['', '/lonn', '/blog', '/om-oss', '/kontakt', '/personvern'].map((r) => ({
+  const statics = ['', '/skattekalkulator-2027', '/lonn', '/blog', '/en', '/en/paye-scheme-norway', '/om-oss', '/kontakt', '/personvern'].map((r) => ({
     url: `${DOMAIN}${r}`,
     lastModified: now,
     changeFrequency: 'weekly',
