@@ -47,6 +47,7 @@ export default async function ArticlePage({ params }) {
     headline: a.title,
     description: a.description,
     datePublished: a.date,
+    dateModified: a.updated || a.date,
     author: { '@type': 'Organization', name: 'Skattekalkulator Norge' },
     mainEntityOfPage: `${DOMAIN}/blog/${a.slug}`,
   };
@@ -61,7 +62,7 @@ export default async function ArticlePage({ params }) {
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{a.title}</h1>
       <p className="text-sm text-fjord/50 mb-8">
-        Oppdatert {new Date(a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · 2026-satser
+        Oppdatert {new Date(a.updated || a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · 2026-satser
       </p>
       <article className="prose-no">
         {a.body.slice(0, mid).map((b, i) => <Block key={i} b={b} />)}

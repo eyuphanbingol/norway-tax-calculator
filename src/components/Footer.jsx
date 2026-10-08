@@ -14,6 +14,7 @@ export default function Footer() {
             <li><Link href="/lonn" className="hover:text-white">Lønn etter skatt-tabell</Link></li>
             <li><Link href="/blog" className="hover:text-white">Guider og artikler</Link></li>
             <li><Link href="/blog/trinnskatt-2026" className="hover:text-white">Trinnskatt 2026</Link></li>
+            <li><Link href="/blog/skatteendringer-2026-guide" className="hover:text-white">Skatteendringer 2026</Link></li>
           </ul>
         </div>
         <div>

@@ -12,6 +12,7 @@ export default function Header() {
           <Link href="/lonn" className="hover:text-white">Lønnstabell</Link>
           <Link href="/blog" className="hover:text-white">Guider</Link>
           <Link href="/om-oss" className="hover:text-white">Om oss</Link>
+          <Link href="/kontakt" className="hover:text-white">Kontakt</Link>
         </nav>
       </div>
     </header>

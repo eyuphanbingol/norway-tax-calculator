@@ -3,11 +3,70 @@
 
 export const articles = [
   {
+    slug: 'skatteendringer-2026-guide',
+    title: 'Skatteendringer 2026: alt som er nytt for lønnsmottakere',
+    description:
+      'Lavere trygdeavgift, høyere personfradrag og minstefradrag, nytt reisefradrag, høyere IPS-grense og arbeidsfradrag for unge. Her er skatteendringene for 2026 samlet på ett sted.',
+    date: '2026-01-10',
+    body: [
+      { type: 'p', text: 'Stortinget vedtok skattereglene for 2026 i desember 2025. For de fleste lønnsmottakere betyr endringene litt lavere skatt enn i 2025, særlig fordi personfradraget og minstefradraget er økt mer enn vanlig. Her er endringene som påvirker vanlig lønnsinntekt.' },
+      { type: 'h2', text: 'Endringene i tall' },
+      { type: 'table', head: ['Sats', '2025', '2026'], rows: [
+        ['Trygdeavgift på lønn', '7,7 %', '7,6 %'],
+        ['Personfradrag', '108 550 kr', '114 540 kr'],
+        ['Minstefradrag, øvre grense', '92 000 kr', '95 700 kr'],
+        ['Trinnskatt trinn 1 fra', '217 400 kr', '226 100 kr'],
+        ['Trinnskatt trinn 4, sats', '16,7 %', '16,8 %'],
+        ['Trinnskatt trinn 5, sats', '17,7 %', '17,8 %'],
+        ['Reisefradrag, kilometersats', '1,83 kr', '1,90 kr'],
+        ['Reisefradrag, egenandel', '15 250 kr', '12 000 kr'],
+        ['IPS, maks innskudd med fradrag', '15 000 kr', '25 000 kr'],
+      ]},
+      { type: 'p', text: 'Skatten på alminnelig inntekt er uendret på 22 prosent, og satsene i trinn 1–3 i trinnskatten er også uendret. Innslagspunktene i trinnskatten er justert opp med rundt 4 prosent.' },
+      { type: 'h2', text: 'Hva betyr det for lønnen din?' },
+      { type: 'p', text: 'Den største effekten for de fleste kommer fra personfradraget. Økningen på 5 990 kr gir 22 prosent lavere skatt av beløpet – rundt 1 300 kr i året for alle som har inntekt over personfradraget. Høyere minstefradrag gir i tillegg inntil om lag 800 kr, og lavere trygdeavgift gir 0,1 prosent av bruttolønnen, for eksempel 600 kr på en lønn på 600 000 kr.' },
+      { type: 'p', text: 'Har du høy inntekt, motvirkes noe av dette av at satsen i trinn 4 og 5 er økt med 0,1 prosentpoeng. Den høyeste marginalskatten på lønn er likevel uendret på 47,4 prosent, fordi trygdeavgiften går ned like mye som trinnskatten går opp.' },
+      { type: 'h2', text: 'Nytt reisefradrag' },
+      { type: 'p', text: 'Pendlere får en merkbar forbedring: egenandelen er redusert fra 15 250 til 12 000 kr, kilometersatsen er økt til 1,90 kr og øvre grense er hevet til 120 000 kr. Flere enn før vil dermed få reisefradrag. Les regneeksempelet i guiden om fradragene mange glemmer.' },
+      { type: 'h2', text: 'Arbeidsfradrag for unge' },
+      { type: 'p', text: 'Fra 2026 gjennomføres et forsøk der rundt 100 000 tilfeldig uttrukne personer født 1991–2006 får et ekstra fradrag på inntil 125 000 kr i arbeidsinntekt. Det kan gi inntil 27 500 kr lavere skatt i året. Uttrekket skjer automatisk – du kan ikke søke.' },
+      { type: 'h2', text: 'Sjekk skattekortet ditt' },
+      { type: 'p', text: 'Skattekortet for 2026 er beregnet med de nye satsene. Har inntekten din endret seg mye, eller har du fått nye fradrag, bør du endre skattekortet på skatteetaten.no for å unngå restskatt. Vil du se hva endringene betyr for akkurat din lønn, kan du bruke kalkulatoren på forsiden.' },
+    ],
+  },
+  {
+    slug: 'hvordan-fungerer-skattesystemet-i-norge',
+    title: 'Hvordan fungerer skattesystemet i Norge? En enkel forklaring',
+    description:
+      'Alminnelig inntekt, personinntekt, trygdeavgift, trinnskatt, skattekort og skatteoppgjør – her er en enkel forklaring av hvordan inntektsskatten i Norge fungerer i 2026.',
+    date: '2026-01-12',
+    body: [
+      { type: 'p', text: 'Det norske skattesystemet kan virke komplisert, men for en vanlig lønnsmottaker bygger det på noen få grunnprinsipper. Skatten beregnes av to ulike inntektsbegreper – alminnelig inntekt og personinntekt – og det er forskjellen mellom dem som forklarer hvorfor fradrag påvirker noen deler av skatten, men ikke andre.' },
+      { type: 'h2', text: 'To grunnlag: personinntekt og alminnelig inntekt' },
+      { type: 'p', text: 'Personinntekt er bruttolønnen din (og for eksempel sykepenger og pensjon) før fradrag. Den danner grunnlaget for trygdeavgift og trinnskatt. Alminnelig inntekt er alle skattepliktige inntekter, inkludert kapitalinntekter, minus fradrag som minstefradrag, rentefradrag og reisefradrag. Den skattlegges med en flat sats.' },
+      { type: 'h2', text: 'De tre skattene på lønn' },
+      { type: 'table', head: ['Skatt', 'Grunnlag', 'Sats 2026'], rows: [
+        ['Skatt på alminnelig inntekt', 'Inntekt minus fradrag og personfradrag', '22 %'],
+        ['Trygdeavgift', 'Personinntekt (bruttolønn)', '7,6 %'],
+        ['Trinnskatt', 'Personinntekt over 226 100 kr', '1,7–17,8 %'],
+      ]},
+      { type: 'p', text: 'Skatten på alminnelig inntekt fordeles mellom kommunen, fylket og staten, men for deg som skattyter er det én sats. Trygdeavgiften finansierer folketrygden – blant annet pensjon, sykepenger og foreldrepenger. Trinnskatten er den progressive delen som gjør at høyere inntekter betaler en større andel i skatt.' },
+      { type: 'h2', text: 'Fradragene alle får automatisk' },
+      { type: 'p', text: 'Alle lønnsmottakere får minstefradrag (46 prosent av lønnen, maks 95 700 kr i 2026) og personfradrag (114 540 kr). Begge trekkes fra i alminnelig inntekt. Andre fradrag – som renter på lån, fagforeningskontingent og reiser mellom hjem og jobb – kommer i tillegg, og flere av dem må du selv kontrollere i skattemeldingen.' },
+      { type: 'h2', text: 'Skattekort, forskuddstrekk og skatteoppgjør' },
+      { type: 'p', text: 'Skatten betales løpende gjennom året ved at arbeidsgiveren trekker skatt av lønnen etter skattekortet ditt. Skattekortet er et anslag laget av Skatteetaten. Våren etter inntektsåret leverer du skattemeldingen, og skatteoppgjøret viser om du har betalt for mye (penger tilbake) eller for lite (restskatt).' },
+      { type: 'h2', text: 'Et enkelt regneeksempel' },
+      { type: 'p', text: 'Med 600 000 kr i årslønn og bare standardfradrag blir alminnelig inntekt 600 000 − 95 700 − 114 540 = 389 760 kr, som gir 85 747 kr i skatt. Trygdeavgiften er 7,6 prosent av 600 000 kr, altså 45 600 kr, og trinnskatten 12 835 kr. Til sammen blir det rundt 144 200 kr i skatt, eller 24 prosent av lønnen.' },
+      { type: 'p', text: 'Formuesskatt, skatt på aksjer og regler for selvstendig næringsdrivende kommer i tillegg for dem det gjelder, men for de fleste lønnsmottakere er det disse tre skattene som avgjør hva som kommer inn på konto.' },
+    ],
+  },
+  {
     slug: 'trinnskatt-2026',
     title: 'Trinnskatt 2026: satser, innslagspunkter og hva du faktisk betaler',
     description:
       'Trinnskatten for 2026 har fem trinn fra 1,7 til 17,8 prosent. Se innslagspunktene, hvordan den beregnes trinn for trinn, og et konkret regneeksempel.',
     date: '2026-01-15',
+    updated: '2026-10-08',
     body: [
       { type: 'p', text: 'Trinnskatt er den progressive delen av inntektsskatten i Norge. Den beregnes av brutto personinntekt – altså lønnen din før noen fradrag – og kommer på toppen av skatten på alminnelig inntekt og trygdeavgiften. Jo mer du tjener, jo høyere sats betaler du på den øverste delen av inntekten.' },
       { type: 'h2', text: 'Satsene for 2026' },
@@ -18,7 +77,8 @@ export const articles = [
         ['Trinn 4', '980 100 kr', '16,8 %'],
         ['Trinn 5', '1 467 200 kr', '17,8 %'],
       ]},
-      { type: 'p', text: 'Satsene er uendret fra 2025, men innslagspunktene er justert opp med forventet lønnsvekst. Det betyr at du ikke rykker opp et trinn bare fordi lønnen din har fulgt den generelle lønnsveksten.' },
+      { type: 'p', text: 'Satsene i trinn 1–3 er uendret fra 2025, mens trinn 4 og 5 er økt med 0,1 prosentpoeng (fra 16,7 og 17,7 prosent). Samtidig er alle innslagspunktene justert opp med rundt 4 prosent, i tråd med forventet lønnsvekst. Det betyr at du ikke rykker opp et trinn bare fordi lønnen din har fulgt den generelle lønnsveksten.' },
+      { type: 'p', text: 'Bor du i Finnmark eller Nord-Troms, gjelder egne regler: blant annet er skatten på alminnelig inntekt 18,5 prosent i stedet for 22, og trinn 3 har lavere sats. Sjekk satsene for tiltakssonen hos Skatteetaten.' },
       { type: 'h2', text: 'Slik beregnes trinnskatten – vanlig misforståelse' },
       { type: 'p', text: 'Mange tror at hele inntekten skattlegges med den høyeste satsen når man passerer et innslagspunkt. Det stemmer ikke. Du betaler kun den høyere satsen på delen av inntekten som overstiger innslagspunktet. Tjener du 320 000 kr, betaler du 4 prosent bare av de siste 1 700 kronene – ikke av hele lønnen.' },
       { type: 'h2', text: 'Regneeksempel: 600 000 kr i årslønn' },
@@ -63,6 +123,7 @@ export const articles = [
     description:
       'I 2026 starter en forsøksordning der 100 000 tilfeldig utvalgte unge får et arbeidsfradrag på inntil 125 000 kr. Se hvem som kan bli trukket ut, og hvor mye det er verdt.',
     date: '2026-02-01',
+    updated: '2026-10-08',
     body: [
       { type: 'p', text: 'Fra inntektsåret 2026 innføres en av de mest uvanlige skatteordningene i norsk historie: et arbeidsfradrag for unge som tildeles ved loddtrekning. Ordningen er en femårig forsøksordning som skal måle om lavere skatt får flere unge i arbeid – og den har allerede fått kallenavnet «skattelotteriet».' },
       { type: 'h2', text: 'Hvem kan bli trukket ut?' },
@@ -73,8 +134,8 @@ export const articles = [
         'Fradraget gjelder kun arbeids- og næringsinntekt, ikke trygdeytelser',
       ]},
       { type: 'h2', text: 'Hvor mye er fradraget verdt?' },
-      { type: 'p', text: 'Fradraget gis i alminnelig inntekt med inntil 125 000 kr. Siden skattesatsen på alminnelig inntekt er 22 prosent, betyr det inntil 27 500 kr mindre skatt i året. Full effekt får du med en arbeidsinntekt rundt 345 000 kr.' },
-      { type: 'p', text: 'Over dette nivået trappes fradraget gradvis ned, og ved en inntekt på 657 500 kr er det helt borte. Ordningen er altså mest verdt for unge med lav og middels inntekt – studenter med deltidsjobb, lærlinger og folk tidlig i karrieren.' },
+      { type: 'p', text: 'Fradraget gis i alminnelig inntekt med inntil 125 000 kr. Siden skattesatsen på alminnelig inntekt er 22 prosent, betyr det inntil 27 500 kr mindre skatt i året. Fullt fradrag gis for inntekter opp til 345 000 kr.' },
+      { type: 'p', text: 'Over dette nivået reduseres fradraget med 40 prosent av inntekten over 345 000 kr, og ved en inntekt på rundt 657 500 kr er det helt borte. Ordningen er altså mest verdt for unge med lav og middels inntekt – studenter med deltidsjobb, lærlinger og folk tidlig i karrieren.' },
       { type: 'h2', text: 'Hva bør du gjøre hvis du blir trukket ut?' },
       { type: 'p', text: 'Ingenting – fradraget legges automatisk inn i skattekortet og skattemeldingen din. Men det kan være lurt å sjekke skattekortet for 2026 hvis du er i målgruppen: blir du trukket ut, får du lavere trekk gjennom året, og da bør resten av økonomien din ta høyde for at dette er en midlertidig ordning.' },
       { type: 'h2', text: 'Hvorfor loddtrekning?' },
@@ -112,6 +173,7 @@ export const articles = [
     description:
       'Minstefradraget er inntil 95 700 kr og personfradraget 114 540 kr i 2026. Slik virker de to automatiske fradragene som bestemmer hvor mye skatt du betaler.',
     date: '2026-02-20',
+    updated: '2026-10-08',
     body: [
       { type: 'p', text: 'To fradrag får absolutt alle lønnsmottakere i Norge, helt automatisk: minstefradraget og personfradraget. Sammen sørger de for at en god del av inntekten din aldri blir skattlagt med 22-prosentsatsen. For 2026 er begge økt.' },
       { type: 'h2', text: 'Minstefradraget: 46 prosent, maks 95 700 kr' },
@@ -122,7 +184,7 @@ export const articles = [
       { type: 'h2', text: 'Hva betyr dette i praksis?' },
       { type: 'p', text: 'For en lønn på 500 000 kr ser regnestykket for alminnelig inntekt slik ut: 500 000 − 95 700 (minstefradrag) − 114 540 (personfradrag) = 289 760 kr i grunnlag. Av dette betaler du 22 prosent: 63 747 kr. Uten de to fradragene ville skatten på alminnelig inntekt vært 110 000 kr – fradragene sparer deg altså for over 46 000 kr.' },
       { type: 'h2', text: 'Viktig begrensning' },
-      { type: 'p', text: 'Ingen av disse fradragene reduserer trygdeavgiften (7,6 prosent) eller trinnskatten – de beregnes av bruttolønnen. Det er derfor selv lave inntekter betaler noe skatt: trygdeavgiften slår inn allerede fra rundt 100 000 kr (frikortgrensen).' },
+      { type: 'p', text: 'Ingen av disse fradragene reduserer trygdeavgiften (7,6 prosent) eller trinnskatten – de beregnes av bruttolønnen. Det er derfor selv lave inntekter betaler noe skatt: trygdeavgiften slår inn når inntekten passerer 99 650 kr (nedre grense for trygdeavgift), med en mildere opptrapping rett over grensen.' },
     ],
   },
   {
@@ -131,20 +193,21 @@ export const articles = [
     description:
       'Får du 20 000 kr i lønnsøkning, ser du kanskje bare halvparten på kontoen. Slik beregner du marginalskatten din i 2026 – tabell for alle inntektsnivåer.',
     date: '2026-03-01',
+    updated: '2026-10-08',
     body: [
       { type: 'p', text: 'Marginalskatt er skatten du betaler på den siste kronen du tjener – og dermed på hele lønnsøkningen din. Den er alltid høyere enn gjennomsnittsskatten, og det er den som avgjør hva en bonus, overtid eller et lønnshopp faktisk er verdt for deg.' },
       { type: 'h2', text: 'Slik settes marginalskatten sammen' },
       { type: 'p', text: 'For lønnsinntekt består marginalskatten av tre deler: 22 prosent skatt på alminnelig inntekt, 7,6 prosent trygdeavgift, og trinnskatten for ditt inntektsnivå. Fordi minstefradraget har nådd taket for vanlige lønninger, gir hver ekstra krone fullt utslag i alle tre.' },
       { type: 'h2', text: 'Marginalskatt per inntektsnivå i 2026' },
       { type: 'table', head: ['Årslønn', 'Trinnskattsats', 'Marginalskatt'], rows: [
-        ['Under 226 100 kr', '0 %', '29,6 %'],
+        ['210 300 – 226 100 kr', '0 %', '29,6 %'],
         ['226 100 – 318 300 kr', '1,7 %', '31,3 %'],
         ['318 300 – 725 050 kr', '4,0 %', '33,6 %'],
         ['725 050 – 980 100 kr', '13,7 %', '43,3 %'],
         ['980 100 – 1 467 200 kr', '16,8 %', '46,4 %'],
         ['Over 1 467 200 kr', '17,8 %', '47,4 %'],
       ]},
-      { type: 'p', text: 'Maksimal marginalskatt på lønn i 2026 er altså 47,4 prosent. Selv på de høyeste inntektene sitter du igjen med over halvparten av en lønnsøkning – men bare så vidt.' },
+      { type: 'p', text: 'Under cirka 210 000 kr dekker minstefradraget og personfradraget hele den alminnelige inntekten, slik at du i praksis bare betaler trygdeavgift – marginalskatten er da lavere enn i tabellen. Maksimal marginalskatt på lønn i 2026 er 47,4 prosent. Selv på de høyeste inntektene sitter du igjen med over halvparten av en lønnsøkning – men bare så vidt.' },
       { type: 'h2', text: 'Eksempel: lønnsøkning fra 700 000 til 730 000 kr' },
       { type: 'p', text: 'Denne økningen krysser innslagspunktet for trinn 3 på 725 050 kr. De første 25 050 kronene skattlegges med 33,6 prosent marginalskatt, de siste 4 950 med 43,3 prosent. Av 30 000 kr i økning sitter du igjen med cirka 19 450 kr. Verdt å vite før lønnsforhandlingen – men aldri et argument mot høyere lønn: du taper aldri penger på å tjene mer i Norge.' },
       { type: 'h2', text: 'Overtid og bonus' },

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Calculator from '../components/Calculator';
 import AdSlot from '../components/AdSlot';
-import { RATES_2026, fmt, SALARY_PAGES, salarySlug, beregnSkatt } from '../lib/tax';
+import { RATES_2026, fmt, SALARY_PAGES, salarySlug, beregnSkatt, pct } from '../lib/tax';
 import { DOMAIN } from '../lib/constants';
 
 export const metadata = {
@@ -26,7 +26,7 @@ const faq = [
   },
   {
     q: 'Hva er marginalskatt?',
-    a: 'Marginalskatt er skatten på den siste kronen du tjener – altså det en lønnsøkning skattlegges med. I 2026 varierer den fra 29,6 prosent på lave inntekter til maksimalt 47,4 prosent på inntekt over 1 467 200 kr.',
+    a: 'Marginalskatt er skatten på den siste kronen du tjener – altså det en lønnsøkning skattlegges med. For vanlige heltidslønner i 2026 ligger den mellom 33,6 prosent (318 300–725 050 kr) og maksimalt 47,4 prosent på inntekt over 1 467 200 kr.',
   },
 ];
 
@@ -68,8 +68,8 @@ export default function Home() {
             Lønn etter skatt <span className="text-krone">2026</span>
           </h1>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Skriv inn årslønnen din og se nøyaktig hva du får utbetalt – med de vedtatte
-            skattesatsene for 2026.
+            Skriv inn årslønnen din og se hva du får utbetalt – beregnet med skattesatsene
+            Stortinget har vedtatt for 2026.
           </p>
         </div>
       </section>
@@ -117,9 +117,13 @@ export default function Home() {
           fem trinn fra 1,7 til 17,8 prosent som bare beregnes av inntekt over innslagspunktene.
         </p>
         <p>
+          Bor du i Finnmark eller Nord-Troms, er skatten på alminnelig inntekt 18,5 prosent i
+          stedet for 22, og kalkulatoren vil da vise litt for høy skatt.
+        </p>
+        <p>
           For en årslønn på 600 000 kr blir totalen {fmt(example.totalSkatt)} kr i skatt – en
-          effektiv skattesats på {example.skattProsent} prosent – og {fmt(example.netto)} kr
-          utbetalt, eller {fmt(example.nettoMnd)} kr i måneden. Les mer om{' '}
+          effektiv skattesats på {pct(example.skattProsent)} prosent – og {fmt(example.netto)} kr
+          utbetalt, eller {fmt(example.nettoMnd)} kr i måneden i snitt. Les mer om{' '}
           <Link href="/blog/trinnskatt-2026">hvordan trinnskatten fungerer</Link> og{' '}
           <Link href="/blog/marginalskatt-2026">hva en lønnsøkning faktisk er verdt</Link>.
         </p>
@@ -128,7 +132,8 @@ export default function Home() {
           <li>Trygdeavgiften på lønn er redusert fra 7,7 til 7,6 prosent</li>
           <li>Personfradraget er økt fra 108 550 til 114 540 kr</li>
           <li>Minstefradragets tak er hevet til 95 700 kr</li>
-          <li>Reisefradraget er kraftig utvidet: sats 1,90 kr/km og tak 120 000 kr</li>
+          <li>Reisefradraget er kraftig utvidet: 1,90 kr/km, egenandel ned til 12 000 kr og tak 120 000 kr</li>
+          <li>Trinn 4 og 5 i trinnskatten er økt med 0,1 prosentpoeng til 16,8 og 17,8 prosent</li>
           <li>
             100 000 tilfeldig utvalgte unge får{' '}
             <Link href="/blog/arbeidsfradrag-for-unge-2026">arbeidsfradrag på inntil 125 000 kr</Link>

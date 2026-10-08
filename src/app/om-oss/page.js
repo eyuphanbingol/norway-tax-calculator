@@ -15,6 +15,16 @@ export default function OmOss() {
       <p>Kalkulatoren bruker skattesatsene vedtatt av Stortinget for inntektsåret 2026: 22 prosent skatt på alminnelig inntekt, trygdeavgift på 7,6 prosent, minstefradrag på inntil 95 700 kr, personfradrag på 114 540 kr og trinnskattens fem trinn. Beregningene forutsetter standard fradrag for en vanlig lønnsmottaker og er kvalitetssikret mot offisielle regneeksempler.</p>
       <h2>Hva kalkulatoren ikke dekker</h2>
       <p>Individuelle forhold som rentefradrag, pendlerfradrag, formuesskatt, særfradrag og næringsinntekt inngår ikke i standardberegningen. Tallene er derfor veiledende – det endelige skatteoppgjøret fra Skatteetaten er alltid fasit.</p>
+      <h2>Kilder</h2>
+      <p>Satsene og reglene vi bruker er hentet fra offentlige kilder:</p>
+      <ul>
+        <li><a href="https://www.regjeringen.no/no/tema/okonomi-og-budsjett/skatter-og-avgifter/skattesatser-2026/id3121978/" rel="nofollow">Finansdepartementet: Skattesatser 2026</a></li>
+        <li><a href="https://www.skatteetaten.no/satser/" rel="nofollow">Skatteetaten: Satser</a></li>
+        <li><a href="https://www.stortinget.no/" rel="nofollow">Stortingets skattevedtak for inntektsåret 2026</a></li>
+        <li><a href="https://www.ssb.no/arbeid-og-lonn/lonn-og-arbeidskraftkostnader/statistikk/lonn" rel="nofollow">SSB: Lønnsstatistikk</a> (median- og gjennomsnittslønn)</li>
+      </ul>
+      <p>Beregningsmotoren er kontrollert mot offisielle tall, blant annet at en lønn på 600 000 kr gir 12 835 kr i trinnskatt for 2026.</p>
+
       <h2>Hvem står bak?</h2>
       <p>Siden drives av en liten uavhengig utgiver med interesse for personlig økonomi. Innholdet oppdateres når nye satser vedtas i statsbudsjettet hver høst. Finner du feil, setter vi stor pris på en e-post via kontaktsiden.</p>
     </main>

@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { beregnSkatt, marginalskatt, fmt, SALARY_PAGES, salarySlug } from '../lib/tax';
+import { beregnSkatt, marginalskatt, fmt, SALARY_PAGES, salarySlug, pct } from '../lib/tax';
 
 export default function Calculator({ initial = 600000 }) {
   const [gross, setGross] = useState(initial);
@@ -54,7 +54,7 @@ export default function Calculator({ initial = 600000 }) {
           {fmt(r.netto)} kr
         </p>
         <p className="tnum text-fjord/70 mt-1">
-          {fmt(r.nettoMnd)} kr per måned · {r.skattProsent} % skatt totalt
+          ca. {fmt(r.nettoMnd)} kr per måned i snitt · {pct(r.skattProsent)} % skatt totalt
         </p>
       </div>
 
@@ -82,15 +82,16 @@ export default function Calculator({ initial = 600000 }) {
 
       <div className="bg-netto-soft rounded-xl p-4 text-sm text-fjord">
         <p>
-          <strong>Marginalskatt: {marginal} %.</strong>{' '}
+          <strong>Marginalskatt: {pct(marginal)} %.</strong>{' '}
           Av de neste 1 000 kronene du tjener, sitter du igjen med{' '}
           <span className="tnum font-semibold">{fmt(1000 - marginal * 10)} kr</span>.
         </p>
       </div>
 
       <p className="text-xs text-fjord/50 mt-4">
-        Beregnet med standard minstefradrag og personfradrag for 2026. Individuelle fradrag
-        (renter, pendling, fagforening m.m.) kan gi lavere skatt.{' '}
+        Beregnet for lønnsinntekt med standard minstefradrag og personfradrag for 2026 (gjelder
+        ikke Finnmark/Nord-Troms). Individuelle fradrag (renter, pendling, fagforening m.m.) kan
+        gi lavere skatt. Tallene er veiledende.{' '}
         <Link href={`/lonn/${salarySlug(nearest)}`} className="underline text-netto">
           Se full oversikt for {fmt(nearest)} kr →
         </Link>

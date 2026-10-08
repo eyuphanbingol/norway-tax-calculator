@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SALARY_PAGES, salarySlug, beregnSkatt, fmt } from '../../lib/tax';
+import { SALARY_PAGES, salarySlug, beregnSkatt, fmt, pct } from '../../lib/tax';
 import { DOMAIN } from '../../lib/constants';
 
 export const metadata = {
@@ -38,7 +38,7 @@ export default function LonnIndex() {
                   </td>
                   <td className="tnum text-right px-4 py-2.5">{fmt(r.netto)} kr</td>
                   <td className="tnum text-right px-4 py-2.5 hidden sm:table-cell">{fmt(r.nettoMnd)} kr</td>
-                  <td className="tnum text-right px-4 py-2.5">{r.skattProsent} %</td>
+                  <td className="tnum text-right px-4 py-2.5">{pct(r.skattProsent)} %</td>
                 </tr>
               );
             })}
