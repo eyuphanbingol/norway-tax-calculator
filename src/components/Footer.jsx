@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ConsentLink from './ConsentLink';
 
 export default function Footer() {
   return (
@@ -23,6 +24,7 @@ export default function Footer() {
             <li><Link href="/om-oss" className="hover:text-white">Om oss</Link></li>
             <li><Link href="/kontakt" className="hover:text-white">Kontakt</Link></li>
             <li><Link href="/personvern" className="hover:text-white">Personvern og cookies</Link></li>
+            <li><ConsentLink className="hover:text-white text-left cursor-pointer" /></li>
           </ul>
         </div>
       </div>
