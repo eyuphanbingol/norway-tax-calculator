@@ -28,7 +28,8 @@ Eski haber/kopya blog yazıları bilerek 404 bırakıldı (AdSense için zararl�
 ## İçerik büyütme
 - Yeni makale eklemek için `src/data/articles.js` dosyasına yeni obje ekle — sayfa, sitemap ve blog listesi otomatik oluşur.
 - Yeni maaş sayfası: `src/lib/tax.js` içindeki SALARY_PAGES listesine rakam ekle.
-- 2027 satsları açıklanınca `src/lib/tax.js` içindeki RATES_2026'yı güncelle.
+- **Aralık 2026 (Stortinget bütçeyi onaylayınca):** `src/lib/tax.js` içindeki `RATES_2027_FORSLAG` değerlerini kesinleşen rakamlarla kontrol et, `/skattekalkulator-2027` sayfasındaki "forslag" ifadelerini "vedtatt" yap.
+- **Ocak 2027:** Ana hesaplayıcının varsayılan yılını 2027'ye çevir, 2026 sayfalarını koru (URL'leri değiştirme).
 
 ## Doğrulama
 Vergi motoru resmi kontrol rakamıyla test edildi: 600.000 kr brüt → 12.835 kr trinnskatt (SNL/Skatteetaten 2026). 

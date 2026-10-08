@@ -12,7 +12,9 @@ export default function Footer() {
         <div>
           <p className="text-white font-semibold mb-2">Innhold</p>
           <ul className="space-y-1">
+            <li><Link href="/skattekalkulator-2027" className="hover:text-white">Skattekalkulator 2027</Link></li>
             <li><Link href="/lonn" className="hover:text-white">Lønn etter skatt-tabell</Link></li>
+            <li><Link href="/en" className="hover:text-white" hrefLang="en">Norway tax calculator (English)</Link></li>
             <li><Link href="/blog" className="hover:text-white">Guider og artikler</Link></li>
             <li><Link href="/blog/trinnskatt-2026" className="hover:text-white">Trinnskatt 2026</Link></li>
             <li><Link href="/blog/skatteendringer-2026-guide" className="hover:text-white">Skatteendringer 2026</Link></li>

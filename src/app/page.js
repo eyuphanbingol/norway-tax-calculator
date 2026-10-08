@@ -5,10 +5,13 @@ import { RATES_2026, fmt, SALARY_PAGES, salarySlug, beregnSkatt, pct } from '../
 import { DOMAIN } from '../lib/constants';
 
 export const metadata = {
-  title: 'Lønn etter skatt 2026 – Skattekalkulator Norge',
+  title: 'Skattekalkulator 2026 – beregn lønn etter skatt per år og måned',
   description:
-    'Hvor mye får du utbetalt i 2026? Gratis skattekalkulator med vedtatte satser: trinnskatt, trygdeavgift 7,6 %, minstefradrag 95 700 kr og personfradrag 114 540 kr.',
-  alternates: { canonical: DOMAIN },
+    'Gratis skattekalkulator 2026: se lønn etter skatt per år og måned med vedtatte satser for trinnskatt, trygdeavgift og fradrag. Nå også med forslaget for 2027.',
+  alternates: {
+    canonical: DOMAIN,
+    languages: { 'nb-NO': DOMAIN, en: `${DOMAIN}/en`, 'x-default': DOMAIN },
+  },
 };
 
 const faq = [
@@ -65,11 +68,16 @@ export default function Home() {
       <section className="bg-fjord text-white">
         <div className="max-w-5xl mx-auto px-4 pt-12 pb-20 text-center">
           <h1 className="display text-3xl sm:text-5xl font-extrabold leading-tight mb-3">
-            Lønn etter skatt <span className="text-krone">2026</span>
+            Skattekalkulator <span className="text-krone">2026</span>
           </h1>
           <p className="text-white/80 max-w-2xl mx-auto">
-            Skriv inn årslønnen din og se hva du får utbetalt – beregnet med skattesatsene
+            Skriv inn års- eller månedslønnen din og se lønn etter skatt – beregnet med satsene
             Stortinget har vedtatt for 2026.
+          </p>
+          <p className="mt-3 text-sm">
+            <Link href="/skattekalkulator-2027" className="text-krone font-semibold underline">
+              Nytt: se skatten for 2027 med statsbudsjettet →
+            </Link>
           </p>
         </div>
       </section>

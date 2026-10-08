@@ -32,7 +32,6 @@ const nextConfig = {
       { source: '/verktoy/:path*', destination: '/', permanent: true },
       { source: '/cookies', destination: '/personvern', permanent: true },
       { source: '/sparing', destination: '/blog/fradrag-du-ikke-ma-glemme-2026', permanent: true },
-      { source: '/en', destination: '/', permanent: true },
       { source: '/no', destination: '/', permanent: true },
       { source: '/sv', destination: '/', permanent: true },
       { source: '/embed', destination: '/', permanent: true },
