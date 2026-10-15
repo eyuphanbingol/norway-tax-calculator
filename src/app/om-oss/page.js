@@ -83,7 +83,10 @@ export default function OmOss() {
 
       <h2>Finansiering</h2>
       <p>
-        Siden er gratis å bruke og finansieres av annonser fra Google AdSense. Les mer om
+        Siden er gratis å bruke og finansieres av annonser fra Google AdSense og av
+        affiliate-lenker: på enkelte sider anbefaler vi tjenester (for eksempel sammenligning av
+        reiseforsikring), og vi kan få provisjon hvis du kjøper noe via lenken. Slike lenker er alltid
+        merket «Annonse», og de påvirker aldri beregningene eller innholdet ellers. Les mer om
         informasjonskapsler og personvern i <Link href="/personvern">personvernerklæringen</Link>.
       </p>
     </main>

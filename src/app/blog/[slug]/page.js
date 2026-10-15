@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import AdSlot from '../../../components/AdSlot';
 import Block from '../../../components/ArticleBlock';
+import AffiliateBox from '../../../components/AffiliateBox';
+import { hellosafeNo } from '../../../lib/affiliates';
 import { articles, getArticle } from '../../../data/articles';
 import { DOMAIN, AUTHOR } from '../../../lib/constants';
 
@@ -67,6 +69,14 @@ export default async function ArticlePage({ params }) {
           ))}
         </ul>
       </aside>
+      {a.slug === 'feriepenger-og-skatt' && (
+        <AffiliateBox
+        title="Skal du ut og reise for feriepengene?"
+        text="Sjekk først om du allerede har reiseforsikring gjennom innboforsikringen, bankkortet eller kredittkortet. Trenger du egen forsikring – for eksempel for en lang reise eller aktiviteter som ikke dekkes – kan du sammenligne reiseforsikringer hos HelloSafe."
+        cta="Sammenlign reiseforsikring hos HelloSafe →"
+        href={hellosafeNo('feriepenger-artikkel')}
+      />
+      )}
       <div className="mt-10 bg-netto-soft rounded-2xl p-6 text-center">
         <p className="font-semibold mb-2">Hva sitter du igjen med av lønnen din?</p>
         <Link href="/" className="inline-block bg-netto text-white font-bold px-6 py-3 rounded-xl hover:opacity-90">

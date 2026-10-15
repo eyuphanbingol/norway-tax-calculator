@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import ToolPage from '../../components/ToolPage';
+import AffiliateBox from '../../components/AffiliateBox';
+import { hellosafeNo } from '../../lib/affiliates';
 import FeriepengerCalc from '../../components/tools/FeriepengerCalc';
 import { DOMAIN } from '../../lib/constants';
 import { fmt, G_2026 } from '../../lib/tax';
@@ -42,6 +44,12 @@ export default function Page() {
         Vil du vite hvorfor det ikke trekkes skatt av feriepengene i juni? Les{' '}
         <Link href="/blog/feriepenger-og-skatt">feriepenger og skatt</Link>.
       </p>
+      <AffiliateBox
+        title="Skal du ut og reise for feriepengene?"
+        text="Sjekk først om du allerede har reiseforsikring gjennom innboforsikringen, bankkortet eller kredittkortet. Trenger du egen forsikring – for eksempel for en lang reise eller aktiviteter som ikke dekkes – kan du sammenligne reiseforsikringer hos HelloSafe."
+        cta="Sammenlign reiseforsikring hos HelloSafe →"
+        href={hellosafeNo('feriepenger-kalkulator')}
+      />
     </ToolPage>
   );
 }

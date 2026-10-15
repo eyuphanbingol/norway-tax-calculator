@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import AdSlot from '../../../components/AdSlot';
+import AffiliateBox from '../../../components/AffiliateBox';
+import { hellosafeEn } from '../../../lib/affiliates';
 import { beregnSkatt } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
 
@@ -108,6 +110,15 @@ export default function Paye() {
           </a>.
         </p>
       </article>
+
+      <AffiliateBox
+        lang="en"
+        label="Advertisement"
+        title="Coming to Norway, or travelling abroad?"
+        text="Public health care in Norway covers members of the National Insurance Scheme. Before your employment starts, or when you travel abroad, you may need private travel insurance. HelloSafe lets you compare travel insurance for Norway."
+        cta="Compare travel insurance at HelloSafe →"
+        href={hellosafeEn('en-paye')}
+      />
 
       <AdSlot type="content" />
     </main>

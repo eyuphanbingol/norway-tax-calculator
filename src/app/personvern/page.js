@@ -24,6 +24,9 @@ export default function Personvern() {
 
       <p>Les mer om hvordan Google bruker data fra nettsteder som bruker Googles tjenester på <a href="https://policies.google.com/technologies/partner-sites" rel="nofollow">policies.google.com/technologies/partner-sites</a>.</p>
 
+      <h2>Affiliate-lenker</h2>
+      <p>Noen sider inneholder annonselenker merket «Annonse». Klikker du på en slik lenke, sendes du via affiliate-nettverket Awin til annonsørens nettside. Awin og annonsøren kan da registrere klikket og eventuelle kjøp for å beregne provisjon, etter sine egne personvernregler. Vi får ingen personopplysninger om deg fra dette.</p>
+
       <h2>Behandlingsgrunnlag og rettigheter</h2>
       <p>Personaliserte annonser og tilhørende informasjonskapsler brukes kun med ditt samtykke (GDPR art. 6 nr. 1 bokstav a). Teknisk nødvendig drift av nettsiden, som serverlogger hos vår hostingleverandør, bygger på berettiget interesse. Du har rett til innsyn, retting og sletting av opplysninger, og du kan klage til Datatilsynet.</p>
 
