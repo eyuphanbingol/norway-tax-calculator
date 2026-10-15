@@ -57,11 +57,11 @@ gtag('config', '${GA_ID}');`}
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
           strategy="afterInteractive"
         />
-        <Script
+        {/* AdSense: vanlig <script> i <head>, slik Google krever (next/script legger den bare inn via JS) */}
+        <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2645631543067545"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
       <body className="min-h-screen flex flex-col">
