@@ -33,6 +33,8 @@ const nextConfig = {
       { source: '/sparing', destination: '/blog/fradrag-du-ikke-ma-glemme-2026', permanent: true },
       { source: '/no', destination: '/', permanent: true },
       { source: '/sv', destination: '/', permanent: true },
+      // Midlertidig avpublisert (AdSense-vurdering) – ikke permanent, siden den kan komme tilbake
+      { source: '/blog/kredittramme-og-forbrukslan-hva-koster-det', destination: '/blog', permanent: false },
     ];
   },
 };

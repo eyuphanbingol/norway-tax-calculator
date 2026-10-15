@@ -1,7 +1,7 @@
 // Guider skrevet for 2026-satsene (vedtatt av Stortinget 22.12.2025).
 // Blokktyper: h2, p, ul, table
 
-export const articles = [
+const allArticles = [
   {
     slug: 'skatteoppgjor-og-restskatt-2026',
     title: 'Skatteoppgjøret 2026: datoer, restskatt og penger tilbake',
@@ -353,6 +353,7 @@ export const articles = [
   },
   {
     slug: 'kredittramme-og-forbrukslan-hva-koster-det',
+    hidden: true, // Midlertidig avpublisert under AdSense-vurdering
     title: 'Kredittramme og forbrukslån: slik ser du hva det faktisk koster',
     description:
       'Hva betyr effektiv rente, hvor mye koster en kredittramme over et år, og hvilke alternativer har du før du låner? En nøktern guide med regneeksempel.',
@@ -388,5 +389,8 @@ export const articles = [
     ],
   },
 ];
+
+// Skjulte artikler (hidden: true) publiseres ikke: ingen side, ikke i lister eller sitemap
+export const articles = allArticles.filter((a) => !a.hidden);
 
 export const getArticle = (slug) => articles.find((a) => a.slug === slug);
