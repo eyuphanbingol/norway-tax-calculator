@@ -17,8 +17,8 @@ export default function Kontakt() {
           Vi leser alle henvendelser og svarer vanligvis innen et par virkedager.
         </p>
         <p className="text-sm text-fjord/50 uppercase tracking-wide font-semibold mb-1">E-post</p>
-        <a href="mailto:kontakt@skattekalkulator.com" className="text-xl font-bold text-netto hover:underline">
-          kontakt@skattekalkulator.com
+        <a href="mailto:skattekalkulatornorge@gmail.com" className="text-xl font-bold text-netto hover:underline">
+          skattekalkulatornorge@gmail.com
         </a>
         <p className="text-sm text-fjord/60 mt-6">
           Merk: vi kan ikke gi individuell skatterådgivning. For spørsmål om din skattemelding,

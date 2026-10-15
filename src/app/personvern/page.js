@@ -31,7 +31,7 @@ export default function Personvern() {
       <p>Personaliserte annonser og tilhørende informasjonskapsler brukes kun med ditt samtykke (GDPR art. 6 nr. 1 bokstav a). Teknisk nødvendig drift av nettsiden, som serverlogger hos vår hostingleverandør, bygger på berettiget interesse. Du har rett til innsyn, retting og sletting av opplysninger, og du kan klage til Datatilsynet.</p>
 
       <h2>Kontakt</h2>
-      <p>Spørsmål om personvern kan sendes til kontakt@skattekalkulator.com.</p>
+      <p>Spørsmål om personvern kan sendes til skattekalkulatornorge@gmail.com.</p>
     </main>
   );
 }
