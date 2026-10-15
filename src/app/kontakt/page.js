@@ -1,4 +1,5 @@
-import { DOMAIN } from '../../lib/constants';
+import Link from 'next/link';
+import { DOMAIN, AUTHOR } from '../../lib/constants';
 
 export const metadata = {
   title: 'Kontakt oss',
@@ -22,6 +23,22 @@ export default function Kontakt() {
         <p className="text-sm text-fjord/60 mt-6">
           Merk: vi kan ikke gi individuell skatterådgivning. For spørsmål om din skattemelding,
           kontakt Skatteetaten.
+        </p>
+      </div>
+
+      <div className="prose-no mt-10">
+        <h2>Hva kan du kontakte oss om?</h2>
+        <ul>
+          <li><strong>Feil i beregninger eller satser.</strong> Oppgi gjerne hvilken side og hvilket tall det gjelder, og hvor du har det riktige tallet fra. Feil rettes så raskt som mulig.</li>
+          <li><strong>Forslag til nye kalkulatorer eller guider.</strong> Mange av sidene våre har kommet til etter tips fra lesere.</li>
+          <li><strong>Kalkulator til din nettside.</strong> Spørsmål om den gratis kalkulatoren du kan <Link href="/del-kalkulatoren">legge inn på egen nettside</Link>.</li>
+          <li><strong>Samarbeid og annonser.</strong> Vi er åpne for samarbeid som er nyttig for leserne. Alle annonser merkes tydelig.</li>
+        </ul>
+        <h2>Hvem svarer?</h2>
+        <p>
+          Henvendelser leses og besvares av {AUTHOR}, som driver siden. Les mer om hvordan vi lager
+          innholdet på <Link href="/om-oss">om oss</Link>, og hvordan vi behandler opplysninger i{' '}
+          <Link href="/personvern">personvernerklæringen</Link>.
         </p>
       </div>
     </main>
