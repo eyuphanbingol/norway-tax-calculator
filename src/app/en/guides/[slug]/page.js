@@ -2,6 +2,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import AdSlot from '../../../../components/AdSlot';
 import Block from '../../../../components/ArticleBlock';
+import AffiliateBox from '../../../../components/AffiliateBox';
+import { hellosafeEn } from '../../../../lib/affiliates';
 import { guidesEn, getGuideEn } from '../../../../data/guides-en';
 import { DOMAIN, AUTHOR } from '../../../../lib/constants';
 
@@ -51,6 +53,16 @@ export default async function GuidePage({ params }) {
         <AdSlot type="content" />
         {g.body.slice(mid).map((b, i) => <Block key={mid + i} b={b} />)}
       </article>
+      {g.slug === 'holiday-pay-norway' && (
+        <AffiliateBox
+        lang="en"
+        label="Advertisement"
+        title="Coming to Norway, or travelling abroad?"
+        text="Public health care in Norway covers members of the National Insurance Scheme. Before your employment starts, or when you travel abroad, you may need private travel insurance. HelloSafe lets you compare travel insurance for Norway."
+        cta="Compare travel insurance at HelloSafe →"
+        href={hellosafeEn('en-holiday-pay')}
+      />
+      )}
       <aside className="mt-10">
         <h2 className="display text-xl font-bold mb-3">More guides for working in Norway</h2>
         <ul className="space-y-2">
