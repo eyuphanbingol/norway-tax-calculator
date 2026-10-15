@@ -30,7 +30,7 @@ export default function DelKalkulatoren() {
         <li>Kalkulatoren viser ingen annonser og setter ingen informasjonskapsler.</li>
         <li>Beregningene er veiledende og bruker standard fradrag.</li>
       </ul>
-      <p>Spørsmål eller ønsker? Ta kontakt på kontakt@skattekalkulator.com.</p>
+      <p>Spørsmål eller ønsker? Ta kontakt på skattekalkulatornorge@gmail.com.</p>
     </main>
   );
 }
