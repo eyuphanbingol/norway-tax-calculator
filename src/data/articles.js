@@ -351,6 +351,42 @@ export const articles = [
       { type: 'p', text: 'Overtidsbetaling og bonus skattlegges som vanlig lønn, med din marginalskatt. At det ofte trekkes mye skatt av bonusutbetalinger, skyldes bare trekkreglene – ved skatteoppgjøret jevnes det ut. Bruk kalkulatoren på forsiden for å se din eksakte marginalskatt.' },
     ],
   },
+  {
+    slug: 'kredittramme-og-forbrukslan-hva-koster-det',
+    title: 'Kredittramme og forbrukslån: slik ser du hva det faktisk koster',
+    description:
+      'Hva betyr effektiv rente, hvor mye koster en kredittramme over et år, og hvilke alternativer har du før du låner? En nøktern guide med regneeksempel.',
+    date: '2026-10-15',
+    body: [
+      { type: 'p', text: 'En kredittramme (også kalt fleksikreditt) er en lånegrense du kan bruke av og betale tilbake etter behov. Du betaler bare renter av det du faktisk har brukt. Slike lån er usikret – det er ingen bolig eller bil som sikkerhet – og derfor er renten mye høyere enn på boliglån.' },
+      { type: 'h2', text: 'Effektiv rente er tallet du skal se på' },
+      { type: 'p', text: 'Nominell rente er selve renten på lånet. Effektiv rente tar i tillegg med gebyrer og at rentene legges til lånet underveis, og viser derfor hva lånet faktisk koster per år. Når du sammenligner lån, skal du alltid sammenligne effektiv rente og totalkostnad – ikke månedsbeløpet.' },
+      { type: 'h2', text: 'Regneeksempel' },
+      { type: 'table', head: ['', 'Beløp'], rows: [
+        ['Lånebeløp', '25 000 kr'],
+        ['Nedbetalingstid', '12 måneder'],
+        ['Nominell rente', '39,97 %'],
+        ['Effektiv rente', '48,17 %'],
+        ['Kostnad (renter og gebyrer)', '5 412,27 kr'],
+        ['Totalt å betale tilbake', '30 412,27 kr'],
+      ]},
+      { type: 'p', text: 'Eksempelet er det representative eksempelet for Ferratum Fleksikreditt. Å låne 25 000 kr i ett år koster altså over 5 400 kr. Betaler du ned saktere, blir kostnaden høyere.' },
+      { type: 'h2', text: 'Sjekk alternativene først' },
+      { type: 'ul', items: [
+        'Har du restskatt du ikke klarer å betale på forfall, kan du søke Skatteetaten om en betalingsavtale i stedet for å låne.',
+        'Sammenlign renter og kostnader på finansportalen.no, Forbrukerrådets sammenligningstjeneste.',
+        'Sjekk hvor mye usikret gjeld du allerede har på gjeldsregisteret.com – bankene ser det samme når du søker om lån.',
+        'Nav tilbyr gratis økonomisk rådgivning hvis du har vansker med å betale regninger.',
+      ]},
+      { type: 'h2', text: 'Hvis du likevel låner' },
+      { type: 'ul', items: [
+        'Lån så lite som mulig, og betal ned så raskt du kan – rentene løper hver måned.',
+        'Du har 14 dagers angrerett på kredittavtaler.',
+        'Renten fastsettes etter en individuell kredittvurdering og kan bli en annen enn i eksempelet.',
+        'Lån koster penger. Vurder om kjøpet kan vente til du har spart opp beløpet.',
+      ]},
+    ],
+  },
 ];
 
 export const getArticle = (slug) => articles.find((a) => a.slug === slug);

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import AdSlot from '../../../components/AdSlot';
 import Block from '../../../components/ArticleBlock';
 import AffiliateBox from '../../../components/AffiliateBox';
-import { hellosafeNo } from '../../../lib/affiliates';
+import { hellosafeNo, ferratumNo, FERRATUM_EKSEMPEL } from '../../../lib/affiliates';
 import { articles, getArticle } from '../../../data/articles';
 import { DOMAIN, AUTHOR } from '../../../lib/constants';
 
@@ -76,6 +76,15 @@ export default async function ArticlePage({ params }) {
         cta="Sammenlign reiseforsikring hos HelloSafe →"
         href={hellosafeNo('feriepenger-artikkel')}
       />
+      )}
+      {a.slug === 'kredittramme-og-forbrukslan-hva-koster-det' && (
+        <AffiliateBox
+          title="Ferratum Fleksikreditt"
+          text="Kredittramme fra Ferratum Bank. Renten fastsettes etter individuell kredittvurdering. Sammenlign alltid effektiv rente og totalkostnad med andre tilbud før du søker."
+          disclosure={FERRATUM_EKSEMPEL}
+          cta="Les mer hos Ferratum →"
+          href={ferratumNo('kreditt-guide')}
+        />
       )}
       <div className="mt-10 bg-netto-soft rounded-2xl p-6 text-center">
         <p className="font-semibold mb-2">Hva sitter du igjen med av lønnen din?</p>
