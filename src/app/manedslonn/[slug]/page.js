@@ -22,6 +22,8 @@ export async function generateMetadata({ params }) {
     title: `${fmt(m)} kr i måneden etter skatt 2026 – ca. ${fmt(r.nettoMnd)} kr utbetalt`,
     description: `Tjener du ${fmt(m)} kr i måneden i 2026? Da får du utbetalt ca. ${fmt(r.nettoMnd)} kr i snitt per måned etter skatt. Se vanlig trekk, halv skatt i desember og full beregning.`,
     alternates: { canonical: `${DOMAIN}/manedslonn/${slug}` },
+    // Ikke indeksert foreløpig (færre like sider under AdSense-vurdering); tabellen /manedslonn er indeksert
+    robots: { index: false, follow: true },
   };
 }
 

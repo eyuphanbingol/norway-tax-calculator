@@ -1,11 +1,11 @@
-import { SALARY_PAGES, salarySlug, MONTHLY_PAGES, monthlySlug } from '../lib/tax';
+import { SALARY_PAGES, salarySlug } from '../lib/tax';
 import { guidesEn } from '../data/guides-en';
 import { articles } from '../data/articles';
 import { DOMAIN } from '../lib/constants';
 
 // Sabit tarih: her deploy'da lastmod değişmesin (Google güvenini korur).
 // İçerik gerçekten güncellendiğinde bu tarihi elle ileri al.
-const SITE_UPDATED = new Date('2026-10-08');
+const SITE_UPDATED = new Date('2026-10-15');
 
 export default function sitemap() {
   const now = SITE_UPDATED;
@@ -31,14 +31,8 @@ export default function sitemap() {
     changeFrequency: 'monthly',
     priority: 0.75,
   }));
-  const monthly = MONTHLY_PAGES.map((m) => ({
-    url: `${DOMAIN}/manedslonn/${monthlySlug(m)}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }));
   const en = [
     ...guidesEn.map((x) => `/en/guides/${x.slug}`),
   ].map((r) => ({ url: `${DOMAIN}${r}`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 }));
-  return [...statics, ...salaries, ...monthly, ...blog, ...en];
+  return [...statics, ...salaries, ...blog, ...en];
 }
