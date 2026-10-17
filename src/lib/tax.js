@@ -23,6 +23,23 @@ export const RATES_2026 = {
   ],
 };
 
+// 2025-satsene (for sammenligning). Innslagspunktene for 2026 er oppjustert ca. 4 % fra disse.
+export const RATES_2025 = {
+  alminnelig: 0.22,
+  trygdeavgift: 0.077,
+  trygdeNedreGrense: 99650,
+  minstefradragSats: 0.46,
+  minstefradragMaks: 92000,
+  personfradrag: 108550,
+  trinnskatt: [
+    { over: 217400, sats: 0.017 },
+    { over: 306050, sats: 0.04 },
+    { over: 697150, sats: 0.137 },
+    { over: 942400, sats: 0.167 },
+    { over: 1410750, sats: 0.177 },
+  ],
+};
+
 // Regjeringens forslag til statsbudsjett 2027 (lagt fram 7.10.2026).
 // IKKE vedtatt – Stortinget vedtar endelige satser i desember 2026.
 // Kilde: regjeringen.no «Skattesatser 2027», Prop. 1 LS (2026–2027).

@@ -177,6 +177,7 @@ const allArticles = [
     description:
       'Alminnelig inntekt, personinntekt, trygdeavgift, trinnskatt, skattekort og skatteoppgjør – her er en enkel forklaring av hvordan inntektsskatten i Norge fungerer i 2026.',
     date: '2026-01-12',
+    updated: '2026-10-17',
     body: [
       { type: 'p', text: 'Det norske skattesystemet kan virke komplisert, men for en vanlig lønnsmottaker bygger det på noen få grunnprinsipper. Skatten beregnes av to ulike inntektsbegreper – alminnelig inntekt og personinntekt – og det er forskjellen mellom dem som forklarer hvorfor fradrag påvirker noen deler av skatten, men ikke andre.' },
       { type: 'h2', text: 'To grunnlag: personinntekt og alminnelig inntekt' },
@@ -195,6 +196,30 @@ const allArticles = [
       { type: 'h2', text: 'Et enkelt regneeksempel' },
       { type: 'p', text: 'Med 600 000 kr i årslønn og bare standardfradrag blir alminnelig inntekt 600 000 − 95 700 − 114 540 = 389 760 kr, som gir 85 747 kr i skatt. Trygdeavgiften er 7,6 prosent av 600 000 kr, altså 45 600 kr, og trinnskatten 12 835 kr. Til sammen blir det rundt 144 200 kr i skatt, eller 24 prosent av lønnen.' },
       { type: 'p', text: 'Formuesskatt, skatt på aksjer og regler for selvstendig næringsdrivende kommer i tillegg for dem det gjelder, men for de fleste lønnsmottakere er det disse tre skattene som avgjør hva som kommer inn på konto.' },
+
+      { type: 'h2', text: 'Hvor mye skatt betaler en vanlig lønnsmottaker?' },
+      { type: 'table', head: ['Årslønn', 'Skatt 2026', 'Andel av lønnen', 'Utbetalt per måned (snitt)'], rows: [
+        ['350 000 kr', '60 183 kr', '17,2 %', '24 151 kr'],
+        ['450 000 kr', '93 783 kr', '20,8 %', '29 685 kr'],
+        ['550 000 kr', '127 383 kr', '23,2 %', '35 218 kr'],
+        ['650 000 kr', '160 983 kr', '24,8 %', '40 751 kr'],
+        ['750 000 kr', '197 003 kr', '26,3 %', '46 083 kr'],
+        ['900 000 kr', '261 953 kr', '29,1 %', '53 171 kr'],
+      ]},
+      { type: 'p', text: 'Tallene gjelder lønnsinntekt med bare standardfradrag. Har du rentefradrag, reisefradrag eller andre fradrag, blir skatten lavere.' },
+      { type: 'h2', text: 'Skatt på formue og kapital' },
+      { type: 'p', text: 'I tillegg til inntektsskatten finnes formuesskatt for dem som har formue over et bunnbeløp, og skatt på kapitalinntekter som renter, utleie og aksjegevinster. Kapitalinntekter inngår i alminnelig inntekt og skattlegges med 22 prosent, mens aksjegevinster og utbytte oppjusteres før de skattlegges. Disse reglene påvirker ikke skatten på lønn.' },
+      { type: 'h2', text: 'Hvorfor er skatten høyere i Norge enn mange andre land?' },
+      { type: 'p', text: 'Skatten finansierer blant annet helsevesenet, utdanning, pensjoner og trygdeordninger som sykepenger og foreldrepenger. Trygdeavgiften går direkte til folketrygden. Til gjengjeld har du rett til ytelser som i mange andre land må dekkes privat.' },
+      { type: 'h2', text: 'Nøkkeltall for 2026' },
+      { type: 'ul', items: [
+        'Skatt på alminnelig inntekt: 22 prosent (18,5 prosent i Finnmark og Nord-Troms)',
+        'Trygdeavgift på lønn: 7,6 prosent, nedre grense 99 650 kr',
+        'Minstefradrag: 46 prosent, maks 95 700 kr',
+        'Personfradrag: 114 540 kr',
+        'Trinnskatt: fem trinn fra 1,7 til 17,8 prosent, fra 226 100 kr',
+        'Høyeste marginalskatt på lønn: 47,4 prosent',
+      ]},
     ],
   },
   {
@@ -203,7 +228,7 @@ const allArticles = [
     description:
       'Trinnskatten for 2026 har fem trinn fra 1,7 til 17,8 prosent. Se innslagspunktene, hvordan den beregnes trinn for trinn, og et konkret regneeksempel.',
     date: '2026-01-15',
-    updated: '2026-10-08',
+    updated: '2026-10-17',
     body: [
       { type: 'p', text: 'Trinnskatt er den progressive delen av inntektsskatten i Norge. Den beregnes av brutto personinntekt – altså lønnen din før noen fradrag – og kommer på toppen av skatten på alminnelig inntekt og trygdeavgiften. Jo mer du tjener, jo høyere sats betaler du på den øverste delen av inntekten.' },
       { type: 'h2', text: 'Satsene for 2026' },
@@ -228,6 +253,36 @@ const allArticles = [
       { type: 'h2', text: 'Hva påvirker ikke trinnskatten?' },
       { type: 'p', text: 'Fradrag som minstefradrag, rentefradrag og pendlerfradrag reduserer ikke trinnskatten – de virker kun på alminnelig inntekt. Grunnlaget for trinnskatt er brutto personinntekt: lønn, sykepenger, pensjon og beregnet personinntekt fra næring. Kapitalinntekter som renter og aksjegevinst inngår ikke.' },
       { type: 'p', text: 'Vil du se hva trinnskatten utgjør for akkurat din lønn? Bruk kalkulatoren på forsiden – den viser trinnskatten som egen post i fordelingen.' },
+
+      { type: 'h2', text: 'Trinnskatt for ulike lønnsnivåer i 2026' },
+      { type: 'p', text: 'Tabellen viser hvor mye trinnskatt som betales i hvert trinn for noen vanlige lønnsnivåer, og hvor stor andel av bruttolønnen trinnskatten utgjør. Beregningen gjelder lønnsinntekt utenfor Finnmark og Nord-Troms.' },
+      { type: 'table', head: ['Årslønn', 'Trinn 1', 'Trinn 2', 'Trinn 3', 'Trinn 4', 'Trinn 5', 'Sum (andel)'], rows: [
+        ['250 000 kr', '406 kr', '–', '–', '–', '–', '406 kr (0,2 %)'],
+        ['400 000 kr', '1 567 kr', '3 268 kr', '–', '–', '–', '4 835 kr (1,2 %)'],
+        ['600 000 kr', '1 567 kr', '11 268 kr', '–', '–', '–', '12 835 kr (2,1 %)'],
+        ['800 000 kr', '1 567 kr', '16 270 kr', '10 268 kr', '–', '–', '28 106 kr (3,5 %)'],
+        ['1 000 000 kr', '1 567 kr', '16 270 kr', '34 942 kr', '3 343 kr', '–', '56 122 kr (5,6 %)'],
+        ['1 600 000 kr', '1 567 kr', '16 270 kr', '34 942 kr', '81 833 kr', '23 638 kr', '158 250 kr (9,9 %)'],
+      ]},
+      { type: 'p', text: 'Selv på 1 000 000 kr utgjør trinnskatten altså bare 5,6 prosent av lønnen. Det er fordi de høye satsene bare gjelder den øverste delen av inntekten.' },
+      { type: 'h2', text: 'Innslagspunktene i 2025 og 2026' },
+      { type: 'table', head: ['Trinn', '2025', '2026', 'Sats 2026'], rows: [
+        ['Trinn 1', '217 400 kr', '226 100 kr', '1,7 %'],
+        ['Trinn 2', '306 050 kr', '318 300 kr', '4,0 %'],
+        ['Trinn 3', '697 150 kr', '725 050 kr', '13,7 %'],
+        ['Trinn 4', '942 400 kr', '980 100 kr', '16,8 %'],
+        ['Trinn 5', '1 410 750 kr', '1 467 200 kr', '17,8 %'],
+      ]},
+      { type: 'p', text: 'Alle innslagspunktene er hevet med rundt 4 prosent. Har lønnen din økt omtrent like mye, betaler du derfor ikke høyere trinnskattesats enn i fjor.' },
+      { type: 'h2', text: 'Hvem betaler trinnskatt?' },
+      { type: 'ul', items: [
+        'Lønnsmottakere med brutto lønn over 226 100 kr i 2026.',
+        'Pensjonister – trinnskatten beregnes også av pensjon, men pensjonister har i tillegg et eget skattefradrag som reduserer skatten.',
+        'Selvstendig næringsdrivende, av den beregnede personinntekten fra næringen.',
+        'Kapitalinntekter som renter, utbytte og gevinst på aksjer inngår ikke i grunnlaget.',
+      ]},
+      { type: 'h2', text: 'Kan du redusere trinnskatten?' },
+      { type: 'p', text: 'I praksis svært lite. De vanlige fradragene – rentefradrag, reisefradrag, fagforeningskontingent og IPS – reduserer bare skatten på alminnelig inntekt med 22 prosent. Trinnskatten påvirkes kun av hvor høy personinntekten er. Det som kan påvirke den, er for eksempel ordninger der deler av lønnen erstattes av andre goder, men slike ordninger har egne skatteregler.' },
     ],
   },
   {
@@ -236,6 +291,7 @@ const allArticles = [
     description:
       'Feriepenger er skattepliktige, men det trekkes ikke skatt av dem ved utbetaling. Her er hvordan ordningen faktisk fungerer, satsene, og hvorfor regningen kommer senere.',
     date: '2026-01-20',
+    updated: '2026-10-17',
     body: [
       { type: 'p', text: 'Hver sommer får mange en hyggelig overraskelse på lønnsslippen: feriepengene utbetales tilsynelatende uten skattetrekk. Men feriepenger er fullt skattepliktig inntekt. Det som skjer, er at skatten på dem er bakt inn i trekket resten av året.' },
       { type: 'h2', text: 'Slik fungerer ordningen' },
@@ -252,6 +308,17 @@ const allArticles = [
       { type: 'p', text: 'Fordi det ikke trekkes skatt ved utbetaling, føles feriepengene større enn de er. Bytter du jobb og får feriepengene utbetalt ved sluttoppgjøret, eller har du flere arbeidsgivere, kan det trekkes for lite skatt gjennom året – og resultatet blir restskatt. Sjekk skattekortet ditt på skatteetaten.no hvis inntekten din endrer seg vesentlig.' },
       { type: 'h2', text: 'Feriepenger og trinnskatt' },
       { type: 'p', text: 'Feriepenger inngår i personinntekten og øker dermed grunnlaget for både trygdeavgift og trinnskatt. For deg som ligger rett under et innslagspunkt, kan feriepengene være det som dytter deg over – men husk: kun beløpet over innslagspunktet skattlegges med den høyere satsen.' },
+
+      { type: 'h2', text: 'Regneeksempel' },
+      { type: 'p', text: 'Tjente du 550 000 kr i fjor og har fem ukers ferie, får du 12 prosent: 66 000 kr i feriepenger. Etter ferieloven (fire uker og én dag) ville det vært 10,2 prosent: 56 100 kr. Samtidig trekkes det vanlig lønn for feriedagene, så det du får utbetalt i juni er feriepengene minus ferietrekket.' },
+      { type: 'h2', text: 'Tillegg fra du fyller 60' },
+      { type: 'p', text: 'Fra og med året du fyller 60, får du en ekstra ferieuke og 2,3 prosent ekstra feriepenger. Tillegget beregnes av feriepengegrunnlag opptil 6G, som er 819 294 kr med grunnbeløpet fra 1. mai 2026. Tillegget er trekkpliktig, i motsetning til de ordinære feriepengene.' },
+      { type: 'h2', text: 'Feriepenger når du bytter jobb' },
+      { type: 'p', text: 'Slutter du i en jobb, får du utbetalt feriepengene du har opptjent der i sluttoppgjøret. Hos den nye arbeidsgiveren har du da ikke opptjent feriepenger for det første året, og ferien kan bli ulønnet. Sett gjerne av noe av sluttoppgjøret til ferien neste år.' },
+      { type: 'h2', text: 'Feriepenger fra Nav' },
+      { type: 'p', text: 'Mottar du sykepenger eller foreldrepenger fra Nav, kan du også opptjene feriepenger av disse ytelsene etter egne regler. Sjekk utbetalingsoversikten hos Nav om du er usikker på hva som gjelder for deg.' },
+      { type: 'h2', text: 'Hvor mye skatt betaler du egentlig av feriepengene?' },
+      { type: 'p', text: 'Feriepengene skattlegges som vanlig lønn med din marginalskatt. Med en marginalskatt på 33,6 prosent går for eksempel rundt en tredjedel av 66 000 kr i feriepenger til skatt – men dette er allerede tatt høyde for i trekket resten av året. Bruk feriepengekalkulatoren for å regne ut beløpet for deg.' },
     ],
   },
   {
@@ -285,6 +352,7 @@ const allArticles = [
     description:
       'Reisefradraget er kraftig utvidet i 2026, IPS-grensen er økt til 25 000 kr, og fagforeningsfradraget er 8 700 kr. Her er fradragene som faktisk monner.',
     date: '2026-02-10',
+    updated: '2026-10-17',
     body: [
       { type: 'p', text: 'Mange fradrag kommer ferdig utfylt i skattemeldingen, men langt fra alle. Hvert år lar nordmenn betydelige beløp ligge fordi de ikke fører opp fradragene de har krav på. For 2026 er flere av dem blitt mer verdt.' },
       { type: 'h2', text: 'Reisefradraget – stor endring i 2026' },
@@ -302,6 +370,28 @@ const allArticles = [
       { type: 'p', text: 'Renter på boliglån, forbrukslån og studielån er fradragsberettiget med 22 prosent skatteverdi. Bankene rapporterer dette automatisk, men deler du lån med samboer, bør dere sjekke at fordelingen i skattemeldingen stemmer med hvem som faktisk betaler.' },
       { type: 'h2', text: 'Slik fører du opp glemte fradrag' },
       { type: 'p', text: 'Alt gjøres i skattemeldingen på skatteetaten.no. Du kan også endre skattemeldinger inntil tre år tilbake i tid – har du glemt pendlerfradraget i fjor, er det altså ikke for sent.' },
+
+      { type: 'h2', text: 'Hva er fradragene verdt i kroner?' },
+      { type: 'table', head: ['Fradrag', 'Fradragsbeløp', 'Lavere skatt (22 %)'], rows: [
+        ['Fagforeningskontingent (maks)', '8 700 kr', '1 914 kr'],
+        ['IPS (maks)', '25 000 kr', '5 500 kr'],
+        ['Reisefradrag, 30 km hver vei, 230 dager', '14 220 kr', '3 128 kr'],
+        ['Renter på boliglån, 40 000 kr i året', '40 000 kr', '8 800 kr'],
+      ]},
+      { type: 'p', text: 'BSU er et unntak: der får du 10 prosent av sparebeløpet direkte som fradrag i skatten, inntil 2 750 kr i året.' },
+      { type: 'h2', text: 'Slik går du gjennom skattemeldingen på ti minutter' },
+      { type: 'ul', items: [
+        'Logg inn på skatteetaten.no og åpne skattemeldingen for fjoråret.',
+        'Sjekk at lønn og andre inntekter stemmer med lønnsslippene og a-meldingen.',
+        'Se etter reisefradrag: står det ingenting, men du har lang vei til jobb, må du legge det inn selv.',
+        'Kontroller at renter på lån er riktig fordelt hvis du deler lån med noen.',
+        'Sjekk at fagforeningskontingent, IPS og BSU er med.',
+        'Har du barn under 12 år i barnehage eller SFO, sjekk at foreldrefradraget er med.',
+      ]},
+      { type: 'h2', text: 'Hjemmekontor gir som regel ikke fradrag' },
+      { type: 'p', text: 'Utgifter til hjemmekontor er for de fleste lønnsmottakere dekket av minstefradraget. Du kan bare få fradrag for faktiske jobbutgifter hvis de til sammen er høyere enn minstefradraget, og det er sjelden tilfelle.' },
+      { type: 'h2', text: 'Gamle feil kan rettes' },
+      { type: 'p', text: 'Oppdager du at du har glemt et fradrag, kan du endre skattemeldingen for tidligere år på skatteetaten.no. Du får da et nytt skatteoppgjør, og eventuelt for mye betalt skatt kommer tilbake med renter.' },
     ],
   },
   {
@@ -310,7 +400,7 @@ const allArticles = [
     description:
       'Minstefradraget er inntil 95 700 kr og personfradraget 114 540 kr i 2026. Slik virker de to automatiske fradragene som bestemmer hvor mye skatt du betaler.',
     date: '2026-02-20',
-    updated: '2026-10-08',
+    updated: '2026-10-17',
     body: [
       { type: 'p', text: 'To fradrag får absolutt alle lønnsmottakere i Norge, helt automatisk: minstefradraget og personfradraget. Sammen sørger de for at en god del av inntekten din aldri blir skattlagt med 22-prosentsatsen. For 2026 er begge økt.' },
       { type: 'h2', text: 'Minstefradraget: 46 prosent, maks 95 700 kr' },
@@ -322,6 +412,22 @@ const allArticles = [
       { type: 'p', text: 'For en lønn på 500 000 kr ser regnestykket for alminnelig inntekt slik ut: 500 000 − 95 700 (minstefradrag) − 114 540 (personfradrag) = 289 760 kr i grunnlag. Av dette betaler du 22 prosent: 63 747 kr. Uten de to fradragene ville skatten på alminnelig inntekt vært 110 000 kr – fradragene sparer deg altså for over 46 000 kr.' },
       { type: 'h2', text: 'Viktig begrensning' },
       { type: 'p', text: 'Ingen av disse fradragene reduserer trygdeavgiften (7,6 prosent) eller trinnskatten – de beregnes av bruttolønnen. Det er derfor selv lave inntekter betaler noe skatt: trygdeavgiften slår inn når inntekten passerer 99 650 kr (nedre grense for trygdeavgift), med en mildere opptrapping rett over grensen.' },
+
+      { type: 'h2', text: 'Satsene i 2025 og 2026' },
+      { type: 'table', head: ['Fradrag', '2025', '2026', 'Verdi i lavere skatt 2026'], rows: [
+        ['Minstefradrag lønn, sats', '46 %', '46 %', '–'],
+        ['Minstefradrag lønn, maks', '92 000 kr', '95 700 kr', 'inntil 21 054 kr'],
+        ['Personfradrag', '108 550 kr', '114 540 kr', 'inntil 25 199 kr'],
+        ['Minstefradrag pensjon, sats', '40 %', '40 %', '–'],
+        ['Minstefradrag pensjon, maks', '73 150 kr', '75 400 kr', 'inntil 16 588 kr'],
+      ]},
+      { type: 'p', text: 'Verdien i kroner er fradraget ganget med 22 prosent, som er satsen på alminnelig inntekt. Til sammen er de to fradragene verdt rundt 46 000 kr i lavere skatt for en lønnsmottaker i full jobb.' },
+      { type: 'h2', text: 'Har du både lønn og pensjon?' },
+      { type: 'p', text: 'Får du både lønn og pensjon, beregnes minstefradraget for hver av dem, men summen kan ikke bli høyere enn taket for minstefradrag i lønn (95 700 kr i 2026). Personfradraget får du bare én gang, uansett hvor mange inntektskilder du har.' },
+      { type: 'h2', text: 'Ektepar og samboere' },
+      { type: 'p', text: 'Hver person får sitt eget minstefradrag og personfradrag, beregnet av egen inntekt. Fradragene kan ikke overføres mellom ektefeller eller samboere. Har den ene lav inntekt, kan deler av personfradraget derfor bli ubrukt.' },
+      { type: 'h2', text: 'Når lønner det seg å kreve faktiske kostnader?' },
+      { type: 'p', text: 'Bare hvis de dokumenterte jobbutgiftene dine er høyere enn minstefradraget, altså over 95 700 kr for de fleste i full jobb. Det er sjelden. Reisefradrag og fagforeningskontingent kommer uansett i tillegg til minstefradraget og trenger ikke velges bort.' },
     ],
   },
   {
@@ -330,7 +436,7 @@ const allArticles = [
     description:
       'Får du 20 000 kr i lønnsøkning, ser du kanskje bare halvparten på kontoen. Slik beregner du marginalskatten din i 2026 – tabell for alle inntektsnivåer.',
     date: '2026-03-01',
-    updated: '2026-10-08',
+    updated: '2026-10-17',
     body: [
       { type: 'p', text: 'Marginalskatt er skatten du betaler på den siste kronen du tjener – og dermed på hele lønnsøkningen din. Den er alltid høyere enn gjennomsnittsskatten, og det er den som avgjør hva en bonus, overtid eller et lønnshopp faktisk er verdt for deg.' },
       { type: 'h2', text: 'Slik settes marginalskatten sammen' },
@@ -349,6 +455,31 @@ const allArticles = [
       { type: 'p', text: 'Denne økningen krysser innslagspunktet for trinn 3 på 725 050 kr. De første 25 050 kronene skattlegges med 33,6 prosent marginalskatt, de siste 4 950 med 43,3 prosent. Av 30 000 kr i økning sitter du igjen med cirka 19 450 kr. Verdt å vite før lønnsforhandlingen – men aldri et argument mot høyere lønn: du taper aldri penger på å tjene mer i Norge.' },
       { type: 'h2', text: 'Overtid og bonus' },
       { type: 'p', text: 'Overtidsbetaling og bonus skattlegges som vanlig lønn, med din marginalskatt. At det ofte trekkes mye skatt av bonusutbetalinger, skyldes bare trekkreglene – ved skatteoppgjøret jevnes det ut. Bruk kalkulatoren på forsiden for å se din eksakte marginalskatt.' },
+
+      { type: 'h2', text: 'Gjennomsnittsskatt og marginalskatt side om side' },
+      { type: 'p', text: 'Gjennomsnittsskatten er hvor stor andel av hele lønnen som går til skatt. Marginalskatten er skatten på neste krone. Forskjellen er stor, og det er marginalskatten som avgjør hva en lønnsøkning er verdt.' },
+      { type: 'table', head: ['Årslønn', 'Gjennomsnittsskatt', 'Marginalskatt', 'Utbetalt per måned (snitt)'], rows: [
+        ['350 000 kr', '17,2 %', '33,6 %', '24 151 kr'],
+        ['450 000 kr', '20,8 %', '33,6 %', '29 685 kr'],
+        ['550 000 kr', '23,2 %', '33,6 %', '35 218 kr'],
+        ['650 000 kr', '24,8 %', '33,6 %', '40 751 kr'],
+        ['750 000 kr', '26,3 %', '43,3 %', '46 083 kr'],
+        ['900 000 kr', '29,1 %', '43,3 %', '53 171 kr'],
+        ['1 200 000 kr', '33,2 %', '46,4 %', '66 778 kr'],
+        ['1 600 000 kr', '36,6 %', '47,4 %', '84 534 kr'],
+      ]},
+      { type: 'h2', text: 'Hva er 50 000 kr i lønnsøkning verdt?' },
+      { type: 'table', head: ['Lønn før økningen', 'Mer utbetalt per år', 'Du beholder'], rows: [
+        ['500 000 kr', '33 200 kr', '66,4 %'],
+        ['700 000 kr', '30 780 kr', '61,6 %'],
+        ['950 000 kr', '27 733 kr', '55,5 %'],
+        ['1 450 000 kr', '26 472 kr', '52,9 %'],
+      ]},
+      { type: 'p', text: 'Fra 700 000 kr krysser økningen innslagspunktet for trinn 3 (725 050 kr), og en del av den skattlegges med 43,3 prosent. Derfor blir litt mindre igjen enn på 500 000 kr.' },
+      { type: 'h2', text: 'Marginalskatt og fradrag er ikke det samme' },
+      { type: 'p', text: 'Mange tror at et fradrag er verdt like mye som marginalskatten. Det stemmer ikke for de fleste fradrag. Rentefradrag, reisefradrag, fagforeningskontingent og IPS gis i alminnelig inntekt og er verdt 22 prosent – uansett hvor høy lønn du har. Et fradrag på 10 000 kr gir altså 2 200 kr lavere skatt både på 400 000 og 1 400 000 kr i lønn.' },
+      { type: 'h2', text: 'Pensjonister kan ha høyere marginalskatt' },
+      { type: 'p', text: 'For alderspensjonister er bildet annerledes. Skattefradraget for pensjonsinntekt trappes ned med 16,7 prosent av pensjon mellom 284 950 og 436 050 kr. I dette intervallet blir marginalskatten derfor rundt 45–48 prosent, selv om inntekten er moderat. Bruk pensjonskalkulatoren for å se hva som gjelder for deg.' },
     ],
   },
   {

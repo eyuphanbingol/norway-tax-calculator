@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Calculator from '../components/Calculator';
 import AdSlot from '../components/AdSlot';
-import { RATES_2026, fmt, SALARY_PAGES, salarySlug, beregnSkatt, pct } from '../lib/tax';
+import { RATES_2026, RATES_2025, fmt, SALARY_PAGES, salarySlug, beregnSkatt, marginalskatt, pct } from '../lib/tax';
 import { DOMAIN } from '../lib/constants';
 
 export const metadata = {
@@ -165,6 +165,85 @@ export default function Home() {
             <Link href="/blog/arbeidsfradrag-for-unge-2026">arbeidsfradrag på inntil 125 000 kr</Link>
           </li>
         </ul>
+      </section>
+
+      {/* Regneeksempel steg for steg */}
+      <section className="max-w-3xl mx-auto px-4 mt-12 prose-no">
+        <h2>Regn ut skatten selv: 600 000 kr steg for steg</h2>
+        <p>
+          Kalkulatoren gjør alt automatisk, men det er nyttig å forstå regnestykket. Slik beregnes
+          skatten for en lønnsmottaker med 600 000 kr i årslønn og bare standardfradrag i 2026:
+        </p>
+        <table>
+          <thead><tr><th>Steg</th><th>Utregning</th><th>Beløp</th></tr></thead>
+          <tbody>
+            <tr><td>1. Minstefradrag</td><td>46 % av lønnen, maks {fmt(RATES_2026.minstefradragMaks)} kr</td><td>{fmt(example.minstefradrag)} kr</td></tr>
+            <tr><td>2. Alminnelig inntekt</td><td>600 000 − {fmt(example.minstefradrag)} − {fmt(RATES_2026.personfradrag)} (personfradrag)</td><td>{fmt(example.grunnlag)} kr</td></tr>
+            <tr><td>3. Skatt på alminnelig inntekt</td><td>22 % av {fmt(example.grunnlag)} kr</td><td>{fmt(example.inntektsskatt)} kr</td></tr>
+            <tr><td>4. Trygdeavgift</td><td>7,6 % av 600 000 kr</td><td>{fmt(example.trygdeavgift)} kr</td></tr>
+            <tr><td>5. Trinnskatt</td><td>1,7 % fra 226 100 til 318 300 kr + 4,0 % fra 318 300 til 600 000 kr</td><td>{fmt(example.trinnskatt)} kr</td></tr>
+            <tr><td><strong>Sum skatt</strong></td><td>{pct(example.skattProsent)} % av lønnen</td><td><strong>{fmt(example.totalSkatt)} kr</strong></td></tr>
+            <tr><td><strong>Utbetalt</strong></td><td>600 000 − {fmt(example.totalSkatt)}</td><td><strong>{fmt(example.netto)} kr</strong></td></tr>
+          </tbody>
+        </table>
+        <p>
+          Legg merke til at minstefradraget og personfradraget bare reduserer skatten på alminnelig
+          inntekt. Trygdeavgiften og trinnskatten beregnes av hele bruttolønnen. Det er derfor et
+          fradrag på 10 000 kr bare er verdt 2 200 kr i lavere skatt.
+        </p>
+
+        <h2>Skatten i 2026 sammenlignet med 2025</h2>
+        <p>
+          Med samme lønn betaler du mindre skatt i 2026 enn i 2025. Det skyldes høyere personfradrag
+          og minstefradrag, lavere trygdeavgift og at innslagspunktene i trinnskatten er justert opp.
+          Tabellen er beregnet med de vedtatte satsene for begge år og standard fradrag.
+        </p>
+        <table>
+          <thead><tr><th>Årslønn</th><th>Skatt 2025</th><th>Skatt 2026</th><th>Lavere skatt</th></tr></thead>
+          <tbody>
+            {[400000, 500000, 600000, 700000, 800000, 1000000].map((g) => {
+              const a25 = beregnSkatt(g, RATES_2025).totalSkatt;
+              const a26 = beregnSkatt(g).totalSkatt;
+              return (
+                <tr key={g}><td>{fmt(g)} kr</td><td>{fmt(a25)} kr</td><td>{fmt(a26)} kr</td><td>{fmt(a25 - a26)} kr</td></tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <p>
+          Lettelsen i kroner øker tydelig fra rundt 725 000 kr, fordi innslagspunktene for trinn 3
+          og 4 er flyttet opp med henholdsvis 27 900 og 37 700 kr. Får du lønnsøkning, blir
+          besparelsen mindre enn i tabellen.
+        </p>
+
+        <h2>Fem vanlige misforståelser om skatt</h2>
+        <ul>
+          <li>
+            <strong>«Når jeg passerer et trinn, skattes hele lønnen høyere.»</strong> Nei. Den høyere
+            satsen gjelder bare den delen av inntekten som ligger over innslagspunktet.
+          </li>
+          <li>
+            <strong>«En lønnsøkning kan gi mindre utbetalt.»</strong> Ikke for vanlig lønn. Selv med
+            høyeste marginalskatt på 47,4 prosent beholder du over halvparten av økningen. Med
+            {' '}{fmt(750000)} kr i lønn er marginalskatten {pct(marginalskatt(750000))} prosent.
+          </li>
+          <li>
+            <strong>«Feriepenger er skattefrie.»</strong> Nei. Det trekkes normalt ikke skatt i
+            juni, men skatten på feriepengene er fordelt på trekket resten av året.
+          </li>
+          <li>
+            <strong>«Et fradrag på 10 000 kr gir 10 000 kr mer.»</strong> Nei. De fleste fradrag
+            gis i alminnelig inntekt og er verdt 22 prosent – altså 2 200 kr.
+          </li>
+          <li>
+            <strong>«Skattekortet bestemmer hvor mye skatt jeg betaler.»</strong> Skattekortet er bare
+            et anslag for trekket. Den endelige skatten fastsettes i skatteoppgjøret året etter.
+          </li>
+        </ul>
+        <p className="text-sm text-fjord/60">
+          Kilder: Finansdepartementet (skattesatser 2025 og 2026) og Skatteetaten. Beregningene er
+          kontrollert mot offisielle tall. Se <Link href="/om-oss">hvordan vi lager innholdet</Link>.
+        </p>
       </section>
 
       <AdSlot type="content" />
