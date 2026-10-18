@@ -187,8 +187,9 @@ export const enSlugToSalary = (slug) => {
 
 // ===================================================================
 // PENSJON 2026 (alderspensjon/AFP, hele året, 100 % pensjonsgrad)
-// Kilder: Skatteetaten «Skattefradrag for pensjonsinntekt» 2026,
-// regjeringen.no «Skattesatser 2026».
+// Kilder: Skatteetaten «Skattefradrag for pensjonsinntekt» 2026, regjeringen.no.
+// Fradraget og nedtrappingen ble endret ved revidert nasjonalbudsjett (juni 2026),
+// med virkning for hele 2026: maks 39 100 kr, 19,1 % over 294 200 kr, 6 % over 437 100 kr.
 // ===================================================================
 export const PENSJON_2026 = {
   minstefradragSats: 0.4,
@@ -196,8 +197,8 @@ export const PENSJON_2026 = {
   trygdeavgift: 0.051,
   skattefradragMaks: 39100,
   nedtrapping: [
-    { over: 284950, sats: 0.167 },
-    { over: 436050, sats: 0.06 },
+    { over: 294200, sats: 0.191 },
+    { over: 437100, sats: 0.06 },
   ],
 };
 

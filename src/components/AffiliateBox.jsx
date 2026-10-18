@@ -1,5 +1,8 @@
+import { AFFILIATES_ENABLED } from '../lib/affiliates';
+
 // Tydelig merket annonseboks for affiliate-lenker (markedsføringsloven § 3: reklame skal fremgå tydelig)
 export default function AffiliateBox({ title, text, cta, href, label = 'Annonse', lang = 'no', disclosure }) {
+  if (!AFFILIATES_ENABLED) return null;
   return (
     <aside className="my-8 border border-mist bg-white rounded-2xl p-5 not-prose" lang={lang}>
       <p className="text-sm font-bold uppercase tracking-wide text-fjord mb-2">

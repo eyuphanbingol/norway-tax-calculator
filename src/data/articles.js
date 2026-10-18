@@ -479,44 +479,7 @@ const allArticles = [
       { type: 'h2', text: 'Marginalskatt og fradrag er ikke det samme' },
       { type: 'p', text: 'Mange tror at et fradrag er verdt like mye som marginalskatten. Det stemmer ikke for de fleste fradrag. Rentefradrag, reisefradrag, fagforeningskontingent og IPS gis i alminnelig inntekt og er verdt 22 prosent – uansett hvor høy lønn du har. Et fradrag på 10 000 kr gir altså 2 200 kr lavere skatt både på 400 000 og 1 400 000 kr i lønn.' },
       { type: 'h2', text: 'Pensjonister kan ha høyere marginalskatt' },
-      { type: 'p', text: 'For alderspensjonister er bildet annerledes. Skattefradraget for pensjonsinntekt trappes ned med 16,7 prosent av pensjon mellom 284 950 og 436 050 kr. I dette intervallet blir marginalskatten derfor rundt 45–48 prosent, selv om inntekten er moderat. Bruk pensjonskalkulatoren for å se hva som gjelder for deg.' },
-    ],
-  },
-  {
-    slug: 'kredittramme-og-forbrukslan-hva-koster-det',
-    hidden: true, // Midlertidig avpublisert under AdSense-vurdering
-    title: 'Kredittramme og forbrukslån: slik ser du hva det faktisk koster',
-    description:
-      'Hva betyr effektiv rente, hvor mye koster en kredittramme over et år, og hvilke alternativer har du før du låner? En nøktern guide med regneeksempel.',
-    date: '2026-10-15',
-    body: [
-      { type: 'p', text: 'En kredittramme (også kalt fleksikreditt) er en lånegrense du kan bruke av og betale tilbake etter behov. Du betaler bare renter av det du faktisk har brukt. Slike lån er usikret – det er ingen bolig eller bil som sikkerhet – og derfor er renten mye høyere enn på boliglån.' },
-      { type: 'h2', text: 'Effektiv rente er tallet du skal se på' },
-      { type: 'p', text: 'Nominell rente er selve renten på lånet. Effektiv rente tar i tillegg med gebyrer og at rentene legges til lånet underveis, og viser derfor hva lånet faktisk koster per år. Når du sammenligner lån, skal du alltid sammenligne effektiv rente og totalkostnad – ikke månedsbeløpet.' },
-      { type: 'h2', text: 'Regneeksempel' },
-      { type: 'table', head: ['', 'Beløp'], rows: [
-        ['Lånebeløp', '25 000 kr'],
-        ['Nedbetalingstid', '12 måneder'],
-        ['Nominell rente', '39,97 %'],
-        ['Effektiv rente', '48,17 %'],
-        ['Kostnad (renter og gebyrer)', '5 412,27 kr'],
-        ['Totalt å betale tilbake', '30 412,27 kr'],
-      ]},
-      { type: 'p', text: 'Eksempelet er det representative eksempelet for Ferratum Fleksikreditt. Å låne 25 000 kr i ett år koster altså over 5 400 kr. Betaler du ned saktere, blir kostnaden høyere.' },
-      { type: 'h2', text: 'Sjekk alternativene først' },
-      { type: 'ul', items: [
-        'Har du restskatt du ikke klarer å betale på forfall, kan du søke Skatteetaten om en betalingsavtale i stedet for å låne.',
-        'Sammenlign renter og kostnader på finansportalen.no, Forbrukerrådets sammenligningstjeneste.',
-        'Sjekk hvor mye usikret gjeld du allerede har på gjeldsregisteret.com – bankene ser det samme når du søker om lån.',
-        'Nav tilbyr gratis økonomisk rådgivning hvis du har vansker med å betale regninger.',
-      ]},
-      { type: 'h2', text: 'Hvis du likevel låner' },
-      { type: 'ul', items: [
-        'Lån så lite som mulig, og betal ned så raskt du kan – rentene løper hver måned.',
-        'Du har 14 dagers angrerett på kredittavtaler.',
-        'Renten fastsettes etter en individuell kredittvurdering og kan bli en annen enn i eksempelet.',
-        'Lån koster penger. Vurder om kjøpet kan vente til du har spart opp beløpet.',
-      ]},
+      { type: 'p', text: 'For alderspensjonister er bildet annerledes. Skattefradraget for pensjonsinntekt trappes ned med 19,1 prosent av pensjon mellom 294 200 og 437 100 kr. I dette intervallet blir marginalskatten derfor rundt 48–50 prosent, selv om inntekten er moderat. Bruk pensjonskalkulatoren for å se hva som gjelder for deg.' },
     ],
   },
 ];
