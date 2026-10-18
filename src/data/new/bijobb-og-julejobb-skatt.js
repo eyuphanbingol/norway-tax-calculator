@@ -101,7 +101,7 @@ export default {
     },
     {
       type: 'p',
-      text: `Et eksempel: Du har ${fmt(HOVED)} kroner i fast lønn og tar ${fmt(e50.bi)} kroner i ekstravakter i november og desember. Skatten på ekstravaktene blir ${fmt(e50.ekstra)} kroner, eller ${pct(marg)} prosent. Har du ikke oppdatert skattekortet, kan det være lurt å legge til side om lag ${fmt(e50.mangler)} kroner til skatteoppgjøret, slik tabellen over viser.`,
+      text: `Et eksempel: Du har ${fmt(HOVED)} kroner i fast lønn og tar ${fmt(e50.bi)} kroner i ekstravakter i november og desember. Skatten på ekstravaktene blir ${fmt(e50.ekstra)} kroner, eller ${pct(marg)} prosent. Trekkes ekstravaktene med ${pct(sats)} prosent, bør du legge til side om lag ${fmt(e50.mangler)} kroner til skatteoppgjøret, slik tabellen over viser.`,
     },
     { type: 'h2', text: 'Slik oppdaterer du skattekortet' },
     {

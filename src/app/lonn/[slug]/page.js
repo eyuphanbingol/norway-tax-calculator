@@ -274,7 +274,7 @@ export default async function SalaryPage({ params }) {
             <tr><td><strong>Sum skatt</strong></td><td><strong>{fmt(r.totalSkatt)} kr</strong></td></tr>
             <tr><td><strong>Utbetalt</strong></td><td><strong>{fmt(r.netto)} kr</strong></td></tr>
             <tr><td>Gjennomsnitt per måned</td><td>{fmt(r.nettoMnd)} kr</td></tr>
-            <tr><td><Link href="/blog/halv-skatt-i-desember-2026">Halv skatt i desember</Link></td><td>ca. {fmt(trekkMnd / 2)} kr mer utbetalt</td></tr>
+            <tr><td><Link href="/blog/halv-skatt-i-desember-2026">Halv skatt i desember</Link></td><td>ca. {fmt(trekkMnd / 2)} kr mer enn i en vanlig måned</td></tr>
           </tbody>
         </table>
 
