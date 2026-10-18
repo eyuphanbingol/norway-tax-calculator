@@ -108,7 +108,7 @@ export default function Home() {
       {/* Aktuelt nå: sesongens viktigste guider */}
       <section className="max-w-3xl mx-auto px-4 mt-8">
         <div className="bg-white border border-mist rounded-2xl p-5">
-          <p className="text-sm font-bold uppercase tracking-wide text-fjord mb-3">Aktuelt nå</p>
+          <h2 className="text-sm font-bold uppercase tracking-wide text-fjord mb-3">Aktuelt nå</h2>
           <ul className="space-y-2">
             {AKTUELT.map(getArticle).filter(Boolean).map((x) => (
               <li key={x.slug}>

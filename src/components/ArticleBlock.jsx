@@ -45,7 +45,7 @@ export function Sources({ sources, lang = 'no' }) {
       <h2>{lang === 'en' ? 'Sources' : 'Kilder'}</h2>
       <ul>
         {sources.map((s) => (
-          <li key={s.url}><a href={s.url} rel="nofollow noopener" target="_blank">{s.name}</a></li>
+          <li key={s.url}><a href={s.url} rel="noopener" target="_blank">{s.name}</a></li>
         ))}
       </ul>
     </>

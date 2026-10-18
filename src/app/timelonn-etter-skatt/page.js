@@ -29,7 +29,7 @@ const overtidNetto = overtid * (1 - marg / 100);
 const ferieUker = 5;
 const arbeidUker = 52 - ferieUker;
 const lonnUtenFerie = sats * 37.5 * arbeidUker;
-const feriepenger = lonnUtenFerie * 0.102; // 10,2 % av fjorårets lønn (ferieloven)
+const feriepenger = lonnUtenFerie * 0.12; // 12 % ved avtalefestet femte ferieuke (ferieloven § 10)
 
 export default function Page() {
   return (
@@ -79,7 +79,7 @@ export default function Page() {
         <li>
           <strong>Regne med lønn alle 52 ukene.</strong> Med timelønn får du ofte ikke lønn i ferien, men
           feriepenger året etter. Med {ferieUker} ukers ferie blir lønnen for {arbeidUker} uker{' '}
-          {fmt(lonnUtenFerie)} kr. Feriepengene på 10,2 % av samme beløp er {fmt(feriepenger)} kr, men de
+          {fmt(lonnUtenFerie)} kr. Har du avtalefestet femte ferieuke, er feriepengene normalt 12 % av samme beløp, altså {fmt(feriepenger)} kr (10,2 % uten), men de
           kommer først neste år. Første år i jobb blir inntekten derfor lavere. Regn ut dine med{' '}
           <Link href="/feriepenger-kalkulator">feriepengekalkulatoren</Link>.
         </li>

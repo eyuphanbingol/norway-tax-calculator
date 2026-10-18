@@ -31,7 +31,7 @@ export default function Personvern() {
       <p>Les mer om hvordan Google bruker data fra nettsteder som bruker Googles tjenester på <a href="https://policies.google.com/technologies/partner-sites" rel="nofollow">policies.google.com/technologies/partner-sites</a>.</p>
 
       <h2>Affiliate-lenker</h2>
-      <p>Noen sider inneholder annonselenker merket «Annonse». Klikker du på en slik lenke, sendes du via affiliate-nettverket Awin til annonsørens nettside. Awin og annonsøren kan da registrere klikket og eventuelle kjøp for å beregne provisjon, etter sine egne personvernregler. Vi får ikke navn eller kontaktinformasjon om deg fra dette, bare transaksjonsdata som klikk og salg.</p>
+      <p>Sider kan inneholde annonselenker merket «Annonse». Klikker du på en slik lenke, sendes du via affiliate-nettverket Awin til annonsørens nettside. Awin og annonsøren kan da registrere klikket og eventuelle kjøp for å beregne provisjon, etter sine egne personvernregler. Vi får ikke navn eller kontaktinformasjon om deg fra dette, bare transaksjonsdata som klikk og salg.</p>
 
       <h2>Hvem mottar opplysninger</h2>
       <ul>

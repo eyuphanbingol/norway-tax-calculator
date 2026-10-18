@@ -65,7 +65,6 @@ export default async function SalaryPage({ params }) {
   const forrigeTrinn = [...t].reverse().find((x) => x.over <= gross);
   const marginalEtter = nesteTrinn ? marginalskatt(nesteTrinn.over + 1000) : null;
   const agaSats = 0.141; // arbeidsgiveravgift sone I
-  const motMedian = Math.round((gross / MEDIAN_SALARY - 1) * 100);
   // Håndskrevet tekst per indeksert lønnsnivå. Alle tall beregnes med skattemotoren.
   const nt = (g) => beregnSkatt(g).netto;
   const andel = (del, av) => pct(Math.round((del / av) * 1000) / 10);
@@ -278,8 +277,8 @@ export default async function SalaryPage({ params }) {
           </tbody>
         </table>
 
-        <h2>Hvordan ligger {fmt(gross)} kr an i Norge?</h2>
-        <p>
+        {!indexed && <h2>Hvordan ligger {fmt(gross)} kr an i Norge?</h2>}
+        {!indexed && <p>
           Ifølge SSB var medianlønnen per heltidsekvivalent {fmt(MEDIAN_SALARY_MND)} kr i måneden i
           2025, altså rundt {fmt(MEDIAN_SALARY)} kr i året. Gjennomsnittet var {fmt(AVG_SALARY_MND)} kr
           i måneden (rundt {fmt(AVG_SALARY)} kr i året). Tallene inkluderer bonus og uregelmessige
@@ -291,7 +290,7 @@ export default async function SalaryPage({ params }) {
             : gross < AVG_SALARY * 1.05
             ? `Med ${fmt(gross)} kr ligger du over medianen og nær gjennomsnittet.`
             : `Med ${fmt(gross)} kr ligger du over både medianen og gjennomsnittet.`}
-        </p>
+        </p>}
         <p>
           Med dette inntektsnivået er du i {trinn === 0 ? 'ingen trinnskattetrinn ennå' : `trinnskattens trinn ${trinn}`},
           og marginalskatten din er <strong>{pct(marginal)} prosent</strong>. Det betyr at en
@@ -362,8 +361,7 @@ export default async function SalaryPage({ params }) {
             <p>
               <strong>Hva du koster arbeidsgiveren.</strong> I sone I betaler arbeidsgiveren 14,1 %
               arbeidsgiveravgift, rundt {fmt(gross * agaSats)} kr i året på denne lønnen. I tillegg kommer
-              blant annet feriepenger og obligatorisk tjenestepensjon. Lønnen er {Math.abs(motMedian)} %{' '}
-              {motMedian >= 0 ? 'over' : 'under'} SSBs median for heltidsansatte.
+              blant annet feriepenger og obligatorisk tjenestepensjon.
             </p>
           </>
         )}

@@ -29,6 +29,7 @@ const t3_27 = RATES_2027_FORSLAG.trinnskatt[2].over;
 
 export default {
   slug: 'lonnsokning-etter-skatt-2027',
+  rates: '2026-satser og forslag for 2027',
   title: 'Lønnsøkning i 2027: hva sitter du igjen med etter skatt?',
   description:
     'Hva er 3, 4 eller 5 prosent lønnsøkning verdt etter skatt i 2027? Regnet ut med regjeringens skatteforslag, med tabell for seks lønnsnivåer og marginalskatt.',
@@ -65,7 +66,7 @@ export default {
     { type: 'p', text: 'Alle beløp i kroner. Netto 2026 er beregnet med 2026-satsene. Kolonnene for 2027 er beregnet med regjeringens forslag og ny lønn. Forskjellen inkluderer altså både lønnsøkningen og skatteendringene.' },
 
     { type: 'h2', text: 'Eksempel: medianlønn med 4 prosent' },
-    { type: 'p', text: `Medianlønnen for heltidsansatte er ${fmt(m)} kroner i året (SSB, 2025). Med 4 prosent lønnsøkning blir lønnen ${fmt(mNy)} kroner i 2027, altså ${fmt(mBrutto)} kroner mer før skatt.` },
+    { type: 'p', text: `Medianlønnen per heltidsekvivalent er ${fmt(m)} kroner i året (SSB, 2025). Med 4 prosent lønnsøkning blir lønnen ${fmt(mNy)} kroner i 2027, altså ${fmt(mBrutto)} kroner mer før skatt.` },
     { type: 'p', text: `Etter skatt sitter du igjen med ${fmt(mNetto)} kroner mer enn i 2026, eller rundt ${fmt(mNetto / 12)} kroner i måneden. Av dette skyldes ${fmt(mBareSkatt)} kroner skatteendringene alene. Det ville du fått selv uten lønnsøkning. De resterende ${fmt(mFraLonn)} kronene kommer fra selve lønnsøkningen.` },
     { type: 'p', text: `Med andre ord: av ${fmt(mBrutto)} kroner i lønnsøkning beholder du ${fmt(mFraLonn)}, eller ${pct(Math.round((mFraLonn / mBrutto) * 1000) / 10)} prosent. Resten går til skatt. Det henger sammen med marginalskatten.` },
 

@@ -89,6 +89,7 @@ const allArticles = [
   },
   {
     slug: 'skattekort-2027',
+    rates: '2026-satser og forslag for 2027',
     title: 'Skattekort 2027: når kommer det, og hva bør du sjekke?',
     description:
       'Skattekortet for 2027 kommer i desember 2026. Slik sjekker du at det er riktig, når du bør endre det, og hva de nye skattesatsene betyr for trekket ditt.',
@@ -450,7 +451,7 @@ const allArticles = [
         'Du ser om du er trukket ut ved å logge inn på skatteetaten.no.',
       ]},
       { type: 'h2', text: 'Hvilken inntekt teller?' },
-      { type: 'p', text: 'Fradraget er knyttet til arbeidsinntekt. Lønn og næringsinntekt teller, og det samme gjør ytelser som erstatter arbeidsinntekt, som sykepenger og foreldrepenger. Ytelser som dagpenger og uføretrygd regnes ikke med. Kapitalinntekter som renter og utbytte påvirker heller ikke beregningen.' },
+      { type: 'p', text: 'Fradraget er knyttet til arbeidsinntekt. Lønn og næringsinntekt teller, og det samme gjør sykepenger. Dagpenger og uføretrygd regnes ikke med. Mottar du andre ytelser fra Nav, kan du sjekke hos Skatteetaten om de teller med. Kapitalinntekter som renter og utbytte påvirker heller ikke beregningen.' },
       { type: 'h2', text: 'Hvor mye er fradraget?' },
       { type: 'p', text: `Fradraget gis i alminnelig inntekt med inntil ${fmt(AF.maks)} kr. Siden alminnelig inntekt skattlegges med 22 prosent, gir fullt fradrag inntil 27 500 kr lavere skatt i året. Fradraget påvirker ikke trygdeavgiften eller trinnskatten.` },
       { type: 'p', text: `For arbeidsinntekt over ${fmt(AF.nedtrappingFra)} kr trappes fradraget ned med 40 prosent av inntekten over denne grensen. Det betyr at fradraget er helt borte ved ${fmt(AF_NULLPUNKT)} kr. Tjener du for eksempel 500 000 kr, blir fradraget 125 000 − 0,4 × (500 000 − 345 000) = ${fmt(af500.fradrag)} kr, som gir ${fmt(af500.verdi)} kr lavere skatt.` },
