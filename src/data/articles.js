@@ -1,5 +1,45 @@
 // Guider skrevet for 2026-satsene (vedtatt av Stortinget 22.12.2025).
-// Blokktyper: h2, p, ul, table
+// Blokktyper: h2, h3, p, ul, table. Tekst kan inneholde lenker: [tekst](/sti).
+// Tall i nye eksempler beregnes med skattemotoren (src/lib/tax.js).
+
+import { beregnSkatt, marginalskatt, fmt, pct, RATES_2026, RATES_2027_FORSLAG } from '../lib/tax.js';
+
+// --- Halv skatt i desember: anslag på månedstrekk (årsskatt / 10,5) ---
+const halvSkattRader = [400000, 500000, 600000, 750000, 1000000].map((g) => {
+  const mnd = beregnSkatt(g).totalSkatt / 10.5;
+  return [`${fmt(g)} kr`, `${fmt(Math.round(mnd / 100) * 100)} kr`, `${fmt(Math.round(mnd / 2 / 100) * 100)} kr`];
+});
+
+// --- Arbeidsfradrag for unge 2026 (forsøksordning) ---
+// Inntil 125 000 kr i alminnelig inntekt, redusert med 40 % av arbeidsinntekt over 345 000 kr
+// (null ved 657 500 kr). Kilder: regjeringen.no, Skatteetaten, Revisorforeningen.
+const AF = { maks: 125000, nedtrappingFra: 345000, sats: 0.4 };
+const arbeidsfradrag = (lonn) => Math.max(0, AF.maks - AF.sats * Math.max(0, lonn - AF.nedtrappingFra));
+// Skatteverdi: fradraget kan bare redusere alminnelig inntekt ned til null
+const afVerdi = (lonn) => Math.round(Math.min(arbeidsfradrag(lonn), beregnSkatt(lonn).grunnlag) * RATES_2026.alminnelig);
+const AF_NULLPUNKT = AF.nedtrappingFra + AF.maks / AF.sats; // 657 500
+const afRader = [250000, 300000, 345000, 400000, 500000, 600000, 650000].map((g) => {
+  const s = beregnSkatt(g).totalSkatt;
+  const v = afVerdi(g);
+  return [`${fmt(g)} kr`, `${fmt(arbeidsfradrag(g))} kr`, `${fmt(v)} kr`, `${fmt(s - v)} kr`];
+});
+const af500 = { fradrag: arbeidsfradrag(500000), verdi: afVerdi(500000) };
+
+// --- Skattetabell: regneeksempel tabelltrekk og prosenttrekk ---
+const tt = beregnSkatt(600000);
+const ttMnd = tt.totalSkatt / 10.5;
+const ttRenter = 30000;
+const ttMndRenter = (tt.totalSkatt - ttRenter * RATES_2026.alminnelig) / 10.5;
+const bijobb = 60000;
+const bijobbSkatt = beregnSkatt(600000 + bijobb).totalSkatt - tt.totalSkatt;
+const bijobbTrekk = Math.round(bijobb * tt.skattProsent / 100);
+
+// --- Skatteendringer: 2026 mot forslaget for 2027, samme lønn ---
+const endring27Rader = [500000, 600000, 750000, 1000000].map((g) => {
+  const a = beregnSkatt(g).totalSkatt;
+  const b = beregnSkatt(g, RATES_2027_FORSLAG).totalSkatt;
+  return [`${fmt(g)} kr`, `${fmt(a)} kr`, `${fmt(b)} kr`, `${fmt(a - b)} kr`];
+});
 
 const allArticles = [
   {
