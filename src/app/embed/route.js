@@ -14,12 +14,12 @@ export function GET() {
 .w{padding:16px;border:1px solid #dfe8e6;border-radius:14px;max-width:480px}
 h1{font-size:17px;margin:0 0 10px}label{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
 input{width:100%;font-size:22px;font-weight:700;padding:10px 12px;border:2px solid #dfe8e6;border-radius:10px;font-variant-numeric:tabular-nums}
-input:focus{outline:none;border-color:#1e8a5a}.big{text-align:center;margin:14px 0 6px}
+input:focus{outline:none;border-color:#18784e}.big{text-align:center;margin:14px 0 6px}
 .big small{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:#5b7480}
-.big b{font-size:34px;color:#1e8a5a;font-variant-numeric:tabular-nums}
+.big b{font-size:34px;color:#18784e;font-variant-numeric:tabular-nums}
 .sub{text-align:center;font-size:13px;color:#5b7480;margin-bottom:10px}
 ul{list-style:none;padding:0;margin:0;font-size:13px}li{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #eef3f2}
-.f{margin-top:10px;font-size:12px;color:#5b7480}a{color:#1e8a5a}
+.f{margin-top:10px;font-size:12px;color:#5b7480}a{color:#18784e}
 </style></head><body><div class="w">
 <h1>Lønn etter skatt 2026</h1>
 <label for="g">Årslønn før skatt (kr)</label>

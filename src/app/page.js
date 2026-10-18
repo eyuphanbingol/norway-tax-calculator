@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import Calculator from '../components/Calculator';
 import AdSlot from '../components/AdSlot';
-import { RATES_2026, RATES_2025, fmt, SALARY_PAGES, salarySlug, beregnSkatt, marginalskatt, pct } from '../lib/tax';
-import { DOMAIN } from '../lib/constants';
+import { RATES_2026, RATES_2025, fmt, SALARY_PAGES, SALARY_PAGES_INDEXED, salarySlug, beregnSkatt, marginalskatt, pct } from '../lib/tax';
+import { DOMAIN, SITE_NAME, AUTHOR, CONTACT_EMAIL } from '../lib/constants';
+import { getArticle } from '../data/articles';
+
+const AKTUELT = ['halv-skatt-i-desember-2026', 'skattekort-2027', 'unnga-restskatt-sjekk-trekket', 'julebonus-og-bonus-skatt'];
 
 export const metadata = {
   title: 'Skattekalkulator 2026 – beregn lønn etter skatt per år og måned',
@@ -38,6 +41,23 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${DOMAIN}/#org`,
+        name: SITE_NAME,
+        url: DOMAIN,
+        logo: `${DOMAIN}/icon.svg`,
+        email: CONTACT_EMAIL,
+        founder: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${DOMAIN}/#website`,
+        name: SITE_NAME,
+        url: DOMAIN,
+        inLanguage: 'nb',
+        publisher: { '@id': `${DOMAIN}/#org` },
+      },
       {
         '@type': 'WebApplication',
         name: 'Skattekalkulator Norge',
@@ -85,13 +105,27 @@ export default function Home() {
         <Calculator />
       </section>
 
+      {/* Aktuelt nå: sesongens viktigste guider */}
+      <section className="max-w-3xl mx-auto px-4 mt-8">
+        <div className="bg-white border border-mist rounded-2xl p-5">
+          <p className="text-sm font-bold uppercase tracking-wide text-fjord mb-3">Aktuelt nå</p>
+          <ul className="space-y-2">
+            {AKTUELT.map(getArticle).filter(Boolean).map((x) => (
+              <li key={x.slug}>
+                <Link href={`/blog/${x.slug}`} className="text-netto font-semibold hover:underline">{x.title}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
       <AdSlot type="header" />
 
       {/* Populære lønnsnivåer */}
       <section className="max-w-5xl mx-auto px-4 mt-14">
         <h2 className="display text-2xl font-bold mb-4">Populære lønnsnivåer</h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {[450000, 550000, 600000, 650000, 700000, 750000, 800000, 900000].map((g) => {
+          {SALARY_PAGES_INDEXED.map((g) => {
             const r = beregnSkatt(g);
             return (
               <Link

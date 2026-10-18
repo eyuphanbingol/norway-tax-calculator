@@ -134,7 +134,7 @@ export const SALARY_PAGES = [
 
 // Bare disse lønnsnivåene indekseres (mest søkt, utvidet innhold). De andre sidene
 // lever videre (de har vært indeksert), men får noindex og står ikke i sitemap.
-export const SALARY_PAGES_INDEXED = [400000, 450000, 500000, 600000, 650000, 700000, 750000, 800000, 1000000];
+export const SALARY_PAGES_INDEXED = [600000, 700000, 750000, 1000000];
 
 export const salarySlug = (g) => `lonn-etter-skatt-${g}-nok`;
 export const slugToSalary = (slug) => {

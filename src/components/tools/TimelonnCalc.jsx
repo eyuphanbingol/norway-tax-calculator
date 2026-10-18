@@ -15,7 +15,7 @@ export default function TimelonnCalc() {
       <div className="mb-4">
         <label htmlFor="timer" className="block text-sm font-semibold mb-1.5">Timer per uke: {String(timer).replace('.', ',')}</label>
         <input id="timer" type="range" min="5" max="45" step="2.5" value={timer}
-          onChange={(e) => setTimer(Number(e.target.value))} className="w-full accent-[#1e8a5a]" />
+          onChange={(e) => setTimer(Number(e.target.value))} className="w-full accent-[#18784e]" />
         <p className="text-xs text-fjord/75 mt-1">Full stilling er vanligvis 37,5 timer per uke.</p>
       </div>
       <Result label="Timelønn etter skatt (snitt)" value={`${fmt(nettoTime)} kr/time`}
