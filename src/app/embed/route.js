@@ -41,7 +41,7 @@ var t=g<=R.trygdeNedreGrense?0:Math.min(g*R.trygdeavgift,(g-R.trygdeNedreGrense)
 var s=0,k=R.trinnskatt;for(var i=0;i<k.length;i++){var to=i+1<k.length?k[i+1].over:Infinity;if(g>k[i].over)s+=(Math.min(g,to)-k[i].over)*k[i].sats}
 return{a:a,t:t,s:s,n:g-Math.round(a+t+s)}}
 var el=document.getElementById('g');
-function run(){var g=Number(el.value.replace(/\\D/g,''))||0;el.value=g?f(g):'';var r=calc(g);
+function run(){var g=Number(el.value.trim().replace(/[.,]\\d{1,2}$/,'').replace(/\\D/g,''))||0;el.value=g?f(g):'';var r=calc(g);
 document.getElementById('n').textContent=f(r.n)+' kr';
 document.getElementById('m').textContent='ca. '+f(r.n/12)+' kr per måned i snitt';
 document.getElementById('a').textContent=f(r.a)+' kr';document.getElementById('t').textContent=f(r.t)+' kr';

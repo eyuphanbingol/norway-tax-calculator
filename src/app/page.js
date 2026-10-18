@@ -240,7 +240,7 @@ export default function Home() {
             et anslag for trekket. Den endelige skatten fastsettes i skatteoppgjøret året etter.
           </li>
         </ul>
-        <p className="text-sm text-fjord/60">
+        <p className="text-sm text-fjord/75">
           Kilder: Finansdepartementet (skattesatser 2025 og 2026) og Skatteetaten. Beregningene er
           kontrollert mot offisielle tall. Se <Link href="/om-oss">hvordan vi lager innholdet</Link>.
         </p>

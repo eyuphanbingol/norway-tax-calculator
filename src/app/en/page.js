@@ -159,7 +159,7 @@ export default function English() {
             </details>
           ))}
         </div>
-        <p className="text-xs text-fjord/50 mt-6">
+        <p className="text-xs text-fjord/75 mt-6">
           Sources: Norwegian Ministry of Finance (tax rates 2026) and the Norwegian Tax
           Administration (Skatteetaten). Figures are estimates and do not replace your tax
           assessment.

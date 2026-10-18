@@ -4,7 +4,8 @@ import Calculator from '../../../components/Calculator';
 import AdSlot from '../../../components/AdSlot';
 import {
   beregnSkatt, marginalskatt, hvilketTrinn, fmt,
-  SALARY_PAGES, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, RATES_2026, pct, RATES_2027_FORSLAG } from '../../../lib/tax';
+  SALARY_PAGES, SALARY_PAGES_INDEXED, salarySlug, slugToSalary, AVG_SALARY, MEDIAN_SALARY, MEDIAN_SALARY_MND, AVG_SALARY_MND,
+  RATES_2025, RATES_2026, pct, RATES_2027_FORSLAG } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
 import { articles } from '../../../data/articles';
 
@@ -23,6 +24,8 @@ export async function generateMetadata({ params }) {
     title: `${fmt(gross)} kr lønn etter skatt 2026 – ${fmt(r.netto)} kr utbetalt`,
     description: `Tjener du ${fmt(gross)} kr i 2026? Da får du utbetalt ca. ${fmt(r.netto)} kr etter skatt (${fmt(r.nettoMnd)} kr/mnd). Se full beregning av trinnskatt, trygdeavgift og fradrag.`,
     alternates: { canonical: `${DOMAIN}/lonn/${slug}` },
+    // Bare de mest søkte nivåene indekseres; resten er nyttige for brukerne, men ligner hverandre
+    ...(SALARY_PAGES_INDEXED.includes(gross) ? {} : { robots: { index: false, follow: true } }),
   };
 }
 
@@ -52,6 +55,21 @@ export default async function SalaryPage({ params }) {
     return { d, n, keep: Math.round((n / d) * 1000) / 10 };
   });
   const r27 = beregnSkatt(gross, RATES_2027_FORSLAG);
+  const r25 = beregnSkatt(gross, RATES_2025);
+  const indexed = SALARY_PAGES_INDEXED.includes(gross);
+
+  // Praktiske tall for de indekserte nivåene
+  const trekkMnd = r.totalSkatt / 10.5; // skatten trekkes normalt over 10,5 måneder
+  const bruttoMnd = gross / 12;
+  const nesteTrinn = t.find((x) => x.over > gross);
+  const forrigeTrinn = [...t].reverse().find((x) => x.over <= gross);
+  const marginalEtter = nesteTrinn ? marginalskatt(nesteTrinn.over + 1000) : null;
+  const agaSats = 0.141; // arbeidsgiveravgift sone I
+  const motMedian = Math.round((gross / MEDIAN_SALARY - 1) * 100);
+  const NOTES = {
+    750000: 'Regjeringen bruker selv 750 000 kr som eksempel i forslaget til statsbudsjett for 2027: med forventet lønnsvekst får en lønnsmottaker med denne lønnen om lag 1 800 kr lavere skatt i 2027.',
+    1000000: 'En million i årslønn er et mål for mange. Over 980 100 kr er du i trinn 4: av hver ekstra krone går 22 % i skatt på alminnelig inntekt, 7,6 % i trygdeavgift og 16,8 % i trinnskatt, så du beholder 53,6 øre.',
+  };
 
   const idx = SALARY_PAGES.indexOf(gross);
   const prev = idx > 0 ? SALARY_PAGES[idx - 1] : null;
@@ -89,7 +107,7 @@ export default async function SalaryPage({ params }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <nav className="text-sm text-fjord/60 mb-4">
+      <nav className="text-sm text-fjord/75 mb-4">
         <Link href="/" className="hover:underline">Kalkulator</Link>
         {' / '}
         <Link href="/lonn" className="hover:underline">Lønnstabell</Link>
@@ -129,16 +147,17 @@ export default async function SalaryPage({ params }) {
 
         <h2>Hvordan ligger {fmt(gross)} kr an i Norge?</h2>
         <p>
-          Ifølge SSB var medianlønnen for heltidsansatte i 2025 rundt {fmt(MEDIAN_SALARY)} kr i året,
-          og gjennomsnittet rundt {fmt(AVG_SALARY)} kr (uten overtid). Medianen betyr at halvparten
-          tjener mer og halvparten mindre.{' '}
+          Ifølge SSB var medianlønnen per heltidsekvivalent {fmt(MEDIAN_SALARY_MND)} kr i måneden i
+          2025, altså rundt {fmt(MEDIAN_SALARY)} kr i året. Gjennomsnittet var {fmt(AVG_SALARY_MND)} kr
+          i måneden (rundt {fmt(AVG_SALARY)} kr i året). Tallene inkluderer bonus og uregelmessige
+          tillegg, men ikke overtid. Medianen betyr at halvparten tjener mer og halvparten mindre.{' '}
           {gross < MEDIAN_SALARY * 0.97
-            ? `Med ${fmt(gross)} kr ligger du under medianen – vanlig tidlig i karrieren og i mange service- og omsorgsyrker.`
+            ? `Med ${fmt(gross)} kr ligger du under medianen.`
             : gross <= MEDIAN_SALARY * 1.03
-            ? `Med ${fmt(gross)} kr ligger du omtrent på medianen for heltidsansatte.`
-            : gross < AVG_SALARY * 1.15
-            ? `Med ${fmt(gross)} kr ligger du over medianen og nær gjennomsnittet – typisk for mange erfarne fagarbeidere og kontoryrker.`
-            : `Med ${fmt(gross)} kr ligger du klart over både median og gjennomsnitt – vanlig blant ingeniører, IT-spesialister, ledere og andre med lang erfaring eller høy spesialisering.`}
+            ? `Med ${fmt(gross)} kr ligger du omtrent på medianen.`
+            : gross < AVG_SALARY * 1.05
+            ? `Med ${fmt(gross)} kr ligger du over medianen og nær gjennomsnittet.`
+            : `Med ${fmt(gross)} kr ligger du over både medianen og gjennomsnittet.`}
         </p>
         <p>
           Med dette inntektsnivået er du i {trinn === 0 ? 'ingen trinnskattetrinn ennå' : `trinnskattens trinn ${trinn}`},
@@ -170,6 +189,43 @@ export default async function SalaryPage({ params }) {
               <tr><td><strong>Sum trinnskatt</strong></td><td></td><td><strong>{fmt(r.trinnskatt)} kr</strong></td></tr>
             </tbody>
           </table>
+        )}
+
+        {indexed && (
+          <>
+            <h2>{fmt(gross)} kr i praksis: lønnsslipp, trinn og arbeidsgiver</h2>
+            {NOTES[gross] && <p>{NOTES[gross]}</p>}
+            <p>
+              <strong>Lønnsslippen.</strong> Brutto månedslønn er {fmt(bruttoMnd)} kr. Fordi skatten
+              normalt trekkes over 10,5 måneder, blir trekket i en vanlig måned omtrent{' '}
+              {fmt(trekkMnd)} kr, og du får rundt {fmt(bruttoMnd - trekkMnd)} kr utbetalt – litt mindre
+              enn snittet på {fmt(r.nettoMnd)} kr. I desember er trekket halvt (ca. {fmt(trekkMnd / 2)} kr),
+              så utbetalingen blir rundt {fmt(bruttoMnd - trekkMnd / 2)} kr. Det nøyaktige trekket står i
+              skattekortet ditt og kan avvike noe fra dette anslaget.
+            </p>
+            <p>
+              <strong>Trinnskatten.</strong>{' '}
+              {forrigeTrinn
+                ? `Du er ${fmt(gross - forrigeTrinn.over)} kr over innslagspunktet for trinn ${t.indexOf(forrigeTrinn) + 1} (${fmt(forrigeTrinn.over)} kr). `
+                : ''}
+              {nesteTrinn
+                ? `Neste trinn starter ved ${fmt(nesteTrinn.over)} kr, ${fmt(nesteTrinn.over - gross)} kr unna. Lønn over den grensen beskattes med ${pct(marginalEtter)} % marginalskatt, mot ${pct(marginal)} % i dag.`
+                : `Du er i det øverste trinnet, så marginalskatten på ${pct(marginal)} % gjelder all videre lønnsøkning.`}
+            </p>
+            <p>
+              <strong>Sammenlignet med 2025.</strong> Med 2025-satsene ville skatten på samme lønn vært{' '}
+              {fmt(r25.totalSkatt)} kr. I 2026 er den {fmt(r.totalSkatt)} kr, altså{' '}
+              {fmt(Math.abs(r25.totalSkatt - r.totalSkatt))} kr {r25.totalSkatt >= r.totalSkatt ? 'mindre' : 'mer'},
+              mest fordi personfradraget, minstefradraget og trinnskattgrensene ble oppjustert og
+              trygdeavgiften satt ned fra 7,7 til 7,6 %.
+            </p>
+            <p>
+              <strong>Hva du koster arbeidsgiveren.</strong> I sone I betaler arbeidsgiveren 14,1 %
+              arbeidsgiveravgift, rundt {fmt(gross * agaSats)} kr i året på denne lønnen. I tillegg kommer
+              blant annet feriepenger og obligatorisk tjenestepensjon. Lønnen er {Math.abs(motMedian)} %{' '}
+              {motMedian >= 0 ? 'over' : 'under'} SSBs median for heltidsansatte.
+            </p>
+          </>
         )}
 
         <h2>Hva er en lønnsøkning verdt fra {fmt(gross)} kr?</h2>

@@ -43,7 +43,7 @@ export default async function EnSalaryPage({ params }) {
   return (
     <main lang="en" className="max-w-3xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="text-sm text-fjord/60 mb-4">
+      <nav className="text-sm text-fjord/75 mb-4">
         <Link href="/en" className="hover:underline">Calculator</Link>{' / '}
         <Link href="/en/salary-after-tax" className="hover:underline">Salary table</Link>{' / '}{nok(g)}
       </nav>
@@ -70,8 +70,9 @@ export default async function EnSalaryPage({ params }) {
         </table>
         <h2>How does {nok(g)} compare in Norway?</h2>
         <p>
-          The median annual salary for full-time employees in Norway was about {nok(MEDIAN_SALARY)} in
-          2025 (Statistics Norway). Your marginal tax rate at this income is <strong>{marginal}%</strong>.
+          According to Statistics Norway (SSB), the median monthly salary per full-time equivalent was
+          NOK 55,800 in 2025 – about {nok(MEDIAN_SALARY)} a year (including bonuses and irregular
+          supplements, excluding overtime). Your marginal tax rate at this income is <strong>{marginal}%</strong>.
         </p>
         <p>
           {paye

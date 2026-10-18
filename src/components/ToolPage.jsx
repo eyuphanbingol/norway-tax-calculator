@@ -14,7 +14,7 @@ export default function ToolPage({ title, intro, children, faq = [], url }) {
   return (
     <main className="max-w-3xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="text-sm text-fjord/60 mb-4">
+      <nav className="text-sm text-fjord/75 mb-4">
         <Link href="/verktoy" className="hover:underline">Verktøy</Link>{' / '}{title}
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{title}</h1>

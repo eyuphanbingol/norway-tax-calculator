@@ -4,6 +4,7 @@ export const metadata = {
   title: 'Gratis skattekalkulator til din nettside',
   description: 'Legg inn en gratis skattekalkulator for lønn etter skatt 2026 på bloggen eller nettsiden din. Kopier koden – den oppdateres automatisk med nye satser.',
   alternates: { canonical: `${DOMAIN}/del-kalkulatoren` },
+  robots: { index: false, follow: true },
 };
 
 const code = `<iframe src="${DOMAIN}/embed" title="Skattekalkulator 2026" width="100%" height="440" style="border:0;max-width:480px" loading="lazy"></iframe>
@@ -27,7 +28,7 @@ export default function DelKalkulatoren() {
       <ul>
         <li>Kalkulatoren er gratis å bruke, også på kommersielle nettsider.</li>
         <li>Behold lenken til Skattekalkulator.com under kalkulatoren.</li>
-        <li>Kalkulatoren viser ingen annonser og setter ingen informasjonskapsler.</li>
+        <li>Den innebygde kalkulatoren viser ingen annonser, bruker ingen sporing og setter ingen informasjonskapsler.</li>
         <li>Beregningene er veiledende og bruker standard fradrag.</li>
       </ul>
       <p>Spørsmål eller ønsker? Ta kontakt på skattekalkulatornorge@gmail.com.</p>

@@ -132,15 +132,22 @@ export const SALARY_PAGES = [
   1100000, 1200000, 1500000, 2000000,
 ].sort((a, b) => a - b);
 
+// Bare disse lønnsnivåene indekseres (mest søkt, utvidet innhold). De andre sidene
+// lever videre (de har vært indeksert), men får noindex og står ikke i sitemap.
+export const SALARY_PAGES_INDEXED = [400000, 450000, 500000, 600000, 650000, 700000, 750000, 800000, 1000000];
+
 export const salarySlug = (g) => `lonn-etter-skatt-${g}-nok`;
 export const slugToSalary = (slug) => {
   const m = slug.match(/^lonn-etter-skatt-(\d+)-nok$/);
   return m ? parseInt(m[1], 10) : null;
 };
 
-// Årslønn for heltidsansatte i Norge, SSB 2025 (ekskl. overtid) — brukes til sammenligning
-export const MEDIAN_SALARY = 695640;
-export const AVG_SALARY = 775800;
+// SSB «Lønn» 2025: månedslønn per heltidsekvivalent (inkl. uregelmessige tillegg og bonus,
+// ekskl. overtid). Median 55 800 kr, gjennomsnitt 62 070 kr. Årstall = × 12.
+export const MEDIAN_SALARY_MND = 55800;
+export const AVG_SALARY_MND = 62070;
+export const MEDIAN_SALARY = MEDIAN_SALARY_MND * 12; // 669 600
+export const AVG_SALARY = AVG_SALARY_MND * 12; // 744 840
 
 // Folketrygdens grunnbeløp fra 1. mai 2026 (Nav)
 export const G_2026 = 136549;
@@ -227,4 +234,12 @@ export function beregnPensjonsskatt(pensjon, r = RATES_2026, p = PENSJON_2026) {
     nettoMnd: Math.round(netto / 12),
     skattProsent: pensjon > 0 ? Math.round((totalSkatt / pensjon) * 1000) / 10 : 0,
   };
+}
+
+// Leser et beløp fra et tekstfelt. Desimaler (",50" / ".5") kuttes bort i stedet
+// for å bli lest som ekstra sifre ("52 000,50" → 52 000, ikke 5 200 050).
+// decimalSep: tegn som regnes som desimalskille (engelsk visning bruker komma som tusenskille).
+export function parseAmount(s, decimalSep = '.,') {
+  const re = new RegExp(`[${decimalSep}]\\d{1,2}$`);
+  return Number(String(s).trim().replace(re, '').replace(/\D/g, '')) || 0;
 }

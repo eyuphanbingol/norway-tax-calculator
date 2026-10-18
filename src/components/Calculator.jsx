@@ -1,7 +1,7 @@
 'use client';
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { beregnSkatt, marginalskatt, fmt, pct, RATES, SALARY_PAGES, salarySlug } from '../lib/tax';
+import { beregnSkatt, marginalskatt, fmt, pct, parseAmount, RATES, SALARY_PAGES, salarySlug } from '../lib/tax';
 
 const T = {
   no: {
@@ -90,27 +90,28 @@ export default function Calculator({ initial = 600000, lang = 'no', year: initia
           autoComplete="off"
           value={shown ? num(shown) : ''}
           onChange={(e) => {
-            const v = Math.min(100000000, Number(e.target.value.replace(/\D/g, '')) || 0);
+            const v = Math.min(100000000, parseAmount(e.target.value, lang === 'en' ? '.' : '.,'));
             setGross(monthly ? v * 12 : v);
           }}
           className="tnum w-full text-2xl font-bold border-2 border-mist rounded-xl px-4 py-3 focus:border-netto outline-none"
         />
-        <span className="text-lg font-semibold text-fjord/60">{lang === 'en' ? 'NOK' : 'kr'}</span>
+        <span className="text-lg font-semibold text-fjord/75">{lang === 'en' ? 'NOK' : 'kr'}</span>
       </div>
       <input
         type="range"
-        min="200000"
-        max="2000000"
-        step="5000"
-        value={Math.min(Math.max(gross, 200000), 2000000)}
-        onChange={(e) => setGross(Number(e.target.value))}
+        min="0"
+        max={monthly ? 170000 : 2000000}
+        step={monthly ? 500 : 5000}
+        value={Math.min(shown, monthly ? 170000 : 2000000)}
+        onChange={(e) => setGross(Number(e.target.value) * (monthly ? 12 : 1))}
         aria-label={t.ariaRange}
+        aria-valuetext={`${num(shown)} ${lang === 'en' ? 'NOK' : 'kr'}`}
         className="w-full accent-[#1e8a5a] mb-6"
       />
 
       {/* Signatur: det store netto-tallet */}
       <div className="text-center mb-6">
-        <p className="text-sm uppercase tracking-wide text-fjord/60">{t.netTitle(year)}</p>
+        <p className="text-sm uppercase tracking-wide text-fjord/75">{t.netTitle(year)}</p>
         <p className="tnum display text-5xl sm:text-6xl font-bold text-netto leading-tight">
           {monthly ? num(r.nettoMnd) : num(r.netto)} {lang === 'en' ? 'NOK' : 'kr'}
         </p>
@@ -154,7 +155,7 @@ export default function Calculator({ initial = 600000, lang = 'no', year: initia
         </p>
       </div>
 
-      <p className="text-xs text-fjord/50 mt-4">
+      <p className="text-xs text-fjord/75 mt-4">
         {t.note(year)}{' '}
         {year === 2027 && <>{t.note2027}{' '}</>}
         {monthly && <>{t.monthNote}{' '}</>}

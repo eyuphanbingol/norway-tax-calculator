@@ -26,7 +26,6 @@ export const metadata = {
   description:
     'Beregn hva du får utbetalt etter skatt i 2026. Gratis skattekalkulator med oppdaterte satser for trinnskatt, trygdeavgift, minstefradrag og personfradrag.',
   other: { 'google-adsense-account': 'ca-pub-2645631543067545' },
-  robots: { index: true, follow: true },
   openGraph: {
     siteName: SITE_NAME,
     locale: 'nb_NO',
@@ -38,9 +37,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="no" className={sora.variable}>
       <head>
-        {/* Google tag (gtag.js) med samtykkemodus */}
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`window.dataLayer = window.dataLayer || [];
+        {/* Samtykkemodus: standardverdiene må settes før noen Google-tag lastes,
+            derfor et vanlig inline-skript først i <head>. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('consent', 'default', {
   ad_storage: 'denied',
@@ -50,7 +51,11 @@ gtag('consent', 'default', {
   wait_for_update: 500,
   region: ${JSON.stringify(CONSENT_REGIONS)}
 });
-gtag('js', new Date());
+gtag('set', 'ads_data_redaction', true);`,
+          }}
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`gtag('js', new Date());
 gtag('config', '${GA_ID}');`}
         </Script>
         <Script

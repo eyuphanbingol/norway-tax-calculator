@@ -43,11 +43,11 @@ export default async function GuidePage({ params }) {
   return (
     <main lang="en" className="max-w-3xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="text-sm text-fjord/60 mb-4">
+      <nav className="text-sm text-fjord/75 mb-4">
         <Link href="/en" className="hover:underline">Norway Tax Calculator</Link>{' / '}Guides
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{g.title}</h1>
-      <p className="text-sm text-fjord/50 mb-8">By <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Updated 8 October 2026 · 2026 rules</p>
+      <p className="text-sm text-fjord/75 mb-8">By <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Updated 8 October 2026 · 2026 rules</p>
       <article className="prose-no">
         {g.body.slice(0, mid).map((b, i) => <Block key={i} b={b} />)}
         <AdSlot type="content" />

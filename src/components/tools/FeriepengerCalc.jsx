@@ -27,7 +27,7 @@ export default function FeriepengerCalc() {
         [`Feriepenger (${femUker ? '12' : '10,2'} %)`, `${fmt(r.ordinaer)} kr`],
         ...(over60 ? [['Tillegg over 60 år (2,3 % av inntil 6G)', `${fmt(r.tillegg)} kr`]] : []),
       ]} />
-      <p className="text-xs text-fjord/50">
+      <p className="text-xs text-fjord/75">
         Tillegget for over 60 år beregnes av grunnlag opptil 6G ({fmt(6 * G_2026)} kr med grunnbeløpet fra 1. mai 2026).
         Feriepengene er skattepliktige, men det trekkes normalt ikke skatt av ordinære feriepenger ved utbetaling.
         Arbeidsgiveren kan ha bedre ordninger enn loven. Tallene er veiledende.

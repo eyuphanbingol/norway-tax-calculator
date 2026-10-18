@@ -327,7 +327,7 @@ const allArticles = [
     description:
       'I 2026 starter en forsøksordning der 100 000 tilfeldig utvalgte unge får et arbeidsfradrag på inntil 125 000 kr. Se hvem som kan bli trukket ut, og hvor mye det er verdt.',
     date: '2026-02-01',
-    updated: '2026-10-08',
+    updated: '2026-10-18',
     body: [
       { type: 'p', text: 'Fra inntektsåret 2026 innføres en av de mest uvanlige skatteordningene i norsk historie: et arbeidsfradrag for unge som tildeles ved loddtrekning. Ordningen er en femårig forsøksordning som skal måle om lavere skatt får flere unge i arbeid – og den har allerede fått kallenavnet «skattelotteriet».' },
       { type: 'h2', text: 'Hvem kan bli trukket ut?' },
@@ -338,8 +338,8 @@ const allArticles = [
         'Fradraget gjelder kun arbeids- og næringsinntekt, ikke trygdeytelser',
       ]},
       { type: 'h2', text: 'Hvor mye er fradraget verdt?' },
-      { type: 'p', text: 'Fradraget gis i alminnelig inntekt med inntil 125 000 kr. Siden skattesatsen på alminnelig inntekt er 22 prosent, betyr det inntil 27 500 kr mindre skatt i året. Fullt fradrag gis for inntekter opp til 345 000 kr.' },
-      { type: 'p', text: 'Over dette nivået reduseres fradraget med 40 prosent av inntekten over 345 000 kr, og ved en inntekt på rundt 657 500 kr er det helt borte. Ordningen er altså mest verdt for unge med lav og middels inntekt – studenter med deltidsjobb, lærlinger og folk tidlig i karrieren.' },
+      { type: 'p', text: 'Fradraget gis i alminnelig inntekt med inntil 125 000 kr. Siden skattesatsen på alminnelig inntekt er 22 prosent, betyr det inntil 27 500 kr mindre skatt i året.' },
+      { type: 'p', text: 'Fradraget trappes ned når arbeidsinntekten passerer et visst nivå, og faller helt bort ved høyere inntekter. Ordningen er derfor mest verdt for unge med lav og middels inntekt – for eksempel studenter med deltidsjobb, lærlinger og folk tidlig i karrieren. De nøyaktige grensene for nedtrappingen finner du hos Skatteetaten.' },
       { type: 'h2', text: 'Hva bør du gjøre hvis du blir trukket ut?' },
       { type: 'p', text: 'Ingenting – fradraget legges automatisk inn i skattekortet og skattemeldingen din. Men det kan være lurt å sjekke skattekortet for 2026 hvis du er i målgruppen: blir du trukket ut, får du lavere trekk gjennom året, og da bør resten av økonomien din ta høyde for at dette er en midlertidig ordning.' },
       { type: 'h2', text: 'Hvorfor loddtrekning?' },
@@ -522,6 +522,9 @@ const allArticles = [
 ];
 
 // Skjulte artikler (hidden: true) publiseres ikke: ingen side, ikke i lister eller sitemap
-export const articles = allArticles.filter((a) => !a.hidden);
+// Nyeste først (sist oppdatert), slik at bloggoversikten og «Les også» viser ferskt innhold
+export const articles = allArticles
+  .filter((a) => !a.hidden)
+  .sort((a, b) => (b.updated || b.date).localeCompare(a.updated || a.date));
 
 export const getArticle = (slug) => articles.find((a) => a.slug === slug);
