@@ -165,7 +165,7 @@ export default {
     { type: 'h3', text: 'Er det lurt å få bonusen i januar i stedet for desember?' },
     {
       type: 'p',
-      text: 'Det kan påvirke hvilket år bonusen skattlegges i. Det hjelper bare hvis inntekten din neste år blir lavere, slik at bonusen havner i et lavere trinn. For de fleste blir forskjellen liten. Skattesatsene for 2027 er bare et forslag til Stortinget vedtar budsjettet i desember 2026.',
+      text: 'Lønn og bonus skattlegges i det året de utbetales. Å flytte bonusen til januar hjelper bare hvis inntekten din neste år blir lavere, slik at bonusen havner i et lavere trinn. For de fleste blir forskjellen liten. Skattesatsene for 2027 er bare et forslag til Stortinget vedtar budsjettet i desember 2026.',
     },
     { type: 'h3', text: 'Kan jeg spare skatt ved å sette bonusen inn i pensjon?' },
     {

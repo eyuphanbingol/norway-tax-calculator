@@ -31,7 +31,7 @@ export default {
   slug: 'lonnsokning-etter-skatt-2027',
   title: 'Lønnsøkning i 2027: hva sitter du igjen med etter skatt?',
   description:
-    'Hva er 3, 4 eller 5 prosent lønnsøkning verdt etter skatt i 2027? Utregnet med regjeringens forslag til skattesatser, med tabell for ulike lønnsnivåer og marginalskatt.',
+    'Hva er 3, 4 eller 5 prosent lønnsøkning verdt etter skatt i 2027? Regnet ut med regjeringens skatteforslag, med tabell for seks lønnsnivåer og marginalskatt.',
   date: '2026-10-18',
   sources: [
     { name: 'Regjeringen: Skattesatser 2027 (forslag)', url: 'https://www.regjeringen.no/no/tema/okonomi-og-budsjett/skatter-og-avgifter/skatte-og-avgiftssatser/skattesatser-2027/id3173438/' },
@@ -65,7 +65,7 @@ export default {
     { type: 'p', text: 'Alle beløp i kroner. Netto 2026 er beregnet med 2026-satsene. Kolonnene for 2027 er beregnet med regjeringens forslag og ny lønn. Forskjellen inkluderer altså både lønnsøkningen og skatteendringene.' },
 
     { type: 'h2', text: 'Eksempel: medianlønn med 4 prosent' },
-    { type: 'p', text: `Medianlønnen for heltidsansatte er ${fmt(m)} kroner i året (SSB). Med 4 prosent lønnsøkning blir lønnen ${fmt(mNy)} kroner i 2027, altså ${fmt(mBrutto)} kroner mer før skatt.` },
+    { type: 'p', text: `Medianlønnen for heltidsansatte er ${fmt(m)} kroner i året (SSB, 2025). Med 4 prosent lønnsøkning blir lønnen ${fmt(mNy)} kroner i 2027, altså ${fmt(mBrutto)} kroner mer før skatt.` },
     { type: 'p', text: `Etter skatt sitter du igjen med ${fmt(mNetto)} kroner mer enn i 2026, eller rundt ${fmt(mNetto / 12)} kroner i måneden. Av dette skyldes ${fmt(mBareSkatt)} kroner skatteendringene alene. Det ville du fått selv uten lønnsøkning. De resterende ${fmt(mFraLonn)} kronene kommer fra selve lønnsøkningen.` },
     { type: 'p', text: `Med andre ord: av ${fmt(mBrutto)} kroner i lønnsøkning beholder du ${fmt(mFraLonn)}, eller ${pct(Math.round((mFraLonn / mBrutto) * 1000) / 10)} prosent. Resten går til skatt. Det henger sammen med marginalskatten.` },
 
@@ -84,10 +84,10 @@ export default {
 
     { type: 'h3', text: 'Hvorfor faller 1 000 000 kroner ut av trinn 4?' },
     { type: 'p', text: `I 2026 starter trinn 4 på ${fmt(t4_26)} kroner. En lønn på 1 000 000 kroner ligger over dette, og marginalskatten er ${pct(marginalskatt(mill, RATES_2026))} prosent. I forslaget for 2027 flyttes trinn 4 opp til ${fmt(t4_27)} kroner. Da ligger 1 000 000 kroner under, i trinn 3, og marginalskatten blir ${pct(marginalskatt(mill, RATES_2027_FORSLAG))} prosent.` },
-    { type: 'p', text: `Men det gjelder bare hvis lønnen står stille. Med 3 prosent lønnsøkning blir lønnen ${fmt(mill3)} kroner, som er over det nye innslagspunktet. Da er marginalskatten tilbake på ${pct(marginalskatt(mill3, RATES_2027_FORSLAG))} prosent for de siste kronene. Det samme skjer rundt 750 000 kroner: trinn 3 flyttes fra ${fmt(t3_26)} til ${fmt(t3_27)} kroner, men 4 prosent lønnsøkning løfter lønnen over grensen igjen. Les mer om trinnene i [trinnskatt 2026](/blog/trinnskatt-2026) og [marginalskatt 2026](/blog/marginalskatt-2026).` },
+    { type: 'p', text: `Men det gjelder bare hvis lønnen står stille. Med 3 prosent lønnsøkning blir lønnen ${fmt(mill3)} kroner, som er over det nye innslagspunktet. Da er marginalskatten igjen oppe i ${pct(marginalskatt(mill3, RATES_2027_FORSLAG))} prosent for de siste kronene. Det samme skjer rundt 750 000 kroner: trinn 3 flyttes fra ${fmt(t3_26)} til ${fmt(t3_27)} kroner, men 4 prosent lønnsøkning løfter lønnen over grensen igjen. Les mer om trinnene i [trinnskatt 2026](/blog/trinnskatt-2026) og [marginalskatt 2026](/blog/marginalskatt-2026).` },
     { type: 'p', text: 'Innslagspunktene justeres omtrent i takt med forventet lønnsvekst. Den som får en lønnsøkning på linje med andre, havner derfor ofte på samme trinn som før. Den som får mindre enn gjennomsnittet, kan rykke ned et trinn.' },
 
-    { type: 'h2', text: 'Lønnsøkning gir aldri lavere netto' },
+    { type: 'h2', text: 'Et høyere trinn spiser aldri hele lønnsøkningen' },
     { type: 'p', text: 'En vanlig myte er at en lønnsøkning kan «lønne seg dårlig» fordi du havner i et høyere skattetrinn. Det stemmer ikke. Trinnskatten er progressiv, så den høyere satsen gjelder bare kronene over innslagspunktet. Resten av lønnen skattes som før. Skattemessig får du alltid mer utbetalt totalt, selv om hver ekstra krone skattes hardere.' },
 
     { type: 'h2', text: 'Husk skattekortet og når økningen kommer' },

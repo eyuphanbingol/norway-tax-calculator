@@ -92,7 +92,16 @@ export default {
     { type: 'h3', text: 'Det verste tilfellet: tabelltrekk hos begge' },
     {
       type: 'p',
-      text: `Hvis biarbeidsgiveren også trekker etter tabell, behandles bijobben som om den var din eneste inntekt. En lav inntekt gir lite eller ingen skatt i tabellen. Regnet som eneste inntekt gir 50 000 kroner ${fmt(e50.alene)} kroner i skatt, og 100 000 kroner gir ${fmt(e100.alene)} kroner. Da kan nesten hele den ekstra skatten på ${fmt(e50.ekstra)} eller ${fmt(e100.ekstra)} kroner komme som restskatt. Det faktiske trekket avhenger av tabellnummeret og hvordan lønnen fordeles over månedene, men retningen er den samme.`,
+      text: `Hvis biarbeidsgiveren også trekker etter tabell, behandles bijobben som om den var din eneste inntekt. En lav inntekt gir lite eller ingen skatt i tabellen. Regnet som eneste inntekt gir 50 000 kroner ${e50.alene === 0 ? 'ingen skatt' : `${fmt(e50.alene)} kroner i skatt`}, og 100 000 kroner gir ${fmt(e100.alene)} kroner. Da kan nesten hele den ekstra skatten på ${fmt(e50.ekstra)} eller ${fmt(e100.ekstra)} kroner komme som restskatt. Det faktiske trekket avhenger av tabellnummeret og hvordan lønnen fordeles over månedene, men retningen er den samme.`,
+    },
+    { type: 'h2', text: 'Julejobb i desember: får du halv skatt?' },
+    {
+      type: 'p',
+      text: `Halv skatt i desember gjelder tabelltrekk. Trekker biarbeidsgiveren prosent, trekkes samme prosent i desember som ellers. Lønnen fra julejobben blir altså ikke halvt trukket, selv om lønnen fra hovedjobben blir det. Det er heller ingen fordel i seg selv: halvt trekk i desember er betalt på forhånd gjennom høyere trekk resten av året. Les mer i [halv skatt i desember](/blog/halv-skatt-i-desember-2026).`,
+    },
+    {
+      type: 'p',
+      text: `Et eksempel: Du har ${fmt(HOVED)} kroner i fast lønn og tar ${fmt(e50.bi)} kroner i ekstravakter i november og desember. Skatten på ekstravaktene blir ${fmt(e50.ekstra)} kroner, eller ${pct(marg)} prosent. Har du ikke oppdatert skattekortet, kan det være lurt å legge til side om lag ${fmt(e50.mangler)} kroner til skatteoppgjøret, slik tabellen over viser.`,
     },
     { type: 'h2', text: 'Slik oppdaterer du skattekortet' },
     {

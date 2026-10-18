@@ -70,7 +70,6 @@ export default async function SalaryPage({ params }) {
   const nt = (g) => beregnSkatt(g).netto;
   const andel = (del, av) => pct(Math.round((del / av) * 1000) / 10);
   const beholder = pct(Math.round((100 - marginal) * 10) / 10);
-  const T2 = t[1].over;
   const T3 = t[2].over;
   const T4 = t[3].over;
   const T5 = t[4].over;
@@ -138,7 +137,7 @@ export default async function SalaryPage({ params }) {
           <p>
             Lønnen ligger mellom SSBs median ({fmt(MEDIAN_SALARY)} kr) og gjennomsnitt ({fmt(AVG_SALARY)}{' '}
             kr) for 2025. At gjennomsnittet er høyere enn medianen, betyr at noen svært høye lønninger
-            trekker snittet opp. Flere har derfor lavere lønn enn gjennomsnittet enn høyere. Med 700 000 kr
+            trekker snittet opp, og over halvparten tjener derfor mindre enn gjennomsnittet. Med 700 000 kr
             tjener du mer enn medianlønnstakeren, men under snittet.
           </p>
         </>
@@ -172,7 +171,7 @@ export default async function SalaryPage({ params }) {
       ),
     },
     1000000: {
-      h: `1 million kr: trinn 4 og 53,6 øre per krone`,
+      h: `1 million kr: trinn 4 og ${beholder} øre per krone`,
       body: (
         <>
           <p>
@@ -275,6 +274,7 @@ export default async function SalaryPage({ params }) {
             <tr><td><strong>Sum skatt</strong></td><td><strong>{fmt(r.totalSkatt)} kr</strong></td></tr>
             <tr><td><strong>Utbetalt</strong></td><td><strong>{fmt(r.netto)} kr</strong></td></tr>
             <tr><td>Gjennomsnitt per måned</td><td>{fmt(r.nettoMnd)} kr</td></tr>
+            <tr><td><Link href="/blog/halv-skatt-i-desember-2026">Halv skatt i desember</Link></td><td>ca. {fmt(trekkMnd / 2)} kr mer utbetalt</td></tr>
           </tbody>
         </table>
 
@@ -326,14 +326,21 @@ export default async function SalaryPage({ params }) {
 
         {indexed && (
           <>
+            {hand && (
+              <>
+                <h2>{hand.h}</h2>
+                {hand.body}
+              </>
+            )}
             <h2>{fmt(gross)} kr i praksis: lønnsslipp, trinn og arbeidsgiver</h2>
-            {NOTES[gross] && <p>{NOTES[gross]}</p>}
             <p>
               <strong>Lønnsslippen.</strong> Brutto månedslønn er {fmt(bruttoMnd)} kr. Fordi skatten
               normalt trekkes over 10,5 måneder, blir trekket i en vanlig måned omtrent{' '}
               {fmt(trekkMnd)} kr, og du får rundt {fmt(bruttoMnd - trekkMnd)} kr utbetalt – litt mindre
               enn snittet på {fmt(r.nettoMnd)} kr. I desember er trekket halvt (ca. {fmt(trekkMnd / 2)} kr),
-              så utbetalingen blir rundt {fmt(bruttoMnd - trekkMnd / 2)} kr. Det nøyaktige trekket står i
+              så utbetalingen blir rundt {fmt(bruttoMnd - trekkMnd / 2)} kr – med{' '}
+              <Link href="/blog/halv-skatt-i-desember-2026">halv skatt i desember</Link> får du altså ca.{' '}
+              {fmt(trekkMnd / 2)} kr mer utbetalt enn i en vanlig måned. Det nøyaktige trekket står i
               skattekortet ditt og kan avvike noe fra dette anslaget.
             </p>
             <p>
