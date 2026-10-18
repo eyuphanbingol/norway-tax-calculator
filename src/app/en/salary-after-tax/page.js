@@ -43,7 +43,35 @@ export default function EnSalaryIndex() {
           </tbody>
         </table>
       </div>
-      <p className="text-sm text-fjord/60 mt-4">Ordinary tax rules, standard deductions, not Finnmark/Nord-Troms and not PAYE.</p>
+      <p className="text-sm text-fjord/75 mt-4">Ordinary tax rules, standard deductions, not Finnmark/Nord-Troms and not PAYE.</p>
+
+      <section className="prose-no mt-12">
+        <h2>How the figures are calculated</h2>
+        <p>
+          Every row uses the same tax engine as our <Link href="/en">Norway tax calculator</Link>: 22%
+          tax on ordinary income after the minimum standard deduction and the personal allowance, a 7.6%
+          social security contribution and the progressive bracket tax (trinnskatt), all with the rates
+          adopted by the Norwegian Parliament for 2026.
+        </p>
+        <h2>Why your payslip looks different</h2>
+        <p>
+          The monthly figure is an average over the year. With a standard tax deduction card, tax is
+          withheld over 10.5 months: normally there is no tax deduction on your salary in June, when
+          holiday pay is paid, and only half tax in December. In the other months, the deduction is a bit
+          higher than the average. Overtime and bonuses are often taxed at the percentage rate on your
+          tax deduction card, so a month with extra pay can show a high deduction.
+        </p>
+        <h2>Who the table does not fit</h2>
+        <p>
+          If you are on the PAYE scheme for foreign workers, you pay a flat rate instead – see{' '}
+          <Link href="/en/paye-scheme-norway">PAYE in Norway</Link>. Residents of Finnmark and
+          Nord-Troms pay 18.5% instead of 22% on ordinary income. Deductions such as mortgage interest
+          and union fees lower your tax. Read more about your{' '}
+          <Link href="/en/guides/tax-deduction-card-norway">tax deduction card</Link>,{' '}
+          <Link href="/en/guides/holiday-pay-norway">holiday pay</Link> and the{' '}
+          <Link href="/en/guides/tax-return-norway">tax return</Link>.
+        </p>
+      </section>
     </main>
   );
 }

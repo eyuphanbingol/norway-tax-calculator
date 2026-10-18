@@ -156,7 +156,7 @@ export default function Skatt2027() {
             </details>
           ))}
         </div>
-        <p className="text-xs text-fjord/50 mt-6">
+        <p className="text-xs text-fjord/75 mt-6">
           Kilde: Finansdepartementet, «Skattesatser 2027» og Prop. 1 LS (2026–2027).
         </p>
       </section>

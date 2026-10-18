@@ -47,11 +47,11 @@ export default async function ArticlePage({ params }) {
   return (
     <main className="max-w-3xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="text-sm text-fjord/60 mb-4">
+      <nav className="text-sm text-fjord/75 mb-4">
         <Link href="/blog" className="hover:underline">Guider</Link>{' / '}{a.title}
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{a.title}</h1>
-      <p className="text-sm text-fjord/50 mb-8">
+      <p className="text-sm text-fjord/75 mb-8">
         Skrevet av <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Oppdatert {new Date(a.updated || a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · 2026-satser
       </p>
       <article className="prose-no">

@@ -19,7 +19,7 @@ export default function ReisefradragCalc() {
         ['Reisefradrag', `${fmt(r.fradrag)} kr`],
         ['Spart skatt (22 %)', `${fmt(r.skatteverdi)} kr`],
       ]} />
-      <p className="text-xs text-fjord/50">
+      <p className="text-xs text-fjord/75">
         Reisekostnaden regnes med inntil {fmt(REISE_2026.ovreGrense)} kr før egenandelen trekkes fra.
         Bompenger og ferge kan gi fradrag i tillegg etter egne regler – se skatteetaten.no.
         Tallene er veiledende.

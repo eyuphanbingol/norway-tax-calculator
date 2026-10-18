@@ -1,7 +1,5 @@
 import Link from 'next/link';
 import AdSlot from '../../../components/AdSlot';
-import AffiliateBox from '../../../components/AffiliateBox';
-import { hellosafeEn } from '../../../lib/affiliates';
 import { beregnSkatt } from '../../../lib/tax';
 import { DOMAIN } from '../../../lib/constants';
 
@@ -33,11 +31,11 @@ export default function Paye() {
   return (
     <main lang="en" className="max-w-3xl mx-auto px-4 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <nav className="text-sm text-fjord/60 mb-4">
+      <nav className="text-sm text-fjord/75 mb-4">
         <Link href="/en" className="hover:underline">Norway Tax Calculator</Link>{' / '}PAYE scheme
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{TITLE}</h1>
-      <p className="text-sm text-fjord/50 mb-8">By <Link href="/om-oss" className="underline">Eyüp Bingöl</Link> · Updated 8 October 2026 · 2026 rules</p>
+      <p className="text-sm text-fjord/75 mb-8">By <Link href="/om-oss" className="underline">Eyüp Bingöl</Link> · Updated 8 October 2026 · 2026 rules</p>
 
       <article className="prose-no">
         <p>
@@ -110,15 +108,6 @@ export default function Paye() {
           </a>.
         </p>
       </article>
-
-      <AffiliateBox
-        lang="en"
-        label="Advertisement"
-        title="Coming to Norway, or travelling abroad?"
-        text="Public health care in Norway covers members of the National Insurance Scheme. Before your employment starts, or when you travel abroad, you may need private travel insurance. HelloSafe lets you compare travel insurance for Norway."
-        cta="Compare travel insurance at HelloSafe →"
-        href={hellosafeEn('en-paye')}
-      />
 
       <AdSlot type="content" />
     </main>

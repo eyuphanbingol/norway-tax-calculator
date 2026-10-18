@@ -16,7 +16,7 @@ export default function BlogIndex() {
         {articles.map((a) => (
           <Link key={a.slug} href={`/blog/${a.slug}`}
             className="block bg-white border border-mist rounded-2xl p-5 hover:border-netto transition">
-            <p className="text-xs text-fjord/50 mb-1">{new Date(a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            <p className="text-xs text-fjord/75 mb-1">{new Date(a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
             <h2 className="display font-bold text-lg mb-1">{a.title}</h2>
             <p className="text-sm text-fjord/75 leading-relaxed">{a.description}</p>
           </Link>

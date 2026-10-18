@@ -36,7 +36,7 @@ export default function PensjonCalc({ initial = 350000 }) {
       <div className="bg-netto-soft rounded-xl p-4 text-sm text-fjord mb-4">
         <strong>Marginalskatt: {pct(marg)} %.</strong> Av de neste 1 000 kronene i pensjon sitter du igjen med ca. {fmt(1000 - marg * 10)} kr.
       </div>
-      <p className="text-xs text-fjord/50">
+      <p className="text-xs text-fjord/75">
         Gjelder alderspensjon og AFP mottatt hele året med full pensjonsgrad, uten annen inntekt og med
         standard fradrag (ikke Finnmark/Nord-Troms). Uføretrygd skattlegges etter andre regler.
         Tallene er veiledende.

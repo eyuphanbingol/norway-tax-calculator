@@ -16,11 +16,11 @@ export default function Kontakt() {
           Har du spørsmål om kalkulatoren, funnet en feil eller forslag til forbedringer?
           Vi leser alle henvendelser og svarer vanligvis innen et par virkedager.
         </p>
-        <p className="text-sm text-fjord/50 uppercase tracking-wide font-semibold mb-1">E-post</p>
+        <p className="text-sm text-fjord/75 uppercase tracking-wide font-semibold mb-1">E-post</p>
         <a href="mailto:skattekalkulatornorge@gmail.com" className="text-xl font-bold text-netto hover:underline">
           skattekalkulatornorge@gmail.com
         </a>
-        <p className="text-sm text-fjord/60 mt-6">
+        <p className="text-sm text-fjord/75 mt-6">
           Merk: vi kan ikke gi individuell skatterådgivning. For spørsmål om din skattemelding,
           kontakt Skatteetaten.
         </p>

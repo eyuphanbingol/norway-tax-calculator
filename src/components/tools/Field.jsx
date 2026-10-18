@@ -1,8 +1,36 @@
 'use client';
-import { fmt } from '../../lib/tax';
+import { useState } from 'react';
+import { fmt, parseAmount } from '../../lib/tax';
 
-// Tallfelt med tusenskille, brukt av verktøyene
-export function NumberField({ id, label, value, onChange, suffix = 'kr', max = 100000000 }) {
+// Tallfelt med tusenskille, brukt av verktøyene.
+// decimals: tillat øre (f.eks. timelønn 287,50). Feltet viser da det brukeren skriver.
+export function NumberField({ id, label, value, onChange, suffix = 'kr', max = 100000000, decimals = false }) {
+  const [text, setText] = useState(null);
+  if (decimals) {
+    return (
+      <div className="mb-4">
+        <label htmlFor={id} className="block text-sm font-semibold mb-1.5">{label}</label>
+        <div className="flex items-center gap-3">
+          <input
+            id={id}
+            type="text"
+            inputMode="decimal"
+            autoComplete="off"
+            value={text ?? (value ? String(value).replace('.', ',') : '')}
+            onChange={(e) => {
+              const raw = e.target.value.replace(/[^\d.,]/g, '');
+              setText(raw);
+              const n = Number(raw.replace(',', '.'));
+              onChange(Number.isFinite(n) ? Math.min(max, Math.round(n * 100) / 100) : 0);
+            }}
+            onBlur={() => setText(null)}
+            className="tnum w-full text-xl font-bold border-2 border-mist rounded-xl px-4 py-2.5 focus:border-netto outline-none"
+          />
+          {suffix && <span className="font-semibold text-fjord/75 whitespace-nowrap">{suffix}</span>}
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="mb-4">
       <label htmlFor={id} className="block text-sm font-semibold mb-1.5">{label}</label>
@@ -13,10 +41,10 @@ export function NumberField({ id, label, value, onChange, suffix = 'kr', max = 1
           inputMode="numeric"
           autoComplete="off"
           value={value ? fmt(value) : ''}
-          onChange={(e) => onChange(Math.min(max, Number(e.target.value.replace(/\D/g, '')) || 0))}
+          onChange={(e) => onChange(Math.min(max, parseAmount(e.target.value)))}
           className="tnum w-full text-xl font-bold border-2 border-mist rounded-xl px-4 py-2.5 focus:border-netto outline-none"
         />
-        {suffix && <span className="font-semibold text-fjord/60 whitespace-nowrap">{suffix}</span>}
+        {suffix && <span className="font-semibold text-fjord/75 whitespace-nowrap">{suffix}</span>}
       </div>
     </div>
   );
@@ -25,7 +53,7 @@ export function NumberField({ id, label, value, onChange, suffix = 'kr', max = 1
 export function Result({ label, value, sub }) {
   return (
     <div className="text-center my-6">
-      <p className="text-sm uppercase tracking-wide text-fjord/60">{label}</p>
+      <p className="text-sm uppercase tracking-wide text-fjord/75">{label}</p>
       <p className="tnum display text-4xl sm:text-5xl font-bold text-netto leading-tight">{value}</p>
       {sub && <p className="tnum text-fjord/70 mt-1">{sub}</p>}
     </div>
