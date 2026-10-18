@@ -52,7 +52,7 @@ export default async function ArticlePage({ params }) {
         dateModified: a.updated || a.date,
         image: `${DOMAIN}/opengraph-image`,
         author: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
-        publisher: { '@id': `${DOMAIN}/#org` },
+        publisher: { '@type': 'Organization', '@id': `${DOMAIN}/#org`, name: 'Skattekalkulator Norge', url: DOMAIN, logo: { '@type': 'ImageObject', url: `${DOMAIN}/icon.svg` } },
         mainEntityOfPage: url,
       },
       {
@@ -81,7 +81,7 @@ export default async function ArticlePage({ params }) {
       </nav>
       <h1 className="display text-3xl sm:text-4xl font-extrabold mb-2">{a.title}</h1>
       <p className="text-sm text-fjord/75 mb-8">
-        Skrevet av <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Oppdatert {new Date(a.updated || a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · 2026-satser
+        Skrevet av <Link href="/om-oss" className="underline">{AUTHOR}</Link> · Oppdatert {new Date(a.updated || a.date).toLocaleDateString('nb-NO', { day: 'numeric', month: 'long', year: 'numeric' })} · {a.rates || '2026-satser'}
       </p>
       <article className="prose-no">
         {a.body.slice(0, mid).map((b, i) => <Block key={i} b={b} />)}

@@ -63,13 +63,13 @@ export default {
     { type: 'h3', text: '2. Be arbeidsgiver om tilleggstrekk' },
     { type: 'p', text: 'Du kan også be arbeidsgiveren om å trekke et fast beløp ekstra per måned. Skatteetaten skriver at arbeidsgiveren har plikt til å trekke mer når den ansatte ber om det i god tid før lønnskjøringen, og at dette skal legges inn som et tilleggstrekk. Det passer når du vet omtrent hva som mangler, slik som i eksempelet over. For NAV-ytelser kan du legge inn frivillig skattetrekk hos NAV.' },
     { type: 'h3', text: '3. Betal inn selv før 31. mai' },
-    { type: 'p', text: 'Er det for sent å endre trekket, kan du betale inn tilleggsforskudd på skatteetaten.no. Betaler du det du skylder innen 31. mai året etter, slipper du rentetillegget på restskatten. Husk å bruke KID-nummeret for tilleggsforskudd for riktig inntektsår.' },
+    { type: 'p', text: 'Er det for sent å endre trekket, kan du betale inn tilleggsforskudd på skatteetaten.no. Betaler du det du skylder innen 31. mai året etter, og før skatteoppgjøret ditt er ferdig, slipper du rentetillegget på restskatten. Husk å bruke KID-nummeret for tilleggsforskudd for riktig inntektsår.' },
 
     { type: 'h2', text: 'Fradrag du bør sjekke før 31. desember' },
     { type: 'p', text: 'Noen fradrag krever at pengene er betalt inn innen årets utgang. De gir ikke lavere trekk i år, men lavere skatt i oppgjøret.' },
     { type: 'ul', items: [
       `IPS (individuell pensjonssparing): Fradrag for innskudd på inntil 25 000 kroner i året. Fradraget gis i alminnelig inntekt, så det reduserer skatten med 22 prosent av innskuddet, opptil ${fmt(ipsEffekt)} kroner. Innbetalingen må være gjort innen utløpet av inntektsåret, og mange banker har frist noen dager før nyttår. Pengene er bundet til pensjonsalder, og uttakene skattes senere.`,
-      `BSU: Er du under 34 år og ikke eier bolig, kan du spare inntil 27 500 kroner i året og få 10 prosent i skattefradrag, altså inntil ${fmt(bsuEffekt)} kroner. Eier du bolig helt eller delvis per 31. desember, får du ikke fradraget for det året. Sjekk aldersgrense og bankens innskuddsfrist før du setter inn.`,
+      `BSU: Kan du spare i BSU til og med året du fyller 33 år, og eier du ikke bolig, kan du spare inntil 27 500 kroner i året og få 10 prosent i skattefradrag, altså inntil ${fmt(bsuEffekt)} kroner. Eier du bolig helt eller delvis per 31. desember, får du ikke fradraget for det året. Sjekk aldersgrense og bankens innskuddsfrist før du setter inn.`,
       'Fagforeningskontingent: Fradraget er inntil 8 700 kroner for 2026. Det fylles vanligvis inn automatisk, men sjekk at det stemmer.',
       'Gaver til frivillige organisasjoner: Gaver til godkjente organisasjoner kan gi fradrag. Sjekk beløpsgrensene hos Skatteetaten.',
     ]},

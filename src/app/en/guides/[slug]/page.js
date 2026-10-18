@@ -38,7 +38,7 @@ export default async function GuidePage({ params }) {
     datePublished: g.date,
     dateModified: g.updated || g.date,
     image: `${DOMAIN}/opengraph-image`,
-    publisher: { '@id': `${DOMAIN}/#org` },
+    publisher: { '@type': 'Organization', '@id': `${DOMAIN}/#org`, name: 'Skattekalkulator Norge', url: DOMAIN, logo: { '@type': 'ImageObject', url: `${DOMAIN}/icon.svg` } },
     author: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
     mainEntityOfPage: `${DOMAIN}/en/guides/${g.slug}`,
   };
