@@ -19,11 +19,11 @@ export default function Personvern() {
       <p>Alle skatteberegninger skjer lokalt i nettleseren din. Lønnstall du skriver inn i kalkulatorene sendes ikke til oss og lagres ikke på våre servere.</p>
 
       <h2>Drift og serverlogger</h2>
-      <p>Nettsiden driftes hos Vercel Inc. Når du besøker siden, behandler Vercel tekniske opplysninger som IP-adresse, tidspunkt, side og nettlesertype for å levere siden og beskytte den mot misbruk. Loggene lagres i kort tid. Behandlingen bygger på berettiget interesse i å drive en sikker nettside (GDPR art. 6 nr. 1 bokstav f).</p>
+      <p>Nettsiden driftes hos Vercel Inc. Når du besøker siden, behandler Vercel tekniske opplysninger som IP-adresse, tidspunkt, side og nettlesertype for å levere siden og beskytte den mot misbruk. Loggene lagres i henhold til Vercels egne lagringsregler. Behandlingen bygger på berettiget interesse i å drive en sikker nettside (GDPR art. 6 nr. 1 bokstav f).</p>
 
       <h2>Analyse</h2>
       <p>Vi bruker Google Analytics 4 for å forstå hvordan siden brukes, for eksempel antall besøk, hvilke sider som leses og omtrentlig land. Vi ser bare samlet statistikk. Vi får ikke navn eller kontaktinformasjon om deg fra Google Analytics, og vi prøver ikke å identifisere enkeltbesøkende.</p>
-      <p>Besøker du siden fra EØS (inkludert Norge), Storbritannia eller Sveits, settes ingen analyse-cookies før du har gitt samtykke i samtykkevinduet (GDPR art. 6 nr. 1 bokstav a). Uten samtykke kan Google motta begrensede, cookiefrie signaler etter Googles samtykkemodus. Data i Google Analytics slettes automatisk etter lagringstiden som er valgt i tjenesten (maksimalt 14 måneder). Vi bruker også Google Search Console, som bare viser samlet statistikk over søk som leder til siden.</p>
+      <p>Besøker du siden fra EØS (inkludert Norge), Storbritannia eller Sveits, settes ingen analyse-cookies før du har gitt samtykke i samtykkevinduet (GDPR art. 6 nr. 1 bokstav a). Uten samtykke kan Google motta begrensede, cookiefrie signaler etter Googles samtykkemodus, uten informasjonskapsler og uten at signalene knyttes til en profil. Dette bygger på vår berettigede interesse i enkel statistikk over bruken av siden (GDPR art. 6 nr. 1 bokstav f). Opplysninger på bruker- og hendelsesnivå i Google Analytics slettes automatisk etter lagringstiden som er valgt i tjenesten (maksimalt 14 måneder). Samlede rapporter uten opplysninger om enkeltpersoner kan bli liggende lenger. Vi bruker også Google Search Console, som bare viser samlet statistikk over søk som leder til siden.</p>
 
       <h2>Annonser og informasjonskapsler</h2>
       <p>Siden kan finansieres av annonser levert av Google AdSense. Google og deres partnere kan bruke informasjonskapsler (cookies) for å vise annonser basert på tidligere besøk på denne og andre nettsider. Ved første besøk får du et samtykkevalg fra Googles samtykkeløsning (sertifisert etter IAB TCF), der du kan godta eller avslå bruk av cookies og data, og velge «Administrer valg» for å ta stilling til hvert formål og hver partner. Avslår du, kan det fortsatt vises ikke-personaliserte eller begrensede annonser, som ikke bygger på profilen din.</p>
@@ -31,12 +31,13 @@ export default function Personvern() {
       <p>Les mer om hvordan Google bruker data fra nettsteder som bruker Googles tjenester på <a href="https://policies.google.com/technologies/partner-sites" rel="nofollow">policies.google.com/technologies/partner-sites</a>.</p>
 
       <h2>Affiliate-lenker</h2>
-      <p>Noen sider inneholder annonselenker merket «Annonse». Klikker du på en slik lenke, sendes du via affiliate-nettverket Awin til annonsørens nettside. Awin og annonsøren kan da registrere klikket og eventuelle kjøp for å beregne provisjon, etter sine egne personvernregler. Vi får ingen personopplysninger om deg fra dette, bare samlet antall klikk og salg.</p>
+      <p>Noen sider inneholder annonselenker merket «Annonse». Klikker du på en slik lenke, sendes du via affiliate-nettverket Awin til annonsørens nettside. Awin og annonsøren kan da registrere klikket og eventuelle kjøp for å beregne provisjon, etter sine egne personvernregler. Vi får ikke navn eller kontaktinformasjon om deg fra dette, bare transaksjonsdata som klikk og salg.</p>
 
       <h2>Hvem mottar opplysninger</h2>
       <ul>
         <li><strong>Vercel Inc.</strong> – drift av nettsiden (databehandler).</li>
         <li><strong>Google Ireland Ltd. og Google LLC</strong> – Google Analytics, Google AdSense og samtykkeløsningen.</li>
+        <li><strong>Annonsepartnere</strong> som vises i samtykkevinduet – bare hvis du samtykker.</li>
         <li><strong>Awin og annonsøren</strong> – bare hvis du klikker på en annonselenke.</li>
       </ul>
       <p>Noen av disse selskapene behandler opplysninger i USA. Overføringen skjer på grunnlag av EU–US Data Privacy Framework og/eller EUs standardkontraktsklausuler.</p>

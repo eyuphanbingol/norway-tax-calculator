@@ -16,12 +16,23 @@ for (let g = 300000; g <= 2000000; g += 5000) {
   });
 }
 
+// v1 hadde også /sporsmal/hvor-mye-er-<lønn>-etter-skatt. Hver gamle URL sendes direkte
+// (uten kjede) til nærmeste eksisterende lønnsside; andre /sporsmal-URL-er går til /lonn.
+const oldQuestionRedirects = [];
+for (let g = 300000; g <= 2000000; g += 5000) {
+  oldQuestionRedirects.push({
+    source: `/sporsmal/hvor-mye-er-${g}-etter-skatt`,
+    destination: `/lonn/${salarySlug(nearestSalary(g))}`,
+    permanent: true,
+  });
+}
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
     return [
       ...oldSalaryRedirects,
-      { source: '/sporsmal/hvor-mye-er-:g(\\d+)-etter-skatt', destination: '/lonn/lonn-etter-skatt-:g-nok', permanent: true },
+      ...oldQuestionRedirects,
       { source: '/sporsmal', destination: '/blog', permanent: true },
       { source: '/sporsmal/:path*', destination: '/lonn', permanent: true },
       { source: '/yrke/:path*', destination: '/lonn', permanent: true },
@@ -33,8 +44,8 @@ const nextConfig = {
       { source: '/sparing', destination: '/blog/fradrag-du-ikke-ma-glemme-2026', permanent: true },
       { source: '/no', destination: '/', permanent: true },
       { source: '/sv', destination: '/', permanent: true },
-      // Midlertidig avpublisert (AdSense-vurdering) – ikke permanent, siden den kan komme tilbake
-      { source: '/blog/kredittramme-og-forbrukslan-hva-koster-det', destination: '/blog', permanent: false },
+      // Kredittartikkelen er slettet
+      { source: '/blog/kredittramme-og-forbrukslan-hva-koster-det', destination: '/blog', permanent: true },
     ];
   },
 };

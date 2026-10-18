@@ -3,7 +3,7 @@ import { SALARY_PAGES, salarySlug, beregnSkatt, fmt, pct } from '../../lib/tax';
 import { DOMAIN } from '../../lib/constants';
 
 export const metadata = {
-  title: 'Skattekalkulator-tabell 2026: lønn etter skatt per år og måned',
+  title: 'Lønn etter skatt 2026 – tabell fra 300 000 til 2 000 000 kr',
   description: 'Komplett tabell over lønn etter skatt i 2026, fra 300 000 til 2 000 000 kr. Se netto årslønn, månedslønn og skatteprosent for hvert nivå.',
   alternates: { canonical: `${DOMAIN}/lonn` },
 };

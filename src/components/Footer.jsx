@@ -17,11 +17,11 @@ export default function Footer() {
             <li><Link href="/manedslonn" className="hover:text-white">Månedslønn etter skatt</Link></li>
             <li><Link href="/pensjon-etter-skatt" className="hover:text-white">Pensjon etter skatt</Link></li>
             <li><Link href="/verktoy" className="hover:text-white">Alle kalkulatorer</Link></li>
-            <li><Link href="/del-kalkulatoren" className="hover:text-white">Kalkulator til din nettside</Link></li>
             <li><Link href="/en" className="hover:text-white" hrefLang="en">Norway tax calculator (English)</Link></li>
             <li><Link href="/blog" className="hover:text-white">Guider og artikler</Link></li>
             <li><Link href="/blog/trinnskatt-2026" className="hover:text-white">Trinnskatt 2026</Link></li>
-            <li><Link href="/blog/skatteendringer-2026-guide" className="hover:text-white">Skatteendringer 2026</Link></li>
+            <li><Link href="/blog/halv-skatt-i-desember-2026" className="hover:text-white">Halv skatt i desember</Link></li>
+            <li><Link href="/blog/skattekort-2027" className="hover:text-white">Skattekort 2027</Link></li>
           </ul>
         </div>
         <div>

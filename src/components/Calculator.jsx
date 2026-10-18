@@ -106,11 +106,11 @@ export default function Calculator({ initial = 600000, lang = 'no', year: initia
         onChange={(e) => setGross(Number(e.target.value) * (monthly ? 12 : 1))}
         aria-label={t.ariaRange}
         aria-valuetext={`${num(shown)} ${lang === 'en' ? 'NOK' : 'kr'}`}
-        className="w-full accent-[#1e8a5a] mb-6"
+        className="w-full accent-[#18784e] mb-6"
       />
 
       {/* Signatur: det store netto-tallet */}
-      <div className="text-center mb-6">
+      <div className="text-center mb-6" aria-live="polite" aria-atomic="true">
         <p className="text-sm uppercase tracking-wide text-fjord/75">{t.netTitle(year)}</p>
         <p className="tnum display text-5xl sm:text-6xl font-bold text-netto leading-tight">
           {monthly ? num(r.nettoMnd) : num(r.netto)} {lang === 'en' ? 'NOK' : 'kr'}

@@ -16,8 +16,8 @@ const p = PENSJON_2026;
 
 const faq = [
   { q: 'Hvor mye skatt betaler pensjonister i 2026?', a: `Det avhenger av pensjonen. Med 350 000 kr i alderspensjon betaler du ca. ${fmt(beregnPensjonsskatt(350000).totalSkatt)} kr i skatt i 2026, og med 500 000 kr ca. ${fmt(beregnPensjonsskatt(500000).totalSkatt)} kr. Pensjonister med lav pensjon betaler normalt ingen skatt, fordi skattefradraget for pensjonsinntekt dekker skatten.` },
-  { q: 'Hva er skattefradraget for pensjonsinntekt?', a: `Det er et fradrag direkte i skatten for pensjonister. I 2026 er det inntil ${fmt(p.skattefradragMaks)} kr. Fradraget trappes ned med 16,7 prosent av pensjonsinntekt over 284 950 kr og med 6 prosent over 436 050 kr. Fullt fradrag forutsetter full pensjon i hele året.` },
-  { q: 'Hvorfor er marginalskatten så høy for noen pensjonister?', a: 'Mellom 284 950 og 436 050 kr i pensjon reduseres skattefradraget med 16,7 øre for hver krone du får i tillegg. Det kommer på toppen av vanlig skatt, og gir en marginalskatt på rundt 45–48 prosent i dette intervallet.' },
+  { q: 'Hva er skattefradraget for pensjonsinntekt?', a: `Det er et fradrag direkte i skatten for pensjonister. I 2026 er det inntil ${fmt(p.skattefradragMaks)} kr. Fradraget trappes ned med 19,1 prosent av pensjonsinntekt over 294 200 kr og med 6 prosent over 437 100 kr. Satsene ble endret i revidert nasjonalbudsjett i juni 2026 og gjelder for hele 2026. Fullt fradrag forutsetter full pensjon i hele året.` },
+  { q: 'Hvorfor er marginalskatten så høy for noen pensjonister?', a: 'Mellom 294 200 og 437 100 kr i pensjon reduseres skattefradraget med 19,1 øre for hver krone du får i tillegg. Det kommer på toppen av vanlig skatt (22 % inntektsskatt, 5,1 % trygdeavgift og trinnskatt), og gir en marginalskatt på rundt 48–50 prosent i dette intervallet.' },
   { q: 'Trekkes det skatt av pensjonen i desember?', a: 'For alderspensjon, AFP og etterlattepensjon trekkes det normalt ikke skatt i desember, mens juni har vanlig trekk. Uføretrygd har halvt trekk i desember.' },
 ];
 
@@ -57,8 +57,8 @@ export default function Page() {
         <thead><tr><th></th><th>2026</th></tr></thead>
         <tbody>
           <tr><td>Maksimalt fradrag</td><td>{fmt(p.skattefradragMaks)} kr</td></tr>
-          <tr><td>Nedtrapping trinn 1</td><td>16,7 % over 284 950 kr</td></tr>
-          <tr><td>Nedtrapping trinn 2</td><td>6,0 % over 436 050 kr</td></tr>
+          <tr><td>Nedtrapping trinn 1</td><td>19,1 % over 294 200 kr</td></tr>
+          <tr><td>Nedtrapping trinn 2</td><td>6,0 % over 437 100 kr</td></tr>
         </tbody>
       </table>
       <p>

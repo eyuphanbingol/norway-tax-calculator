@@ -18,7 +18,7 @@ export default function FeriepengerCalc() {
           <button type="button" className={opt(femUker)} aria-pressed={femUker} onClick={() => setFemUker(true)}>5 uker (12 %)</button>
         </div>
         <label className="inline-flex items-center gap-2 text-sm font-semibold px-2">
-          <input type="checkbox" checked={over60} onChange={(e) => setOver60(e.target.checked)} className="w-4 h-4 accent-[#1e8a5a]" />
+          <input type="checkbox" checked={over60} onChange={(e) => setOver60(e.target.checked)} className="w-4 h-4 accent-[#18784e]" />
           Fyller 60 år eller mer i år
         </label>
       </div>

@@ -17,7 +17,7 @@ export default function Kontakt() {
           Vi leser alle henvendelser og svarer vanligvis innen et par virkedager.
         </p>
         <p className="text-sm text-fjord/75 uppercase tracking-wide font-semibold mb-1">E-post</p>
-        <a href="mailto:skattekalkulatornorge@gmail.com" className="text-xl font-bold text-netto hover:underline">
+        <a href="mailto:skattekalkulatornorge@gmail.com" className="text-xl font-bold text-netto hover:underline break-all">
           skattekalkulatornorge@gmail.com
         </a>
         <p className="text-sm text-fjord/75 mt-6">

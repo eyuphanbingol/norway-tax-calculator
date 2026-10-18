@@ -1,11 +1,11 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import AdSlot from '../../../components/AdSlot';
-import Block from '../../../components/ArticleBlock';
+import Block, { Sources } from '../../../components/ArticleBlock';
 import AffiliateBox from '../../../components/AffiliateBox';
-import { hellosafeNo, ferratumNo, FERRATUM_EKSEMPEL } from '../../../lib/affiliates';
+import { hellosafeNo } from '../../../lib/affiliates';
 import { articles, getArticle } from '../../../data/articles';
-import { DOMAIN, AUTHOR } from '../../../lib/constants';
+import { DOMAIN, AUTHOR, SITE_NAME } from '../../../lib/constants';
 
 export const dynamicParams = false;
 
@@ -21,7 +21,16 @@ export async function generateMetadata({ params }) {
     title: a.title,
     description: a.description,
     alternates: { canonical: `${DOMAIN}/blog/${slug}` },
-    openGraph: { title: a.title, description: a.description, type: 'article' },
+    openGraph: {
+      title: a.title,
+      description: a.description,
+      type: 'article',
+      url: `${DOMAIN}/blog/${slug}`,
+      siteName: SITE_NAME,
+      locale: 'nb_NO',
+      publishedTime: a.date,
+      modifiedTime: a.updated || a.date,
+    },
   };
 }
 
@@ -30,17 +39,37 @@ export default async function ArticlePage({ params }) {
   const a = getArticle(slug);
   if (!a) return notFound();
 
+  const url = `${DOMAIN}/blog/${a.slug}`;
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: a.title,
-    description: a.description,
-    datePublished: a.date,
-    dateModified: a.updated || a.date,
-    author: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
-    publisher: { '@type': 'Organization', name: 'Skattekalkulator Norge', url: DOMAIN },
-    mainEntityOfPage: `${DOMAIN}/blog/${a.slug}`,
+    '@graph': [
+      {
+        '@type': 'Article',
+        headline: a.title,
+        description: a.description,
+        inLanguage: 'nb',
+        datePublished: a.date,
+        dateModified: a.updated || a.date,
+        image: `${DOMAIN}/opengraph-image`,
+        author: { '@type': 'Person', name: AUTHOR, url: `${DOMAIN}/om-oss` },
+        publisher: { '@id': `${DOMAIN}/#org` },
+        mainEntityOfPage: url,
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Guider', item: `${DOMAIN}/blog` },
+          { '@type': 'ListItem', position: 2, name: a.title, item: url },
+        ],
+      },
+    ],
   };
+  // Sesongaktuelle guider først i «Les også»
+  const PINNED = ['halv-skatt-i-desember-2026', 'skattekort-2027'];
+  const related = [
+    ...PINNED.map((s) => articles.find((x) => x.slug === s)).filter(Boolean),
+    ...articles.filter((x) => !PINNED.includes(x.slug)),
+  ].filter((x) => x.slug !== a.slug).slice(0, 4);
 
   const mid = Math.floor(a.body.length / 2);
 
@@ -58,11 +87,12 @@ export default async function ArticlePage({ params }) {
         {a.body.slice(0, mid).map((b, i) => <Block key={i} b={b} />)}
         <AdSlot type="content" />
         {a.body.slice(mid).map((b, i) => <Block key={mid + i} b={b} />)}
+        <Sources sources={a.sources} />
       </article>
       <aside className="mt-10">
         <h2 className="display text-xl font-bold mb-3">Les også</h2>
         <ul className="space-y-2">
-          {articles.filter((x) => x.slug !== a.slug).slice(0, 4).map((x) => (
+          {related.map((x) => (
             <li key={x.slug}>
               <Link href={`/blog/${x.slug}`} className="text-netto font-semibold hover:underline">{x.title}</Link>
             </li>
@@ -76,15 +106,6 @@ export default async function ArticlePage({ params }) {
         cta="Sammenlign reiseforsikring hos HelloSafe →"
         href={hellosafeNo('feriepenger-artikkel')}
       />
-      )}
-      {a.slug === 'kredittramme-og-forbrukslan-hva-koster-det' && (
-        <AffiliateBox
-          title="Ferratum Fleksikreditt"
-          text="Kredittramme fra Ferratum Bank. Renten fastsettes etter individuell kredittvurdering. Sammenlign alltid effektiv rente og totalkostnad med andre tilbud før du søker."
-          disclosure={FERRATUM_EKSEMPEL}
-          cta="Les mer hos Ferratum →"
-          href={ferratumNo('kreditt-guide')}
-        />
       )}
       <div className="mt-10 bg-netto-soft rounded-2xl p-6 text-center">
         <p className="font-semibold mb-2">Hva sitter du igjen med av lønnen din?</p>

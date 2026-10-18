@@ -66,10 +66,142 @@ export default async function SalaryPage({ params }) {
   const marginalEtter = nesteTrinn ? marginalskatt(nesteTrinn.over + 1000) : null;
   const agaSats = 0.141; // arbeidsgiveravgift sone I
   const motMedian = Math.round((gross / MEDIAN_SALARY - 1) * 100);
-  const NOTES = {
-    750000: 'Regjeringen bruker selv 750 000 kr som eksempel i forslaget til statsbudsjett for 2027: med forventet lønnsvekst får en lønnsmottaker med denne lønnen om lag 1 800 kr lavere skatt i 2027.',
-    1000000: 'En million i årslønn er et mål for mange. Over 980 100 kr er du i trinn 4: av hver ekstra krone går 22 % i skatt på alminnelig inntekt, 7,6 % i trygdeavgift og 16,8 % i trinnskatt, så du beholder 53,6 øre.',
+  // Håndskrevet tekst per indeksert lønnsnivå. Alle tall beregnes med skattemotoren.
+  const nt = (g) => beregnSkatt(g).netto;
+  const andel = (del, av) => pct(Math.round((del / av) * 1000) / 10);
+  const beholder = pct(Math.round((100 - marginal) * 10) / 10);
+  const T3 = t[2].over;
+  const T4 = t[3].over;
+  const T5 = t[4].over;
+  const satsTxt = (i) => pct(Math.round(t[i].sats * 1000) / 10);
+  const fradragsverdi = (8700 + 25000) * RATES_2026.alminnelig; // fagforening + IPS, 22 %
+  const tilT3 = nt(T3) - r.netto;
+  const forsteDel = T3 - gross; // brukes for 700 000
+  const forsteNetto = nt(T3) - r.netto;
+  const andreNetto = nt(T3 + forsteDel) - nt(T3);
+  const bonus50 = nt(gross + 50000) - r.netto;
+  const pluss100 = nt(gross + 100000) - r.netto;
+  const motSnitt = Math.round((gross / AVG_SALARY - 1) * 100);
+
+  const HAND = {
+    600000: {
+      h: `600 000 kr: god avstand til trinn 3`,
+      body: (
+        <>
+          <p>
+            Med 600 000 kr i årslønn er du i trinn 2 av trinnskatten. Trinn 3, der satsen hopper fra{' '}
+            {satsTxt(1)} til {satsTxt(2)} %, starter først ved {fmt(T3)} kr. Du har altså{' '}
+            {fmt(T3 - gross)} kr å gå på før marginalskatten øker. På hele denne strekningen er
+            marginalskatten {pct(marginal)} %, og du beholder {beholder} kr av hver hundrelapp du får i
+            lønnsøkning.
+          </p>
+          <p>
+            Et konkret regnestykke: Går lønnen fra 600 000 kr helt opp til {fmt(T3)} kr, øker
+            utbetalingen med {fmt(tilT3)} kr i året, i snitt {fmt(tilT3 / 12)} kr mer per måned. Mange
+            tror at et nytt trinn gjør at hele lønnen blir beskattet hardere. Det stemmer ikke: den høyere
+            satsen gjelder bare kronene over grensen.
+          </p>
+          <p>
+            På dette nivået er det ofte fradragene som gjør størst forskjell. Fagforeningskontingent
+            (inntil 8 700 kr) og sparing i IPS (inntil 25 000 kr i året, bundet til pensjonsalder) trekkes
+            fra i alminnelig inntekt og gir 22 % lavere skatt. Utnytter du begge fullt ut, sparer du{' '}
+            {fmt(fradragsverdi)} kr i skatt. For å få like mye mer utbetalt gjennom lønn, måtte du hatt
+            omtrent {fmt(fradragsverdi / (1 - marginal / 100))} kr høyere bruttolønn. Se{' '}
+            <Link href="/blog/fradrag-du-ikke-ma-glemme-2026">fradragene mange glemmer</Link>.
+          </p>
+        </>
+      ),
+    },
+    700000: {
+      h: `700 000 kr: rett under trinn 3`,
+      body: (
+        <>
+          <p>
+            700 000 kr er et interessant lønnsnivå skattemessig, fordi du ligger bare {fmt(forsteDel)} kr
+            under innslagspunktet for trinn 3 ({fmt(T3)} kr). Forhandler du lønn eller får bonus, blir de
+            neste kronene beskattet ulikt:
+          </p>
+          <table>
+            <thead><tr><th>Lønnstillegg</th><th>Mer utbetalt</th><th>Du beholder</th></tr></thead>
+            <tbody>
+              <tr><td>De første {fmt(forsteDel)} kr (opp til {fmt(T3)} kr)</td><td>{fmt(forsteNetto)} kr</td><td>{andel(forsteNetto, forsteDel)} %</td></tr>
+              <tr><td>De neste {fmt(forsteDel)} kr (over {fmt(T3)} kr)</td><td>{fmt(andreNetto)} kr</td><td>{andel(andreNetto, forsteDel)} %</td></tr>
+            </tbody>
+          </table>
+          <p>
+            Selv over grensen beholder du mer enn halvparten, så trinnskatten er aldri en grunn til å si
+            nei til mer lønn. En bonus på 50 000 kr gir deg for eksempel {fmt(bonus50)} kr etter skatt
+            når året er gjort opp. Les mer om{' '}
+            <Link href="/blog/julebonus-og-bonus-skatt">skatt på bonus</Link>.
+          </p>
+          <p>
+            Lønnen ligger mellom SSBs median ({fmt(MEDIAN_SALARY)} kr) og gjennomsnitt ({fmt(AVG_SALARY)}{' '}
+            kr) for 2025. At gjennomsnittet er høyere enn medianen, betyr at noen svært høye lønninger
+            trekker snittet opp, og over halvparten tjener derfor mindre enn gjennomsnittet. Med 700 000 kr
+            tjener du mer enn medianlønnstakeren, men under snittet.
+          </p>
+        </>
+      ),
+    },
+    750000: {
+      h: `750 000 kr: regjeringens eget eksempel`,
+      body: (
+        <>
+          <p>
+            Med 750 000 kr har du passert innslagspunktet for trinn 3 ({fmt(T3)} kr) med{' '}
+            {fmt(gross - T3)} kr. Det er bare disse kronene som får trinnskatt på {satsTxt(2)} %, til
+            sammen {fmt((gross - T3) * t[2].sats)} kr. Resten av lønnen beskattes akkurat som før, men all
+            videre lønnsøkning får nå {pct(marginal)} % marginalskatt.
+          </p>
+          <p>
+            750 000 kr er også lønnen regjeringen selv bruker som eksempel i forslaget til statsbudsjett
+            for 2027. Ifølge regjeringen får en lønnstaker med 750 000 kr og standard fradrag om lag
+            1 800 kr lavere skatt i 2027. Det tallet sammenligner med 2026-reglene justert for forventet
+            lønnsvekst. Holder du lønnen helt lik begge år, viser kalkulatoren vår en større nedgang,{' '}
+            {fmt(r.totalSkatt - r27.totalSkatt)} kr, fordi fradrag og innslagspunkter justeres opp mens
+            lønnen står stille. Forslaget er ikke vedtatt før Stortinget behandler budsjettet i desember.
+          </p>
+          <p>
+            Én ting er lett å misforstå i trinn 3: Fradrag som rentefradrag, IPS og fagforeningskontingent
+            trekkes fra i alminnelig inntekt, ikke i lønnen trinnskatten og trygdeavgiften beregnes av. Et
+            fradrag er derfor verdt 22 % for deg, ikke {pct(marginal)} %. Lønnen ligger for øvrig rett over
+            SSBs gjennomsnitt for 2025 på {fmt(AVG_SALARY)} kr.
+          </p>
+        </>
+      ),
+    },
+    1000000: {
+      h: `1 million kr: trinn 4 og ${beholder} øre per krone`,
+      body: (
+        <>
+          <p>
+            En million kroner i årslønn er en milepæl for mange, men skattemessig skjer det viktigste litt
+            før: Ved {fmt(T4)} kr starter trinn 4 med {satsTxt(3)} % trinnskatt. Av lønnen din ligger{' '}
+            {fmt(gross - T4)} kr i trinn 4, og de gir {fmt((gross - T4) * t[3].sats)} kr i trinnskatt.
+          </p>
+          <p>
+            Marginalskatten er {pct(marginal)} %: 22 % skatt på alminnelig inntekt, 7,6 % trygdeavgift og{' '}
+            {satsTxt(3)} % trinnskatt. Av hver ekstra krone beholder du {beholder} øre. En lønnsøkning på
+            100 000 kr gir derfor {fmt(pluss100)} kr mer utbetalt i året. Neste trinn ({satsTxt(4)} %)
+            starter ved {fmt(T5)} kr, {fmt(T5 - gross)} kr unna.
+          </p>
+          <p>
+            Selv om de siste kronene beskattes hardt, er gjennomsnittsskatten {pct(r.skattProsent)} %. De
+            første kronene av lønnen beskattes lavt: personfradraget gjør de første{' '}
+            {fmt(RATES_2026.personfradrag)} kr av alminnelig inntekt skattefrie, og trinnskatten starter
+            på bare {satsTxt(0)} %. Det er derfor du sitter igjen med {fmt(r.netto)} kr av en million.
+          </p>
+          <p>
+            Lønnen er {motSnitt} % høyere enn SSBs gjennomsnitt for heltidsekvivalenter i 2025. Fradrag er
+            verdt 22 % også for deg, ikke {pct(marginal)} %, fordi de ikke reduserer grunnlaget for
+            trinnskatt og trygdeavgift. Les mer om <Link href="/blog/trinnskatt-2026">trinnskatt</Link> og{' '}
+            <Link href="/blog/marginalskatt-2026">marginalskatt</Link>.
+          </p>
+        </>
+      ),
+    },
   };
+  const hand = HAND[gross];
 
   const idx = SALARY_PAGES.indexOf(gross);
   const prev = idx > 0 ? SALARY_PAGES[idx - 1] : null;
@@ -142,6 +274,7 @@ export default async function SalaryPage({ params }) {
             <tr><td><strong>Sum skatt</strong></td><td><strong>{fmt(r.totalSkatt)} kr</strong></td></tr>
             <tr><td><strong>Utbetalt</strong></td><td><strong>{fmt(r.netto)} kr</strong></td></tr>
             <tr><td>Gjennomsnitt per måned</td><td>{fmt(r.nettoMnd)} kr</td></tr>
+            <tr><td><Link href="/blog/halv-skatt-i-desember-2026">Halv skatt i desember</Link></td><td>ca. {fmt(trekkMnd / 2)} kr mer enn i en vanlig måned</td></tr>
           </tbody>
         </table>
 
@@ -193,14 +326,21 @@ export default async function SalaryPage({ params }) {
 
         {indexed && (
           <>
+            {hand && (
+              <>
+                <h2>{hand.h}</h2>
+                {hand.body}
+              </>
+            )}
             <h2>{fmt(gross)} kr i praksis: lønnsslipp, trinn og arbeidsgiver</h2>
-            {NOTES[gross] && <p>{NOTES[gross]}</p>}
             <p>
               <strong>Lønnsslippen.</strong> Brutto månedslønn er {fmt(bruttoMnd)} kr. Fordi skatten
               normalt trekkes over 10,5 måneder, blir trekket i en vanlig måned omtrent{' '}
               {fmt(trekkMnd)} kr, og du får rundt {fmt(bruttoMnd - trekkMnd)} kr utbetalt – litt mindre
               enn snittet på {fmt(r.nettoMnd)} kr. I desember er trekket halvt (ca. {fmt(trekkMnd / 2)} kr),
-              så utbetalingen blir rundt {fmt(bruttoMnd - trekkMnd / 2)} kr. Det nøyaktige trekket står i
+              så utbetalingen blir rundt {fmt(bruttoMnd - trekkMnd / 2)} kr – med{' '}
+              <Link href="/blog/halv-skatt-i-desember-2026">halv skatt i desember</Link> får du altså ca.{' '}
+              {fmt(trekkMnd / 2)} kr mer utbetalt enn i en vanlig måned. Det nøyaktige trekket står i
               skattekortet ditt og kan avvike noe fra dette anslaget.
             </p>
             <p>
